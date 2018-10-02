@@ -48,9 +48,24 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'nombres'       => 'required|string|max:255',
+            'apellidos'     => 'required|string|max:225',
+            'nacimiento'    => 'required|date',
+            'sexo'          => 'required|string|max:10',
+            'Npadres'       => 'required|string|max:255',
+            'telefono'      => 'required|numeric',
+            'email'         => 'required|string|email|max:255|unique:users',
+            'password'      => 'required|string|min:6|confirmed',
+        ],[
+            'nombres.required'      =>'El campo de nombres es obligatorio',
+            'apellidos.required'    =>'El campo de apellidos es obligatorio',
+            'nacimiento.required'   =>'El campo de fecha de nacimiento es obligatorio',
+            'sexo.required'         =>'El campo de sexo es obligatorio',
+            'Npadres.required'      =>'El campo del nomnbre de uno de sus padres es obligatorio',
+            'telefono.required'     =>'El campo de nuemero de telefono es obligatorio',
+            'email.required'        =>'El campo de correo electronico es obligatorio',
+            'password.required'     =>'El campo de contraseña es obligatorio',
+            'password.min'          =>'La contraseñ debe poseer almenos 6 caracteres'
         ]);
     }
 
@@ -63,9 +78,14 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'nombres'       => $data['nombres'],
+            'apellidos'     => $data['apellidos'],
+            'nacimiento'    => $data['nacimiento'],
+            'sexo'          => $data['sexo'],
+            'Npadres'       => $data['Npadres'],
+            'telefono'      => $data['telefono'],
+            'email'         => $data['email'],
+            'password'      => bcrypt($data['password']),
         ]);
     }
 }
