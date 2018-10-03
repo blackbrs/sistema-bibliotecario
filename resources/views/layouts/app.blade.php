@@ -36,7 +36,16 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        @can('users.index')
+                        <li class="nav-item">
+                            <a href="{{ route('users.index') }}">Usuarios</a> 
+                        </li>
+                        @endcan
+                        @can('roles.index')
+                         <li class="nav-item">
+                             <a href="{{ route('roles.index') }}">Roles</a>
+                            </li>
+                            @endcan
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -48,7 +57,7 @@
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->nombres }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu">

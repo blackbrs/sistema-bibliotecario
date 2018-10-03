@@ -15,6 +15,7 @@
                             <label for="nombres" class="col-md-4 control-label">Nombres</label>
 
                             <div class="col-md-6">
+
                                 <input id="nombres" type="text" class="form-control" name="nombres" value="{{ old('nombres') }}" required autofocus>
 
                                 @if ($errors->has('nombres'))
