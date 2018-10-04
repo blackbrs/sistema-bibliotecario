@@ -31,7 +31,7 @@ Route::get('roles', 'RoleController@index')->name('roles.index')
         ->middleware('permission:roles.index');
 
 Route::get('roles/create', 'RoleController@create')->name('roles.create')
-        ->middleware('permission:roles.create');
+       ->middleware('permission:roles.create');
 
 Route::put('roles/{role}', 'RoleController@update')->name('roles.update')
         ->middleware('permission:roles.edit');

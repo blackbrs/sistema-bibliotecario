@@ -24,7 +24,7 @@
 </div>
 <div class="form-group">
         {!! Form::label('email', 'Correo electronico') !!}
-        {!! Form::text('email', null, ['class'=>'form-control']) !!}
+        {!! Form::text('email', null, ['class'=>'form-control','required']) !!}
 </div>
 
 <hr>

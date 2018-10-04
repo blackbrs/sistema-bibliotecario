@@ -26,7 +26,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        $permissions = Permission::get();
+        return view('roles.create', compact('permissions'));
     }
 
     /**
@@ -37,7 +38,11 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      
+        $role = Role::create($request->all());
+        $role->permissions()->sync($request->get('permissions'));
+        return redirect()->route('roles.edit',$role->id)
+        ->with('info','Rol Guardado con exito');
     }
 
     /**
@@ -59,8 +64,8 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        $roles = Role::get();
-        return view('roles.edit', compact('role', 'roles'));
+        $permissions = Permission::get();
+        return view('roles.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -74,7 +79,7 @@ class RoleController extends Controller
     {
         $role->update($request->all());
 
-        $role->roles()->sync($request->get('roles'));
+        $role->permissions()->sync($request->get('permissions'));
         
         return redirect()->route('roles.edit', $role->id)
         ->with('info', 'Rol actualizado con exito');
