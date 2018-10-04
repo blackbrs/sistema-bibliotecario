@@ -25,7 +25,7 @@
                                 @endif
                             </div>
                         </div>
-
+                        
                         <div class="form-group{{ $errors->has('apellidos') ? ' has-error' : '' }}">
                             <label for="apellidos" class="col-md-4 control-label">Apellidos</label>
 
@@ -39,7 +39,7 @@
                                 @endif
                             </div>
                         </div>
-
+                        
                         <div class="form-group{{ $errors->has('nacimiento') ? ' has-error' : '' }}">
                             <label for="nacimiento" class="col-md-4 control-label">Fecha de nacimiento</label>
 

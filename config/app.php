@@ -163,10 +163,12 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+        
+        
         /*
          * Package Service Providers...
          */
+        
 
         /*
          * Application Service Providers...
@@ -178,6 +180,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\AnnotationsServiceProvider::class,
         Caffeinated\Shinobi\ShinobiServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+        
 
     ],
 
@@ -196,6 +200,8 @@ return [
 
         'Form'=> Collective\Html\FormFacade::class,
         'Html'=> Collective\Html\HtmlFacade::class,
+
+
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,

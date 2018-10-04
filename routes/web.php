@@ -51,16 +51,16 @@ Route::get('roles/{role}/edit', 'RoleController@edit')->name('roles.edit')
 Route::get('users', 'UserController@index')->name('users.index')
         ->middleware('permission:users.index');
 
-Route::put('users/{role}', 'UserController@update')->name('users.update')
+Route::put('users/{user}', 'UserController@update')->name('users.update')
         ->middleware('permission:users.edit');
 
-Route::get('users/{role}', 'UserController@show')->name('users.show')
+Route::get('users/{user}', 'UserController@show')->name('users.show')
         ->middleware('permission:users.show');
 
-Route::delete('users/{role}', 'UserController@destroy')->name('users.destroy')
+Route::delete('users/{user}', 'UserController@destroy')->name('users.destroy')
         ->middleware('permission:users.destroy');
 
-Route::get('users/{role}/edit', 'UserController@edit')->name('users.edit')
+Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit')
         ->middleware('permission:users.edit');
 
 });
