@@ -13,6 +13,20 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        Schema::create('departamentos', function (Blueprint $table) {
+            $table->string("id")->primary();
+            $table->string('nDepartamento');
+            $table->timestamps();
+        });
+
+        Schema::create('municipios', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('dep_id');
+            $table->foreign('dep_id')->references('id')->on('departamentos');
+            $table->string('nMunicipio');
+            $table->timestamps();
+        });
+
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombres');
@@ -25,9 +39,12 @@ class CreateUsersTable extends Migration
             $table->integer('telefono')->unique()->nullable();;
             $table->string('email')->unique();
             $table->string('password');
+            $table->integer('mun_id');
+            $table->foreign('mun_id')->references('id')->on('municipios');
             $table->rememberToken();
             $table->timestamps();
         });
+   
     }
 
     /**
@@ -37,6 +54,8 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('departamentos');
+        Schema::dropIfExists('municipios');
         Schema::dropIfExists('users');
     }
 }
