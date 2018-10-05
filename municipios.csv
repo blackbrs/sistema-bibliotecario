@@ -1,0 +1,263 @@
+id;Nombre;dep_id
+1;Ahuachapán;SV-AH
+2;Apaneca;SV-AH
+3;Atiquizaya;SV-AH
+4;Concepción de Ataco;SV-AH
+5;El Refugio;SV-AH
+6;Guaymango;SV-AH
+7;Jujutla;SV-AH
+8;San Francisco Menéndez;SV-AH
+9;San Lorenzo;SV-AH
+10;San Pedro Puxtla;SV-AH
+11;Tacuba;SV-AH
+12;Turín;SV-AH
+13;Cinquera;SV-CA
+14;Dolores;SV-CA
+15;Guacotecti;SV-CA
+16;Ilobasco;SV-CA
+17;Jutiapa;SV-CA
+18;San Isidro;SV-CA
+19;Sensuntepeque;SV-CA
+20;Tejutepeque;SV-CA
+21;Victoria;SV-CA
+22;Agua Caliente;SV-CH
+23;Arcatao;SV-CH
+24;Azacualpa;SV-CH
+25;Cancasque;SV-CH
+26;Chalatenango;SV-CH
+27;Citalá;SV-CH
+28;Comalapa;SV-CH
+29;Concepción Quezaltepeque;SV-CH
+30;Dulce Nombre de María;SV-CH
+31;El Carrizal;SV-CH
+32;El Paraíso;SV-CH
+33;La Laguna;SV-CH
+34;La Palma;SV-CH
+35;La Reina;SV-CH
+36;Las Flores;SV-CH
+37;Las Vueltas;SV-CH
+38;Nombre de Jesús;SV-CH
+39;Nueva Concepción;SV-CH
+40;Nueva Trinidad;SV-CH
+41;Ojos de Agua;SV-CH
+42;Potonico;SV-CH
+43;San Antonio de la Cruz;SV-CH
+44;San Antonio Los Ranchos;SV-CH
+45;San Fernando;SV-CH
+46;San Francisco Lempa;SV-CH
+47;San Francisco Morazán;SV-CH
+48;San Ignacio;SV-CH
+49;San Isidro Labrador;SV-CH
+50;San Luis del Carmen;SV-CH
+51;San Miguel de Mercedes;SV-CH
+52;San Rafael;SV-CH
+53;Santa Rita;SV-CH
+54;Tejutla;SV-CH
+55;Candelaria;SV-CU
+56;Cojutepeque ;SV-CU
+57;El Carmen;SV-CU
+58;El Rosario;SV-CU
+59;Monte San Juan;SV-CU
+60;Oratorio de Concepción;SV-CU
+61;San Bartolomé Perulapía;SV-CU
+62;San Cristóbal;SV-CU
+63;San José Guayabal;SV-CU
+64;San Pedro Perulapán;SV-CU
+65;San Rafael Cedros;SV-CU
+66;San Ramón;SV-CU
+67;Santa Cruz Analquito;SV-CU
+68;Santa Cruz Michapa;SV-CU
+69;Suchitoto;SV-CU
+70;Tenancingo;SV-CU
+71;Antiguo Cuscatlán;SV-LI
+72;Chiltiupán;SV-LI
+73;Ciudad Arce;SV-LI
+74;Colón;SV-LI
+75;Comasagua;SV-LI
+76;Huizúcar;SV-LI
+77;Jayaque;SV-LI
+78;Jicalapa;SV-LI
+79;La Libertad;SV-LI
+80;Nuevo Cuscatlán;SV-LI
+81;Quezaltepeque;SV-LI
+82;Sacacoyo;SV-LI
+83;San José Villanueva;SV-LI
+84;San Juan Opico;SV-LI
+85;San Matías;SV-LI
+86;San Pablo Tacachico;SV-LI
+87;Santa Tecla ;SV-LI
+88;Talnique;SV-LI
+89;Tamanique;SV-LI
+90;Teotepeque;SV-LI
+91;Tepecoyo;SV-LI
+92;Zaragoza;SV-LI
+93;Cuyultitán;SV-PA
+94;El Rosario;SV-PA
+95;Jerusalén;SV-PA
+96;Mercedes La Ceiba;SV-PA
+97;Olocuilta;SV-PA
+98;Paraíso de Osorio;SV-PA
+99;San Antonio Masahuat;SV-PA
+100;San Emigdio;SV-PA
+101;San Francisco Chinameca;SV-PA
+102;San Juan Nonualco;SV-PA
+103;San Juan Talpa;SV-PA
+104;San Juan Tepezontes;SV-PA
+105;San Luis La Herradura;SV-PA
+106;San Luis Talpa;SV-PA
+107;San Miguel Tepezontes;SV-PA
+108;San Pedro Masahuat;SV-PA
+109;San Pedro Nonualco;SV-PA
+110;San Rafael Obrajuelo;SV-PA
+111;Santa María Ostuma;SV-PA
+112;Santiago Nonualco;SV-PA
+113;Tapalhuaca;SV-PA
+114;Zacatecoluca;SV-PA
+115;Anamorós;SV-UN
+116;Bolívar;SV-UN
+117;Concepción de Oriente;SV-UN
+118;Conchagua;SV-UN
+119;El Carmen;SV-UN
+120;El Sauce;SV-UN
+121;Intipucá;SV-UN
+122;La Unión;SV-UN
+123;Lislique;SV-UN
+124;Meanguera del Golfo;SV-UN
+125;Nueva Esparta;SV-UN
+126;Pasaquina;SV-UN
+127;Polorós;SV-UN
+128;San Alejo;SV-UN
+129;San José;SV-UN
+130;Santa Rosa de Lima;SV-UN
+131;Yayantique;SV-UN
+132;Yucuaiquín;SV-UN
+133;Arambala;SV-MO
+134;Cacaopera;SV-MO
+135;Chilanga;SV-MO
+136;Corinto;SV-MO
+137;Delicias de Concepción;SV-MO
+138;El Divisadero;SV-MO
+139;El Rosario;SV-MO
+140;Gualococti;SV-MO
+141;Guatajiagua;SV-MO
+142;Joateca;SV-MO
+143;Jocoaitique;SV-MO
+144;Jocoro;SV-MO
+145;Lolotiquillo;SV-MO
+146;Meanguera;SV-MO
+147;Osicala;SV-MO
+148;Perquín;SV-MO
+149;San Carlos;SV-MO
+150;San Fernando;SV-MO
+151;San Francisco Gotera;SV-MO
+152;San Isidro;SV-MO
+153;San Simón;SV-MO
+154;Sensembra;SV-MO
+155;Sociedad;SV-MO
+156;Torola;SV-MO
+157;Yamabal;SV-MO
+158;Yoloaiquín;SV-MO
+159;Carolina;SV-SM
+160;Chapeltique;SV-SM
+161;Chinameca;SV-SM
+162;Chirilagua;SV-SM
+163;Ciudad Barrios;SV-SM
+164;Comacarán;SV-SM
+165;El Tránsito;SV-SM
+166;Lolotique;SV-SM
+167;Moncagua;SV-SM
+168;Nueva Guadalupe;SV-SM
+169;Nuevo Edén de San Juan;SV-SM
+170;Quelepa;SV-SM
+171;San Antonio;SV-SM
+172;San Gerardo;SV-SM
+173;San Jorge;SV-SM
+174;San Luis de la Reina;SV-SM
+175;San Miguel;SV-SM
+176;San Rafael Oriente;SV-SM
+177;Sesori;SV-SM
+178;Uluazapa;SV-SM
+179;Aguilares;SV-SS
+180;Apopa;SV-SS
+181;Ayutuxtepeque;SV-SS
+182;Cuscatancingo;SV-SS
+183;Delgado;SV-SS
+184;El Paisnal;SV-SS
+185;Guazapa;SV-SS
+186;Ilopango;SV-SS
+187;Mejicanos;SV-SS
+188;Nejapa;SV-SS
+189;Panchimalco;SV-SS
+190;Rosario de Mora;SV-SS
+191;San Marcos;SV-SS
+192;San Martín;SV-SS
+193;San Salvador;SV-SS
+194;Santiago Texacuangos;SV-SS
+195;Santo Tomás;SV-SS
+196;Soyapango;SV-SS
+197;Tonacatepeque;SV-SS
+198;Apastepeque;SV-SV
+199;Guadalupe;SV-SV
+200;San Cayetano Istepeque;SV-SV
+201;San Esteban Catarina;SV-SV
+202;San Ildefonso;SV-SV
+203;San Lorenzo;SV-SV
+204;San Sebastián;SV-SV
+205;San Vicente;SV-SV
+206;Santa Clara;SV-SV
+207;Santo Domingo;SV-SV
+208;Tecoluca;SV-SV
+209;Tepetitán;SV-SV
+210;Verapaz;SV-SV
+211;Candelaria de la Frontera;SV-SA
+212;Chalchuapa;SV-SA
+213;Coatepeque;SV-SA
+214;El Congo;SV-SA
+215;El Porvenir;SV-SA
+216;Masahuat;SV-SA
+217;Metapán;SV-SA
+218;San Antonio Pajonal;SV-SA
+219;San Sebastián Salitrillo;SV-SA
+220;Santa Ana;SV-SA
+221;Santa Rosa Guachipilín;SV-SA
+222;Santiago de la Frontera;SV-SA
+223;Texistepeque;SV-SA
+224;Acajutla;SV-SO
+225;Armenia;SV-SO
+226;Caluco;SV-SO
+227;Cuisnahuat;SV-SO
+228;Izalco;SV-SO
+229;Juayúa;SV-SO
+230;Nahuizalco;SV-SO
+231;Nahulingo;SV-SO
+232;Salcoatitán;SV-SO
+233;San Antonio del Monte;SV-SO
+234;San Julián;SV-SO
+235;Santa Catarina Masahuat;SV-SO
+236;Santa Isabel Ishuatán;SV-SO
+237;Santo Domingo de Guzmán;SV-SO
+238;Sonsonate;SV-SO
+239;Sonzacate;SV-SO
+240;Alegría;SV-US
+241;Berlín;SV-US
+242;California;SV-US
+243;Concepción Batres;SV-US
+244;El Triunfo;SV-US
+245;Ereguayquín;SV-US
+246;Estanzuelas;SV-US
+247;Jiquilisco;SV-US
+248;Jucuapa;SV-US
+249;Jucuarán;SV-US
+250;Mercedes Umaña;SV-US
+251;Nueva Granada;SV-US
+252;Ozatlán;SV-US
+253;Puerto El Triunfo;SV-US
+254;San Agustín;SV-US
+255;San Buenaventura;SV-US
+256;San Dionisio;SV-US
+257;San Francisco Javier;SV-US
+258;Santa Elena;SV-US
+259;Santa María;SV-US
+260;Santiago de María;SV-US
+261;Tecapán;SV-US
+262;Usulután;SV-US
