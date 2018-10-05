@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\Municipio;
 class MunicipiosTableSeeder extends Seeder
 {
     /**
@@ -11,6 +11,9 @@ class MunicipiosTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Municipio::create([
+        'dep_id' => 'SV-SS',
+        'nMunicipio' => 'San Salvador'
+        ]);
     }
 }

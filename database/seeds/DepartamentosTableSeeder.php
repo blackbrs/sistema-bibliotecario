@@ -13,6 +13,5 @@ class DepartamentosTableSeeder extends Seeder
      */
     public function run()
     {
-
     }
 }
