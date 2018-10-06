@@ -1,8 +1,6 @@
 @extends('layouts.app')
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
+@include('fragments.main_script_tags')
 <script src="js/selbox.js"></script>
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
