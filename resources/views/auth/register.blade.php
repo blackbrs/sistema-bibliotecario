@@ -58,8 +58,11 @@
                             <label for="sexo" class="col-md-4 col-form-label text-md-right">Sexo</label>
 
                             <div class="col-md-6">
-                            <input id="sexo" type="text" class="form-control{{ $errors->has('sexo') ? ' has-error' : '' }}" name="sexo" value="{{ old('sexo') }}"   required autofocus>
-
+                                <select name="sexo" id= "sexo" class="form-control" required>
+                                    <option value="">--Sexo--</option>
+                                    <option value="Masculino"> Masculino</option>
+                                    <option value="Femenino">Femenino</option>  
+                                </select>
                                 @if ($errors->has('sexo'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('sexo') }}</strong>
@@ -69,7 +72,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="Npadres" class="col-md-4 col-form-label text-md-right">Nombre del papa o mama</label>
+                            <label for="Npadres" class="col-md-4 col-form-label text-md-right">Nombre del padre o madre</label>
 
                             <div class="col-md-6">
                             <input id="Npadres" type="text" class="form-control{{ $errors->has('Npadres') ? ' has-error' : '' }}" name="Npadres" value="{{ old('Npadres') }}"   required autofocus>
@@ -108,7 +111,7 @@
                         </div>
                         <div class="form-group row">
                             <label for="munBox" class="col-md-4 col-form-label text-md-right">Municipio</label>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <select name="nMunicipio" id="nMunicipio" class="form-control">
                                  <option>--Municipio--</option>
                              </select>
