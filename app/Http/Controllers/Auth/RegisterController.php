@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Departamento;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use DB;
 class RegisterController extends Controller
 {
     /*
@@ -88,4 +89,10 @@ class RegisterController extends Controller
             'password'      => bcrypt($data['password']),
         ]);
     }
+    public function showregistrationform()
+    {
+        $lista_dep = DB::table('departamentos')->get(); // get all
+        return view('auth.register')->with('lista_dep', $lista_dep);
+    }
+    
 }

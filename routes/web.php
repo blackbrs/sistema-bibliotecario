@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+Route::post('getmunicipio/fetch', 'DepartamentoController@getMunicipios');
 Route::get('/home', 'HomeController@index')->name('home');
 
 // RUTAS que tendran como requisitos almenos estar loggeados
@@ -63,4 +63,5 @@ Route::delete('users/{user}', 'UserController@destroy')->name('users.destroy')
 Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit')
         ->middleware('permission:users.edit');
 
+//Departamentos - Municipios
 });
