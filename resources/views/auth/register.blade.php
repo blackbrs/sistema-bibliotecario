@@ -99,18 +99,17 @@
                         <div class="forn-group row">
                             <label for="depBox" class="col-md-4 col-form-label text-md-right">Departamento</label>
                             <div class="col-md-6">
-                                <select name="dept" class="form-control">
+                                <select name="dept" id= "dept" class="form-control dynamic" data-dependent="municipio">
                                     <option value="">--Departamento--</option>
-                                    @foreach ($depts as $dep => $nombre)
-                                    <option value="{{ $dep }}"> {{ $nombre }}</option>  
+                                    @foreach ($lista_dep as $dep)
+                                    <option value="{{ $dep->id }}"> {{ $dep->nDepartamento }}</option>  
                                     @endforeach
                                 </select>
                             </div>
                             <label for="munBox" class="col-md-4 col-form-label text-md-right">Municipio</label>
                             <div class="col-md-4">
-                                <select name="municipio" class="form-control">
+                                <select name="municipio" id="municipio" class="form-control dynamic" data-dependent="dept">
                                  <option>--Municipio--</option>
-
                              </select>
                          </div>
                         </div>

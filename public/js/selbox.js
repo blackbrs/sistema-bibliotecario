@@ -1,9 +1,9 @@
 $(document).ready(function() {
 
-    $('select[name="dept"]').on('change', function(e){
+    $('.dynamic').change(function(){
         console.log(e);
-        var municipioId = $(this).val();
-        if(municipioId) {
+        if($(this).val()!='') {
+            var select = $
             $.ajax({
                 url: '/municipio/get/'+municipioId,
                 type:"GET",
