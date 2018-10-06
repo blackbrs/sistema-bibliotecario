@@ -11,7 +11,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-
+                    @can('users.index')
+                    <li class="nav-item">
+                        <a href="{{ route('users.index') }}" class="nav-link">Usuarios</a> 
+                    </li>
+                    @endcan
+                    @can('roles.index')
+                     <li class="nav-item">
+                         <a href="{{ route('roles.index') }}" class="nav-link">Roles</a>
+                        </li>
+                        @endcan
             </ul>
 
             <!-- Right Side Of Navbar -->
