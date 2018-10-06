@@ -2,13 +2,17 @@
 
 @section('content')
 <div class="container">
+  <div class="row justify-content-center">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Usuarios Del Sistema Bibliotecario
-                </div>
+       
+        <div class="card">
 
+            <div class="panel panel-default">
+                    <div class="card-header">
+                            <div class="panel-heading">
+                                  Usuarios Del Sistema Bibliotecario
+                            </div>
+                        </div>
                 <div class="panel-body">
                     <table class="table table-striped table-hover">
                         <thead>
@@ -61,6 +65,10 @@
                 </div>
             </div>
         </div>
+
+
     </div>
+
+</div>
 </div>
 @endsection
