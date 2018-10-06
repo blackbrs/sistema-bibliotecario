@@ -1,29 +1,22 @@
 $(document).ready(function() {
 
-    $('.dynamic').change(function(){
-        console.log(e);
-        if($(this).val()!='') {
-            var select = $
+    $('.dynamic').change(function(){  
+        if($(this).val()!= ''){
+            var select = $(this).attr('id');
+            var value = $(this).val();
+            var dependent = $(this).data('dependent');
+            var _token = $('input[name="_token"]').val();
+        
             $.ajax({
-                url: '/municipio/get/'+municipioId,
-                type:"GET",
-                crossDomain: true,
-                dataType:"json",
-                success:function(data) {
+                url: "getmunicipio/fetch",
+                method:"POST",
+                data:{select:select, value:value, _token:_token, dependent:dependent},
 
-                    $('select[name="municipio"]').empty();
-
-                    $.each(data, function(key, value){
-
-                        $('select[name="municipio"]').append('<option value="'+ key +'">' + value + '</option>');
-
-                    });
-                },
-            });
-        } else {
-            $('select[name="municipio"]').empty();
+                success:function(result){
+                    $('#'+dependent).html(result);
+                }
+            })
         }
-
     });
 
 });

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Departamento;
 use Illuminate\Http\Request;
-
+use DB;
 class DepartamentoController extends Controller
 {
     /**
@@ -16,10 +16,21 @@ class DepartamentoController extends Controller
     {
         //
     }
-    public function getMunicipios($id){
-        $muncipios = DB::table('municipio')->where('dep_id',$id)->pluck('nMunicipio','id');
-        return json_encode($muncipios);       
+    public function getMunicipios(Request $request){
+
+        $select = $request->get('select');
+        $value = $request->get('value');
+        $dependent = $request->get('dependent');
+
+        $data = DB::table('municipios')
+                ->where($select, $value)->get();
+        $output = '<option value="">Seleccionar municipio</option>';
+        foreach($data as $row){
+            $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent.'</option>';
+        }
+        echo $output;
     }
+    
     /**
      * Show the form for creating a new resource.
      *

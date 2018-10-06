@@ -2,13 +2,14 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
 <script src="js/selbox.js"></script>
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
+                <div class="card-header">Registro de usuarios</div>
+                <div class="card-body">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
@@ -96,24 +97,25 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="forn-group row">
+                        <div class="form-group row">
                             <label for="depBox" class="col-md-4 col-form-label text-md-right">Departamento</label>
                             <div class="col-md-6">
-                                <select name="dept" id= "dept" class="form-control dynamic" data-dependent="municipio">
+                                <select name="dept" id= "dep_id" class="form-control dynamic" data-dependent="nMunicipio">
                                     <option value="">--Departamento--</option>
                                     @foreach ($lista_dep as $dep)
                                     <option value="{{ $dep->id }}"> {{ $dep->nDepartamento }}</option>  
                                     @endforeach
                                 </select>
                             </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="munBox" class="col-md-4 col-form-label text-md-right">Municipio</label>
                             <div class="col-md-4">
-                                <select name="municipio" id="municipio" class="form-control dynamic" data-dependent="dept">
+                                <select name="nMunicipio" id="nMunicipio" class="form-control">
                                  <option>--Municipio--</option>
                              </select>
                          </div>
                         </div>
-
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">Correo Electronico</label>
 
@@ -158,6 +160,7 @@
                             </div>
                         </div>
                     </form>
+                </div>
                 </div>
             </div>
         </div>
