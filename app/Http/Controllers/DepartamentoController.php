@@ -16,7 +16,10 @@ class DepartamentoController extends Controller
     {
         //
     }
-
+    public function getMunicipios($id){
+        $muncipios = DB::table('municipio')->where('dep_id',$id)->pluck('nMunicipio','id');
+        return json_encode($muncipios);       
+    }
     /**
      * Show the form for creating a new resource.
      *

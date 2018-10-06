@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Departamento;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -88,4 +89,10 @@ class RegisterController extends Controller
             'password'      => bcrypt($data['password']),
         ]);
     }
+    public function showregistrationform()
+{
+    $depts = Departamento::all(); // get all countries
+    return view('auth.register', [ 'depts' => $depts]);
+}
+    
 }

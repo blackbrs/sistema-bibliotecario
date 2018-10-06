@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="js/selbox.js"></script>
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -7,7 +9,6 @@
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
-                <div class="card-body">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
@@ -95,7 +96,24 @@
                                 @endif
                             </div>
                         </div>
-                        
+                        <div class="forn-group row">
+                            <label for="depBox" class="col-md-4 col-form-label text-md-right">Departamento</label>
+                            <div class="col-md-6">
+                                <select name="dept" class="form-control">
+                                    <option value="">--Departamento--</option>
+                                    @foreach ($depts as $dep => $nombre)
+                                    <option value="{{ $dep }}"> {{ $nombre }}</option>  
+                                    @endforeach
+                                </select>
+                            </div>
+                            <label for="munBox" class="col-md-4 col-form-label text-md-right">Municipio</label>
+                            <div class="col-md-4">
+                                <select name="municipio" class="form-control">
+                                 <option>--Municipio--</option>
+
+                             </select>
+                         </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">Correo Electronico</label>
@@ -146,4 +164,5 @@
         </div>
     </div>
 </div>
+
 @endsection
