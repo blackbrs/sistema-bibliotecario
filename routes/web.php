@@ -63,5 +63,6 @@ Route::delete('users/{user}', 'UserController@destroy')->name('users.destroy')
 Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit')
         ->middleware('permission:users.edit');
 
-//Departamentos - Municipios
+//Estadisticas
+Route::get('users/stats', 'UserController@stats')->name('user.stats');
 });
