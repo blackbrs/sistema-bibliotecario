@@ -39,8 +39,8 @@ class CreateUsersTable extends Migration
             $table->integer('telefono')->unique()->nullable();;
             $table->string('email')->unique();
             $table->string('password');
-            //$table->integer('mun_id');
-            //$table->foreign('mun_id')->references('id')->on('municipios'); <- Seguir  misma logica, comentados para evitar errores mientras se prueba/arregla ciertas caracteristicas
+            $table->integer('municipio');
+            $table->foreign('municipio')->references('id')->on('municipios');
             $table->rememberToken();
             $table->timestamps();
         });

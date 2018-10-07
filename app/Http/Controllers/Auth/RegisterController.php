@@ -57,6 +57,7 @@ class RegisterController extends Controller
             'telefono'      => 'required|numeric',
             'email'         => 'required|string|email|max:255|unique:users',
             'password'      => 'required|string|min:6|confirmed',
+            'nMunicipio'    => 'required|integer'
         ],[
             'nombres.required'      =>'El campo de nombres es obligatorio',
             'apellidos.required'    =>'El campo de apellidos es obligatorio',
@@ -66,7 +67,8 @@ class RegisterController extends Controller
             'telefono.required'     =>'El campo de nuemero de telefono es obligatorio',
             'email.required'        =>'El campo de correo electronico es obligatorio',
             'password.required'     =>'El campo de contraseña es obligatorio',
-            'password.min'          =>'La contraseñ debe poseer almenos 6 caracteres'
+            'password.min'          =>'La contraseña debe poseer almenos 6 caracteres',
+            'nMunicipio.required'   =>'El campo municipio es obligatorio'
         ]);
     }
 
@@ -87,6 +89,7 @@ class RegisterController extends Controller
             'telefono'      => $data['telefono'],
             'email'         => $data['email'],
             'password'      => bcrypt($data['password']),
+            'municipio'     => $data['nMunicipio'],
         ]);
     }
     public function showregistrationform()

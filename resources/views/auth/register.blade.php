@@ -61,7 +61,7 @@
                                 <select name="sexo" id= "sexo" class="form-control" required>
                                     <option value="">--Sexo--</option>
                                     <option value="Masculino"> Masculino</option>
-                                    <option value="Femenino">Femenino</option>  
+                                    <option value="Femenino">F</option>  
                                 </select>
                                 @if ($errors->has('sexo'))
                                     <span class="invalid-feedback" role="alert">
@@ -110,7 +110,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="munBox" class="col-md-4 col-form-label text-md-right">Municipio</label>
+                            <label for="nMunicipio" class="col-md-4 col-form-label text-md-right">Municipio</label>
                             <div class="col-md-6">
                                 <select name="nMunicipio" id="nMunicipio" class="form-control">
                                  <option>--Municipio--</option>

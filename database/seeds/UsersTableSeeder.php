@@ -23,6 +23,7 @@ class UsersTableSeeder extends Seeder
             'penitencia'    =>'false',
             'telefono'      =>'22322009',
             'email'         =>'guillermobrs@gmail.com',
+            'municipio'     =>'3',
             'password'      =>bcrypt('admin1234')
         ]);
 

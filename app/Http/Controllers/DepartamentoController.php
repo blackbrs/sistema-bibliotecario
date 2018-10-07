@@ -26,7 +26,7 @@ class DepartamentoController extends Controller
                 ->where($select, $value)->get();
         $output = '<option value="">Seleccionar municipio</option>';
         foreach($data as $row){
-            $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent.'</option>';
+            $output .= '<option value="'.$row->id.'">'.$row->$dependent.'</option>';
         }
         echo $output;
     }
