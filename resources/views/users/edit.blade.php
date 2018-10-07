@@ -9,8 +9,7 @@
                     Informacion del Usuario
                 </div>
                 <div class="panel-body">
-                        {!! Form::model($user, ['route'=> ['users.update', $user->id],
-                        'method'=>'PUT']) !!}
+                        {!! Form::model($user, ['route'=> ['users.update', $user->id],'method'=>'PUT']) !!}
        
                         @include('users.partials.form')
  
