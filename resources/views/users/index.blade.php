@@ -6,13 +6,16 @@
     <div class="row">
        
         <div class="card">
-
+          
             <div class="panel panel-default">
                     <div class="card-header">
                             <div class="panel-heading">
                                   Usuarios Del Sistema Bibliotecario
                             </div>
                         </div>
+
+
+           <div class="card-body">          
                 <div class="panel-body">
                     <table class="table table-striped table-hover">
                         <thead>
@@ -65,6 +68,11 @@
                 </div>
             </div>
         </div>
+        <div class="card-footer">
+                <a href="{{ route('home') }}" class="btn btn-sm btn-success" >  volver</a>
+            </div> 
+    </div>
+    
 
 
     </div>
