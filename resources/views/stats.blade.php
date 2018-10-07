@@ -46,12 +46,13 @@
                                         Usuarios Del Sistema Bibliotecario
                                   </div>
                               </div>
+                    <div class="card-body">
                       <div class="panel-body">
                           <table id='users' class="table table-striped table-hover">
                               <thead>
                                   <tr>
                                       <th width="10px" >ID</th>
-                                      <th>Nombres</th>
+                                      <th class="">Nombres</th>
                                       <th>Apellidos</th>
                                       <th>telefono</th>
                                       <th>e-mail</th>
@@ -62,6 +63,7 @@
                           </table>
                       </div>
                   </div>
+                </div>
               </div>
       
       

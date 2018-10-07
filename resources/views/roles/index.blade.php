@@ -37,7 +37,7 @@
                                                     <td>
                                                     @can('roles.show')
                                                     <a href="{{ route('roles.show', $rol->id) }}"
-                                                        class="btn btn-sm btn-default">
+                                                        class="btn btn-sm btn-outline-info" role="button">
                                                     Ver Detalles</a>
                                                     @endcan
                                                     </td>
@@ -45,7 +45,7 @@
                                                     <td>
                                                             @can('roles.edit')
                                                             <a href="{{ route('roles.edit', $rol->id) }}"
-                                                                class="btn btn-sm btn-default">
+                                                                class="btn btn-sm btn-outline-info" role="button">
                                                             Editar Usuario</a>
                                                             @endcan
                                                     </td> 
