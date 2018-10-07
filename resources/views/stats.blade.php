@@ -9,6 +9,14 @@
         $('#users').DataTable( {
             "serverSide": true,
             "ajax": "{{ url('api/stats') }}",
+            "columns":[
+                {data:'id'},
+                {data:'nombres'},
+                {data:'apellidos'},
+                {data:'telefono'},
+                {data:'email'},
+                {data:'municipio'},
+        ],
             "language": {
                 "search": "Buscar:",
                 "lengthMenu": "Mostrar _MENU_ registros por pagina",
@@ -27,7 +35,6 @@
 @endsection
 @section('content')
 <div class="container">
-    
         <div class="row justify-content-center">
           <div class="row">
              
@@ -40,28 +47,26 @@
                                   </div>
                               </div>
                       <div class="panel-body">
-                          <table id="users">
+                          <table id='users' class="table table-striped table-hover">
                               <thead>
                                   <tr>
                                       <th width="10px" >ID</th>
                                       <th>Nombres</th>
                                       <th>Apellidos</th>
-                                      <th>Municipio</th>
-                                      <th colspan="3">&nbsp;</th>
+                                      <th>telefono</th>
+                                      <th>e-mail</th>
+                                      <th>municipio</th>
+                                      
                                   </tr>
                               </thead>
-                              <tbody>
-                                  @foreach ($users as $user)
-                                  <tr>
-                                      <td>{{ $user->id }}</td>
-                                      <td>{{ $user->nombres }}</td>
-                                      <td>{{ $user->apellidos }}</td>
-                                      <td>{{$user->municipio}}</td>    
-                                  </tr>
-                                      
-                                  @endforeach
-                              </tbody>
                           </table>
-
-
+                      </div>
+                  </div>
+              </div>
+      
+      
+          </div>
+      
+      </div>
+      </div>
 @endsection
