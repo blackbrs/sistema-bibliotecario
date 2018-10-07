@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1447e3db433cc2cd1b45954f0e4b670e",
+    "content-hash": "96e0df4b5f8972fde0dbf1253deb3300",
     "packages": [
         {
             "name": "caffeinated/shinobi",
@@ -2545,6 +2545,77 @@
                 "environment"
             ],
             "time": "2018-07-29T20:33:41+00:00"
+        },
+        {
+            "name": "yajra/laravel-datatables-oracle",
+            "version": "v8.9.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yajra/laravel-datatables.git",
+                "reference": "851c4d4d307a66a4f8ab5c12444c1eb0104ecc80"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/851c4d4d307a66a4f8ab5c12444c1eb0104ecc80",
+                "reference": "851c4d4d307a66a4f8ab5c12444c1eb0104ecc80",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "5.4.*|5.5.*|5.6.*|5.7.*",
+                "illuminate/filesystem": "5.4.*|5.5.*|5.6.*|5.7.*",
+                "illuminate/http": "5.4.*|5.5.*|5.6.*|5.7.*",
+                "illuminate/support": "5.4.*|5.5.*|5.6.*|5.7.*",
+                "illuminate/view": "5.4.*|5.5.*|5.6.*|5.7.*",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.5"
+            },
+            "suggest": {
+                "yajra/laravel-datatables-buttons": "Plugin for server-side exporting of dataTables.",
+                "yajra/laravel-datatables-editor": "Plugin to use DataTables Editor (requires a license).",
+                "yajra/laravel-datatables-fractal": "Plugin for server-side response using Fractal.",
+                "yajra/laravel-datatables-html": "Plugin for server-side HTML builder of dataTables."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "8.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Yajra\\DataTables\\DataTablesServiceProvider"
+                    ],
+                    "aliases": {
+                        "DataTables": "Yajra\\DataTables\\Facades\\DataTables"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yajra\\DataTables\\": "src/"
+                },
+                "files": [
+                    "src/helper.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arjay Angeles",
+                    "email": "aqangeles@gmail.com"
+                }
+            ],
+            "description": "jQuery DataTables API for Laravel 4|5",
+            "keywords": [
+                "datatables",
+                "jquery",
+                "laravel"
+            ],
+            "time": "2018-10-05T06:10:33+00:00"
         }
     ],
     "packages-dev": [
@@ -2873,6 +2944,128 @@
                 "object graph"
             ],
             "time": "2018-06-11T23:09:50+00:00"
+        },
+        {
+            "name": "orchestra/testbench",
+            "version": "v3.5.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/orchestral/testbench.git",
+                "reference": "fd032489df469d611a264083e62db96677c9061e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/orchestral/testbench/zipball/fd032489df469d611a264083e62db96677c9061e",
+                "reference": "fd032489df469d611a264083e62db96677c9061e",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.5.34",
+                "orchestra/testbench-core": "~3.5.9",
+                "php": ">=7.0",
+                "phpunit/phpunit": "~6.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~1.0",
+                "orchestra/database": "~3.5.0"
+            },
+            "suggest": {
+                "orchestra/testbench-browser-kit": "Allow to use legacy BrowserKit for testing (~3.5)."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.5-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mior Muhammad Zaki",
+                    "email": "crynobone@gmail.com",
+                    "homepage": "https://github.com/crynobone"
+                }
+            ],
+            "description": "Laravel Testing Helper for Packages Development",
+            "homepage": "http://orchestraplatform.com/docs/latest/components/testbench/",
+            "keywords": [
+                "BDD",
+                "TDD",
+                "laravel",
+                "orchestra-platform",
+                "orchestral",
+                "testing"
+            ],
+            "time": "2018-02-20T05:30:39+00:00"
+        },
+        {
+            "name": "orchestra/testbench-core",
+            "version": "v3.5.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/orchestral/testbench-core.git",
+                "reference": "09a57dc446a24fd19a75ff57b679b86094251f8e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/09a57dc446a24fd19a75ff57b679b86094251f8e",
+                "reference": "09a57dc446a24fd19a75ff57b679b86094251f8e",
+                "shasum": ""
+            },
+            "require": {
+                "fzaninotto/faker": "~1.4",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "laravel/framework": "~5.5.0",
+                "mockery/mockery": "~1.0",
+                "orchestra/database": "~3.5.0",
+                "phpunit/phpunit": "~6.0"
+            },
+            "suggest": {
+                "laravel/framework": "Required for testing (~5.5.0).",
+                "mockery/mockery": "Allow to use Mockery for testing (~1.0).",
+                "orchestra/database": "Allow to use --realpath migration for testing (~3.5).",
+                "orchestra/testbench-browser-kit": "Allow to use legacy BrowserKit for testing (~3.5).",
+                "orchestra/testbench-dusk": "Allow to use Laravel Dusk for testing (~3.5).",
+                "phpunit/phpunit": "Allow to use PHPUnit for testing (~6.0)."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Orchestra\\Testbench\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mior Muhammad Zaki",
+                    "email": "crynobone@gmail.com",
+                    "homepage": "https://github.com/crynobone"
+                }
+            ],
+            "description": "Testing Helper for Laravel Development",
+            "homepage": "http://orchestraplatform.com/docs/latest/components/testbench/",
+            "keywords": [
+                "BDD",
+                "TDD",
+                "laravel",
+                "orchestra-platform",
+                "orchestral",
+                "testing"
+            ],
+            "time": "2018-03-13T02:35:58+00:00"
         },
         {
             "name": "phar-io/manifest",

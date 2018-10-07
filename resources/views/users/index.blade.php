@@ -34,8 +34,9 @@
                                 <td>{{ $user->apellidos }}</td>
                                 <td>
                                 @can('users.show')
+                                
                                 <a href="{{ route('users.show', $user->id) }}"
-                                    class="btn btn-sm btn-default">
+                                    class="btn btn-sm btn-outline-info" role="button">
                                 Ver Detalles</a>
                                 @endcan
                                 </td>
@@ -43,7 +44,7 @@
                                 <td>
                                         @can('users.edit')
                                         <a href="{{ route('users.edit', $user->id) }}"
-                                            class="btn btn-sm btn-default">
+                                            class="btn btn-sm btn-outline-info" role="button">
                                         Editar Usuario</a>
                                         @endcan
                                  </td> 
