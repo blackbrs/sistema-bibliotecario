@@ -21,6 +21,11 @@
                          <a href="{{ route('roles.index') }}" class="nav-link">Roles</a>
                         </li>
                         @endcan
+                        @can('user.stats')
+                        <li class="nav-item">
+                            <a href="{{ route('stats') }}" class="nav-link">Estadisticas</a>
+                           </li>
+                           @endcan
             </ul>
 
             <!-- Right Side Of Navbar -->
