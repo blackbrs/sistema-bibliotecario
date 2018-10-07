@@ -61,7 +61,7 @@
                                 <select name="sexo" id= "sexo" class="form-control" required>
                                     <option value="">--Sexo--</option>
                                     <option value="Masculino"> Masculino</option>
-                                    <option value="Femenino">F</option>  
+                                    <option value="Femenino">Femenino</option>  
                                 </select>
                                 @if ($errors->has('sexo'))
                                     <span class="invalid-feedback" role="alert">
