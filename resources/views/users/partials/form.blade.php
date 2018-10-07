@@ -1,30 +1,31 @@
 <div class="form-group">
     {!! Form::label('nombres', 'Nombres') !!}
-    {!! Form::text('nombres', null, ['class'=>'form-control']) !!}
+    {!! Form::text('nombres', null, ['class'=>'form-control'],'required') !!}
 </div>
 <div class="form-group">
         {!! Form::label('apellidos', 'Apellidos') !!}
-        {!! Form::text('apellidos', null, ['class'=>'form-control']) !!}
+        {!! Form::text('apellidos', null, ['class'=>'form-control'],'required') !!}
 </div>
 <div class="form-group">
         {!! Form::label('nacimiento', 'Fecha de nacimiento') !!}
-        {!! Form::text('nacimiento', null, ['class'=>'form-control']) !!}
+        {!! Form::text('nacimiento', null, ['class'=>'form-control'],'required') !!}
 </div>
 <div class="form-group">
         {!! Form::label('sexo', 'Sexo') !!}
-        {!! Form::text('sexo', null, ['class'=>'form-control']) !!}
+        {!! Form::text('sexo', null, ['class'=>'form-control'],'required') !!}
 </div>
 <div class="form-group">
         {!! Form::label('Npadres', 'Nombre del Padre o Madre') !!}
-        {!! Form::text('Npadres', null, ['class'=>'form-control']) !!}
+        {!! Form::text('Npadres', null, ['class'=>'form-control'],'required') !!}
 </div>
+
 <div class="form-group">
         {!! Form::label('telefono', 'Numero de contacto') !!}
-        {!! Form::text('telefono', null, ['class'=>'form-control']) !!}
+        {!! Form::number('telefono', null, ['class'=>'form-control'],'required') !!}
 </div>
 <div class="form-group">
         {!! Form::label('email', 'Correo electronico') !!}
-        {!! Form::text('email', null, ['class'=>'form-control','required']) !!}
+        {!! Form::email('email', null, ['class'=>'form-control'],'required') !!}
 </div>
 
 <hr>

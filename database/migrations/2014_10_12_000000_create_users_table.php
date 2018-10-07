@@ -41,6 +41,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('municipio');
             $table->foreign('municipio')->references('id')->on('municipios');
+            $table->integer('biblioteca_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
