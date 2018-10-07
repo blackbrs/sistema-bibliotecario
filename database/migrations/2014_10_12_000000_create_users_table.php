@@ -29,7 +29,7 @@ class CreateUsersTable extends Migration
 
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombres');
+            $table->string('nombres')->nullable();
             $table->string('apellidos')->nullable();;
             $table->date('nacimiento')->nullable();;
             $table->string('sexo')->nullable();;
@@ -42,6 +42,7 @@ class CreateUsersTable extends Migration
             $table->integer('municipio');
             $table->foreign('municipio')->references('id')->on('municipios');
             $table->integer('biblioteca_id')->nullable();
+            $table->foreign('biblioteca_id')->references('id')->on('bibliotecas');
             $table->rememberToken();
             $table->timestamps();
         });
