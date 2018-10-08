@@ -16,10 +16,10 @@
 <div class="form-group">
         {!! Form::label('nombreEncargado', 'Nombre del encargado') !!}
         <div class="form-group">
-            <select name="nombreEncargado" id= "dep_id" class="form-control" required>
+            <select name="nombreEncargado" id= "nombreEncargado" class="form-control" required>
                 <option value="">--Encargado--</option>
                 @foreach ($usuarios as $user)
-                <option value="{{ $user->id }}"> {{ $user->nombres}} {{ $user->apellidos}}</option>  
+                <option value="{{ $user->nombres }}"> {{ $user->nombres}} {{ $user->apellidos}}</option>  
                 @endforeach
             </select>    
   </div>

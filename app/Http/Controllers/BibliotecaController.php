@@ -63,7 +63,8 @@ class BibliotecaController extends Controller
      */
     public function edit(Biblioteca $biblioteca)
     {
-            return view('bibliotecas.edit',compact('biblioteca'));
+        $usuarios= User::get();
+            return view('bibliotecas.edit',compact('biblioteca','usuarios'));
     }
 
     /**
