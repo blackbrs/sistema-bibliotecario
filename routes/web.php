@@ -21,8 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // RUTAS que tendran como requisitos almenos estar loggeados
 Route::middleware(['auth'])->group(function(){
-
-    //Roles
+        
+    //bibliotecas
 
 Route::post('roles/store', 'RoleController@store')->name('roles.store')
         ->middleware('permission:roles.create');
@@ -68,3 +68,26 @@ Route::get('stats', function(){
         $users = \App\User::all();
         return view('stats', compact('users'));})->name('stats')->middleware('permission:users.stats');
 });
+
+//Bibliotecas
+
+Route::post('bibliotecas/store', 'BibliotecaController@store')->name('bibliotecas.store')
+        ->middleware('permission:bibliotecas.create');
+
+Route::get('bibliotecas', 'BibliotecaController@index')->name('bibliotecas.index')
+        ->middleware('permission:bibliotecas.index');
+
+Route::get('bibliotecas/create', 'BibliotecaController@create')->name('bibliotecas.create')
+       ->middleware('permission:bibliotecas.create');
+
+Route::put('biliotecas/{biblioteca}', 'BibliotecaController@update')->name('bibliotecas.update')
+        ->middleware('permission:bibliotecas.edit');
+
+Route::get('bibliotecas/{biblioteca}', 'BibliotecaController@show')->name('bibliotecas.show')
+        ->middleware('permission:bibliotecas.show');
+
+Route::delete('bibliotecas/{biblioteca}', 'BibliotecaController@destroy')->name('bibliotecas.destroy')
+        ->middleware('permission:bibliotecas.destroy');
+
+Route::get('bibliotecas/{biblioteca}/edit', 'BibliotecaController@edit')->name('bibliotecas.edit')
+        ->middleware('permission:bibliotecas.edit');

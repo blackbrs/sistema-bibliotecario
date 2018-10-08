@@ -51,7 +51,7 @@
                                                     </td> 
 
                                                     <td>
-                                                            @can('roles.destroy') 
+                                                         @can('roles.destroy') 
                                                         {!! Form::open(['route'=> ['roles.destroy', $rol->id],
                                                         'method'=>'DELETE']) !!}
                                                         <button class="btn btn-sm btn-danger"> Eliminar</button>

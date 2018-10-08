@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Biblioteca;
+use App\User;
 use Illuminate\Http\Request;
 
 class BibliotecaController extends Controller
@@ -14,7 +15,8 @@ class BibliotecaController extends Controller
      */
     public function index()
     {
-        //
+        $biblioteca = Biblioteca::paginate();
+        return view('bibliotecas.index',compact('biblioteca'));
     }
 
     /**
@@ -24,7 +26,8 @@ class BibliotecaController extends Controller
      */
     public function create()
     {
-        //
+        $usuarios= User::get();
+        return view('bibliotecas.create',compact('usuarios'));
     }
 
     /**
@@ -35,7 +38,10 @@ class BibliotecaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $biblioteca = Biblioteca::create($request->all());
+        return redirect()->route('bibliotecas.edit',$biblioteca->id)
+        ->with('info','Biblioteca guardad con exito');
     }
 
     /**
@@ -46,7 +52,7 @@ class BibliotecaController extends Controller
      */
     public function show(Biblioteca $biblioteca)
     {
-        //
+        return view('bibliotecas.show', compact('biblioteca'));
     }
 
     /**
@@ -57,7 +63,7 @@ class BibliotecaController extends Controller
      */
     public function edit(Biblioteca $biblioteca)
     {
-        //
+            return view('bibliotecas.edit',compact('biblioteca'));
     }
 
     /**
@@ -69,7 +75,9 @@ class BibliotecaController extends Controller
      */
     public function update(Request $request, Biblioteca $biblioteca)
     {
-        //
+        $biblioteca->update($request->all());
+        return redirect()->route('bibliotecas.edit',$biblioteca->id)
+        ->with('info', 'Biblioteca actualiada con exito');
     }
 
     /**
@@ -80,6 +88,7 @@ class BibliotecaController extends Controller
      */
     public function destroy(Biblioteca $biblioteca)
     {
-        //
+        $biblioteca->delete();
+        return back()->with('info', 'Biblioteca Eliminada con exito');
     }
 }

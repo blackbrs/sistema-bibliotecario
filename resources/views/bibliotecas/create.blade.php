@@ -6,18 +6,16 @@
                 <div class="card">
                     <div class=" panel panel-default">
                          <div class="card-header">
-                        <div class="panel-heading"> ROL </div>
+                        <div class="panel-heading"> Biblioteca </div>
                          </div>
                          <div class="card-body">
                         <div class="panel-body">
                                 
-                                {!! Form::open(['route'=>'roles.store']) !!}
-                               
-                                @include('roles.partials.form')
-                                
+                                {!! Form::open(['route'=>'bibliotecas.store']) !!}
+                                @include('bibliotecas.partials.form')
                                 {!! Form::close() !!}
 
-                            
+                                
                         </div>
                     </div>
                     </div>

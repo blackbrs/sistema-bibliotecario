@@ -117,31 +117,31 @@ class PermissionsTableSeeder extends Seeder
 
             Permission::create([
                 'name'          =>'Navegar las bibliotecas del sistema',
-                'slug'          =>'biblioteca.index',
+                'slug'          =>'bibliotecas.index',
                 'description'   =>'Lista que muestra a todos las bibliotecas del sistema bibliotecario'
                 ]);
 
             Permission::create([
                 'name'          =>'Crear las bibliotecas',
-                'slug'          =>'biblioteca.create',
+                'slug'          =>'bibliotecas.create',
                 'description'   =>'Permite crear los libros para nuestro sistema bibliotecario'
                 ]);
             
             Permission::create([
                 'name'          =>'Ver los detalles de las bibliotecas del sistema',
-                'slug'          =>'biblioteca.show',
+                'slug'          =>'bibliotecas.show',
                 'description'   =>'Ver en detalle cada uno de los libros  del sistema bibliotecario'
                 ]);
             
             Permission::create([
                 'name'          =>'Editar la informacion de las bibliotecas',
-                'slug'          =>'biblioteca.edit',
+                'slug'          =>'bibliotecas.edit',
                 'description'   =>'Editar cualquier dato de las bibliotecas sistema bibliotecario'
                 ]);
             
             Permission::create([
                 'name'          =>'Eliminar biblioteca',
-                'slug'          =>'biblioteca.destroy',
+                'slug'          =>'bibliotecas.destroy',
                 'description'   =>'Eliminar cualquier biblioteca del sistema'
                 ]);
     }

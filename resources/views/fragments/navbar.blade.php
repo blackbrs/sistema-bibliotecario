@@ -26,6 +26,12 @@
                             <a href="{{ route('stats') }}" class="nav-link">Estadisticas</a>
                            </li>
                            @endcan
+
+                           @can('bibliotecas.index')
+                           <li class="nav-item">
+                               <a href="{{ route('bibliotecas.index') }}" class="nav-link">Bibliotecas</a>
+                              </li>
+                              @endcan
             </ul>
 
             <!-- Right Side Of Navbar -->

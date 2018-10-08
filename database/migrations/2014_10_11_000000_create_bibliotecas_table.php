@@ -18,6 +18,7 @@ class CreateBibliotecasTable extends Migration
             $table->string('nombreBiblioteca')->nullable();
             $table->string('direccion')->nullable();
             $table->integer('telefono')->nullable();
+            $table->string('nombreEncargado')->nullable();
         });
     }
 
