@@ -15,7 +15,14 @@
 
 <div class="form-group">
         {!! Form::label('nombreEncargado', 'Nombre del encargado') !!}
-        {!! Form::text('nombreEncargado', null, ['class'=>'form-control','required']) !!}
+        <div class="form-group">
+            <select name="nombreEncargado" id= "dep_id" class="form-control" required>
+                <option value="">--Encargado--</option>
+                @foreach ($usuarios as $user)
+                <option value="{{ $user->id }}"> {{ $user->nombres}} {{ $user->apellidos}}</option>  
+                @endforeach
+            </select>    
+  </div>
        
         
   </div>
