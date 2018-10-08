@@ -15,13 +15,7 @@
                                
                                 @include('roles.partials.form')
                                 
-<<<<<<< HEAD
-                                {!! Form::close() !!}
-
-                            
-=======
                                 {!! Form::close() !!}   
->>>>>>> 2f97a853b844d920f18b48771bac0f72a5168829
                         </div>
                     </div>
                     </div>
