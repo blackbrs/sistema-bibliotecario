@@ -118,6 +118,20 @@
                          </div>
                         </div>
                         <div class="form-group row">
+                         <label for="biblioteca_id" class="col-md-4 col-form-label text-md-right">Biblioteca a inscribirse</label>
+                            <div class="col-md-6">
+                            <select name="biblioteca_id" id= "biblioteca_id" class="form-control" required>
+                
+                                    <option value="">--Biblioteca--</option>
+                                    @foreach ($biblioteca as $bib)
+                                    <option value="{{ $bib->id }}"> {{ $bib->nombreBiblioteca}} </option>  
+                                    @endforeach
+                                </select>  
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">Correo Electronico</label>
 
                             <div class="col-md-6">
