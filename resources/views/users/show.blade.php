@@ -18,7 +18,7 @@
                                 <p><strong>  Nombre del papa o mama: </strong>{{ $user->Npadres }}</p>
                                 <p><strong>  telefono: </strong>{{ $user->telefono }}</p>
                                 <p><strong>  correo electronico: </strong>{{ $user->email }}</p>
-                                <p><strong>  Biblioteca Inscrita: </strong>{{ $user->biblioteca_id }}</p>
+                                <p><strong>  Biblioteca Inscrita: </strong>{{ $user->biblioteca->nombreBiblioteca }}</p>
 
                                     </div>
                                     <div class="card-footer">

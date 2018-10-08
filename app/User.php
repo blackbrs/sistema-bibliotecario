@@ -27,5 +27,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function biblioteca(){
+        return $this->belongsTo(Biblioteca::class);
+    }
+
     
 }
