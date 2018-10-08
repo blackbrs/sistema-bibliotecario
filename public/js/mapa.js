@@ -14,27 +14,22 @@ AmCharts.makeChart("map",{
         "areas": [{
       "id":"SV-AH",
       "title":"Ahuachapán",  
-      "modalUrl": "http://www.pdf995.com/samples/pdf.pdf",
       "selectable": true
     }, {
       "id":"SV-CA",
       "title":"Cabañas",
-      "modalUrl": "https://en.wikipedia.org/wiki/France",
       "selectable": true
     }, {
       "id":"SV-CH",
       "title":"Chalatenango",
-      "modalUrl": "https://en.wikipedia.org/wiki/China",
       "selectable": true
     }, {
         "id":"SV-CU",
         "title":"Cuscatlán",
-        "modalUrl": "",
         "selectable": true
     }, {
         "id":"SV-LI",
         "title":"La Libertad",
-        "modalUrl": "https://en.wikipedia.org/wiki/United_States",
         "selectable": true
     }, {
         "id":"SV-MO",
@@ -44,42 +39,34 @@ AmCharts.makeChart("map",{
     }, {
         "id":"SV-PA",
         "title":"La Paz",
-        "modalUrl": "https://en.wikipedia.org/wiki/United_States",
         "selectable": true
     }, {
         "id":"SV-SA",
         "title":"Santa Ana",
-        "modalUrl": "https://en.wikipedia.org/wiki/United_States",
         "selectable": true
     }, {
         "id":"SV-SM",
         "title":"San Miguel",
-        "modalUrl": "https://en.wikipedia.org/wiki/United_States",
         "selectable": true
     }, {
         "id":"SV-SO",
         "title":"Sonsonate",
-        "modalUrl": "https://en.wikipedia.org/wiki/United_States",
         "selectable": true
     }, {
         "id":"SV-SV",
         "title":"San Vicente",
-        "modalUrl": "https://en.wikipedia.org/wiki/United_States",
         "selectable": true
     }, {
         "id":"SV-UN",
         "title":"La Unión",
-        "modalUrl": "https://en.wikipedia.org/wiki/United_States",
         "selectable": true
     }, {
         "id":"SV-US",
         "title":"Usulután",
-        "modalUrl": "https://en.wikipedia.org/wiki/United_States",
         "selectable": true
     }, {
         "id":"SV-SS",
         "title":"San Salvador",
-        "modalUrl": "https://www.youtube.com/embed/N8UZhFf06Is?autoplay=1",
         "selectable": true
     },
 ]
@@ -125,7 +112,7 @@ AmCharts.makeChart("map",{
     "listeners": [{
         "event": "clickMapObject",
         "method": function(event) {
-            $.fancybox.open({
+           /* $.fancybox.open({
                 src  : event.mapObject.modalUrl,
                 type : 'iframe',
                 opts : {
@@ -139,7 +126,7 @@ AmCharts.makeChart("map",{
                         console.info( 'closing!' );
                     }
                 }
-            });
+            });*/
         }
       }]
 });
