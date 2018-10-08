@@ -48,7 +48,7 @@
                               </div>
                     <div class="card-body">
                       <div class="panel-body">
-                          <table id='users' class="table table-striped table-hover">
+                          <table id='users' class="table table-responsive table-striped table-hover">
                               <thead>
                                   <tr>
                                       <th width="10px" >ID</th>

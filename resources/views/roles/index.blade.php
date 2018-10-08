@@ -46,7 +46,7 @@
                                                             @can('roles.edit')
                                                             <a href="{{ route('roles.edit', $rol->id) }}"
                                                                 class="btn btn-sm btn-outline-info" role="button">
-                                                            Editar Usuario</a>
+                                                            Editar Rol</a>
                                                             @endcan
                                                     </td> 
 
