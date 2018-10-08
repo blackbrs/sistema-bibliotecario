@@ -16,11 +16,7 @@
 <div class="form-group">
         {!! Form::label('nombreEncargado', 'Nombre del encargado') !!}
         <div class="form-group">
-<<<<<<< HEAD
-            <select name="nombreEncargado" id= "userSelect" class="form-control" required>
-=======
             <select name="nombreEncargado" id= "nombreEncargado" class="form-control" required>
->>>>>>> a4991ec5a25a220cec3a0ca79351de9001d8f4de
                 <option value="">--Encargado--</option>
                 @foreach ($usuarios as $user)
                 <option value="{{ $user->nombres }}"> {{ $user->nombres}} {{ $user->apellidos}}</option>  
