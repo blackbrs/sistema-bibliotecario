@@ -40,37 +40,7 @@
 @endsection
 @section('content')
 <div class="container">
-    <div class="row">
-        <div id="map" class="col-md-8">
-        </div>
-        <div class="col-md-4">
 
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-10">
-            <div class="card">
-                <div class="panel panel-default">
-                        <div class="card-header">
-                                <div class="panel-heading">
-                                      Usuarios Del Sistema Bibliotecario
-                                </div>
-                            </div>
-                  <div class="card-body">
-                    <div class="panel-body">
-                        <table id='users' class="table table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th width="10px" >ID</th>
-                                    <th class="">Nombres</th>
-                                    <th>Apellidos</th>
-                                    <th>telefono</th>
-                                    <th>e-mail</th>
-                                    <th>municipio</th>   
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
                 </div>
               </div>
             </div>
