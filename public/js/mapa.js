@@ -112,6 +112,39 @@ AmCharts.makeChart("map",{
     "listeners": [{
         "event": "clickMapObject",
         "method": function(event) {
+            $(document).ready(function() {
+                $('#users').DataTable( {
+                    "serverSide": true,
+                    "responsive": true,
+                    "ajax": {
+                        "url":'api/stats',
+                        "data":{
+                            "dep_id": event.mapObject.id
+                        }
+                    },
+                    "columns":[
+                        {data:'id'},
+                        {data:'nombres'},
+                        {data:'apellidos'},
+                        {data:'telefono'},
+                        {data:'email'},
+                        {data:'municipio_id'},
+                        
+                ],
+                    "language": {
+                        "search": "Buscar:",
+                        "lengthMenu": "Mostrar _MENU_ registros por pagina",
+                        "zeroRecords": "La busqueda no coincide con ningun registro",
+                        "info": "Mostrando pagina _PAGE_ de _PAGES_",
+                        "infoEmpty": "No hay registros disponibles",
+                        "infoFiltered": "(De _MAX_ registros totales)",
+                        "paginate": {
+                            "previous": "Anterior",
+                            "next": "siguiente"
+            }
+                        }
+                });
+            });
            /* $.fancybox.open({
                 src  : event.mapObject.modalUrl,
                 type : 'iframe',
