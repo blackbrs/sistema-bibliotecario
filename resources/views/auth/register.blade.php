@@ -101,7 +101,7 @@
                         <div class="form-group row">
                             <label for="depBox" class="col-md-4 col-form-label text-md-right">Departamento</label>
                             <div class="col-md-6">
-                                <select name="dept" id= "dep_id" class="form-control dynamic" data-dependent="nMunicipio">
+                                <select name="dept" id= "dep_id" class="form-control dynamic" data-dependent="nMunicipio" required>
                                     <option value="">--Departamento--</option>
                                     @foreach ($lista_dep as $dep)
                                     <option value="{{ $dep->id }}"> {{ $dep->nDepartamento }}</option>  
@@ -112,7 +112,7 @@
                         <div class="form-group row">
                             <label for="nMunicipio" class="col-md-4 col-form-label text-md-right">Municipio</label>
                             <div class="col-md-6">
-                                <select name="nMunicipio" id="nMunicipio" class="form-control">
+                                <select name="nMunicipio" id="nMunicipio" class="form-control" required>
                                  <option>--Municipio--</option>
                              </select>
                          </div>
