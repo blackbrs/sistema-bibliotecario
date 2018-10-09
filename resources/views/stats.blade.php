@@ -20,7 +20,7 @@
                 {data:'apellidos'},
                 {data:'telefono'},
                 {data:'email'},
-                {data:'municipio'},
+                {data:'municipio_id'},
                 
         ],
             "language": {
