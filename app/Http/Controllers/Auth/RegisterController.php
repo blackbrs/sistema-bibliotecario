@@ -57,7 +57,8 @@ class RegisterController extends Controller
             'telefono'      => 'required|numeric',
             'email'         => 'required|string|email|max:255|unique:users',
             'password'      => 'required|string|min:6|confirmed',
-            'nMunicipio'    => 'required|integer'
+            'nMunicipio'    => 'required|integer',
+            'biblioteca_id' => 'required|integer'
         ],[
             'nombres.required'      =>'El campo de nombres es obligatorio',
             'apellidos.required'    =>'El campo de apellidos es obligatorio',
@@ -68,7 +69,8 @@ class RegisterController extends Controller
             'email.required'        =>'El campo de correo electronico es obligatorio',
             'password.required'     =>'El campo de contraseña es obligatorio',
             'password.min'          =>'La contraseña debe poseer almenos 6 caracteres',
-            'nMunicipio.required'   =>'El campo municipio es obligatorio'
+            'nMunicipio.required'   =>'El campo municipio es obligatorio',
+            'biblioteca_id.required'    =>'La biblioteca es requerida'
         ]);
     }
 
@@ -90,12 +92,13 @@ class RegisterController extends Controller
             'email'         => $data['email'],
             'password'      => bcrypt($data['password']),
             'municipio'     => $data['nMunicipio'],
+            'biblioteca_id'    =>$data['biblioteca_id']
         ]);
     }
     public function showregistrationform()
-    {
+    {   $biblioteca = DB::table('bibliotecas')->get();
         $lista_dep = DB::table('departamentos')->get(); // get all
-        return view('auth.register')->with('lista_dep', $lista_dep);
+        return view('auth.register', compact('lista_dep','biblioteca'));
     }
     
 }

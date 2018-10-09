@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nombres', 'apellidos', 'nacimiento', 'sexo', 'Npadres','telefono' ,'email', 'password', 'municipio', 
+        'nombres', 'apellidos', 'nacimiento', 'sexo', 'Npadres','telefono' ,'email', 'password', 'municipio_id','biblioteca_id' ,
     ];
 
     /**
@@ -27,5 +27,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function biblioteca(){
+        return $this->belongsTo(Biblioteca::class);
+    }
+
+    public function municipio(){
+        return $this->belongsTo(Municipio::class);
+    }
     
 }

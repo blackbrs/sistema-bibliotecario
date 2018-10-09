@@ -41,7 +41,7 @@ class BibliotecaController extends Controller
         
         $biblioteca = Biblioteca::create($request->all());
         return redirect()->route('bibliotecas.edit',$biblioteca->id)
-        ->with('info','Biblioteca guardad con exito');
+        ->with('info','Biblioteca guardada con exito');
     }
 
     /**
@@ -78,7 +78,7 @@ class BibliotecaController extends Controller
     {
         $biblioteca->update($request->all());
         return redirect()->route('bibliotecas.edit',$biblioteca->id)
-        ->with('info', 'Biblioteca actualiada con exito');
+        ->with('info', 'Biblioteca actualizada con exito');
     }
 
     /**
