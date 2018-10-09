@@ -57,7 +57,7 @@ class RegisterController extends Controller
             'telefono'      => 'required|numeric',
             'email'         => 'required|string|email|max:255|unique:users',
             'password'      => 'required|string|min:6|confirmed',
-            'municipio_id'    => 'required|integer',
+            'nMunicipio'    => 'required|integer',
             'biblioteca_id' => 'required|integer'
         ],[
             'nombres.required'      =>'El campo de nombres es obligatorio',
