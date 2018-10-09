@@ -69,7 +69,7 @@ class RegisterController extends Controller
             'email.required'        =>'El campo de correo electronico es obligatorio',
             'password.required'     =>'El campo de contraseña es obligatorio',
             'password.min'          =>'La contraseña debe poseer almenos 6 caracteres',
-            'municipio_id.required'   =>'El campo municipio es obligatorio',
+            'nMunicipio.required'   =>'El campo municipio es obligatorio',
             'biblioteca_id.required'    =>'La biblioteca es requerida'
         ]);
     }
@@ -91,7 +91,7 @@ class RegisterController extends Controller
             'telefono'      => $data['telefono'],
             'email'         => $data['email'],
             'password'      => bcrypt($data['password']),
-            'municipio_id'     => $data['municipio_id'],
+            'municipio_id'     => $data['nMunicipio'],
             'biblioteca_id'    =>$data['biblioteca_id']
         ]);
     }
