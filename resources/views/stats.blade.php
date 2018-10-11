@@ -16,41 +16,34 @@
         <div id="map" class="col-md-8">
         </div>
         <div class="col-md-4">
-
-        </div>
-    </div>
-    </div>
-    <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="panel panel-default">
-                            <div class="card-header">
-                                    <div class="panel-heading">
-                                          Usuarios Del Sistema Bibliotecario
-                                    </div>
+            <div class="card">
+                <div class="panel panel-default">
+                        <div class="card-header">
+                                <div class="panel-heading">
+                                      Usuarios Del Sistema Bibliotecario
                                 </div>
-                      <div class="card-body">
-                        <div class="panel-body">
-                            <table id='users' class="table table-striped table-hover nowrap">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th >Nombres</th>
-                                        <th>Apellidos</th>
-                                        <th>telefono</th>
-                                        <th>e-mail</th>
-                                        <th>municipio</th>   
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
+                            </div>
+                  <div class="card-body">
+                    <div class="panel-body">
+                        <table id='users' class="table table-striped table-hover" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th >Nombres</th>
+                                    <th>Apellidos</th>
+                                    <th>telefono</th>
+                                    <th>e-mail</th>
+                                    <th>municipio</th>   
+                                </tr>
+                            </thead>
+                        </table>
                     </div>
-                  </div>
                 </div>
-</div>
-    
-    
+              </div>
+            </div>
         </div>
+    </div>
+    </div>
     </div>
 </div>
 @endsection

@@ -1,0 +1,12 @@
+<div class="media">
+              <img class="d-flex align-self-start" src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?h=350&auto=compress&cs=tinysrgb" alt="Generic placeholder image">
+              <div class="media-body pl-3">
+                <div class="price">$799,000<small>New York</small></div>
+                <div class="stats">
+                    <span><i class="fa fa-arrows-alt"></i>1678 Sq ft</span>
+                    <span><i class="fa fa-bath"></i>2 Beadrooms</span>
+                </div>
+                <div class="address">4062 Walnut Hill Drive
+            Cincinnati</div>
+              </div>
+            </div>

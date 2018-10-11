@@ -23,7 +23,7 @@ var tabla ='';
         ],
             "language": {
                 "search": "Buscar:",
-                "lengthMenu": "Mostrar _MENU_ registros por pagina",
+                "lengthMenu": "Mostrar _MENU_ registros",
                 "zeroRecords": "La busqueda no coincide con ningun registro",
                 "info": "Mostrando pagina _PAGE_ de _PAGES_",
                 "infoEmpty": "No hay registros disponibles",
