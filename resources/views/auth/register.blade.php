@@ -1,6 +1,27 @@
 @extends('layouts.app')
-@include('fragments.main_script_tags')
-<script src="js/selbox.js"></script>
+@section('header')
+<script>
+$(document).ready(function() {
+    $('.dynamic').change(function(){  
+        if($(this).val()!= ''){
+            var select = $(this).attr('id');
+            var value = $(this).val();
+            var dependent = $(this).data('dependent');
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url: "getmunicipio/fetch",
+                method:"POST",
+                data:{select:select, value:value, _token:_token, dependent:dependent},
+                success:function(result){
+                    $('#'+dependent).html(result);
+                }
+            })
+        }
+    });
+
+});
+</script>
+@endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

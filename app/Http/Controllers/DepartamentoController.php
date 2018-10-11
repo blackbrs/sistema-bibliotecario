@@ -18,12 +18,9 @@ class DepartamentoController extends Controller
     }
     public function getMunicipios(Request $request){
 
-        $select = $request->get('select');
-        $value = $request->get('value');
-        $dependent = $request->get('dependent');
 
-        $data = DB::table('municipios')
-                ->where($select, $value)->get();
+        $dependent = $request->get('dependent');
+        $data = \App\Municipio::where($request->select, $request->value)->get();
         $output = '<option value="">Seleccionar municipio</option>';
         foreach($data as $row){
             $output .= '<option value="'.$row->id.'">'.$row->$dependent.'</option>';
