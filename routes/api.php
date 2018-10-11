@@ -18,10 +18,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::get('/stats', function (Request $request) {
     if($request->ajax()){
-    return datatables()->eloquent(\App\User::query())
+        $data= $request->get('dep');
+    return datatables()->eloquent(\App\User::whereHas('municipio',function($q) use ($data){
+        $q->where('dep_id',$data);
+    }))
     ->toJson();
     }else{
-    
+    //Se puede iniciar la tabla con todos los registros 
+    //Este espacio es para $request sin ajax
+    //Siempre con render serverside de DTables
     }
 });
 

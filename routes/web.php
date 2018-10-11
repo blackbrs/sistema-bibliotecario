@@ -66,7 +66,7 @@ Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit')
 //Estadisticas
 Route::get('stats', function(){
        // $users = \App\User::all();
-        return view('stats2');
+        return view('stats');
 
         })->name('stats')->middleware('permission:users.stats');
 });
