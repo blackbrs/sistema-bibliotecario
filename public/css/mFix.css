@@ -4,6 +4,10 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
   }
   /*Formularios*/
-  textarea {
+textarea {
     resize: none; 
   }
+/*Lista de roles*/
+ul{
+list-style-type: none;
+}
