@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/stats', function (Request $request) {
     if($request->ajax()){
         $data= $request->get('dep');
-    return datatables()->eloquent(\App\User::whereHas('municipio',function($q) use ($data){
+    return datatables()->eloquent(\App\User::whereHas('municipio',function($q) use ($data){ //Se puede mejorar la logica y limpiar el codigo (Sprint 2)
         $q->where('dep_id',$data);
     }))
     ->toJson();

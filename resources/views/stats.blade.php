@@ -6,7 +6,7 @@
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/b-1.5.4/fh-3.1.4/r-2.2.2/sc-1.5.0/datatables.min.js" defer></script>
 <script type="text/javascript" src={{ asset('js/ammap.js') }}></script>
 <script type="text/javascript" src={{ asset('js/ElSalvador.js') }}></script>
-<script type="text/javascript" src={{ asset('js/mapa.js') }}></script>
+<script type="text/javascript" src={{ asset('js/mapa.js') }} defer></script>
 @endsection
 @section('content')
 <div class="container-fluid">
@@ -31,7 +31,7 @@
                                 </div>
                       <div class="card-body">
                         <div class="panel-body">
-                            <table id='users' class="table table-striped table-hover">
+                            <table id='users' class="table table-striped table-hover nowrap">
                                 <thead>
                                     <tr>
                                         <th>ID</th>

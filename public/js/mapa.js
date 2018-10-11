@@ -1,6 +1,39 @@
+var dep='';
+var tabla ='';
+ $(document).ready(function() {
+
+        tabla =  $('#users').DataTable( {
+                    "responsive": true,
+                    "serverSide": true,
+                    "autoWidth": true,
+                    "ajax": {
+                        "url":"api/stats",
+                        "data":function(d){
+                            d.dep = dep
+                        },
+                    },
+                    "columns":[
+                        {data:'id'},
+                        {data:'nombres'},
+                        {data:'apellidos'},
+                        {data:'telefono'},
+                        {data:'email'},
+                        {data:'municipio_id'},
+                
+        ],
+            "language": {
+                "search": "Buscar:",
+                "lengthMenu": "Mostrar _MENU_ registros por pagina",
+                "zeroRecords": "La busqueda no coincide con ningun registro",
+                "info": "Mostrando pagina _PAGE_ de _PAGES_",
+                "infoEmpty": "No hay registros disponibles",
+                "infoFiltered": "(De _MAX_ registros totales)",
+                "paginate": {"previous": "Anterior",  "next": "siguiente"}
+                }
+        });
+    });
 AmCharts.makeChart("map",{
     "type": "map",
-    "pathToImages": "http://www.amcharts.com/lib/3/images/",
     "addClassNames": true,
     "fontSize": 15,
     "color": "#FFFFFF",
@@ -34,7 +67,6 @@ AmCharts.makeChart("map",{
     }, {
         "id":"SV-MO",
         "title":"Morazán",
-        "modalUrl": "",
         "selectable": true
     }, {
         "id":"SV-PA",
@@ -112,55 +144,9 @@ AmCharts.makeChart("map",{
     "listeners": [{
         "event": "clickMapObject",
         "method": function(event) {
-            var dep = event.mapObject.id;
-            $(document).ready(function() {
-                $('#users').DataTable( {
-                    "fixedColumns": false,
-                    "responsive": true,
-                    "serverSide": true,
-                    "autoWidth": true,
-                    "ajax": {
-                        "url":"api/stats",
-                        "data":{dep:dep},
-                    },
-                    "columns":[
-                        {data:'id'},
-                        {data:'nombres'},
-                        {data:'apellidos'},
-                        {data:'telefono'},
-                        {data:'email'},
-                        {data:'municipio_id'},
-                
-        ],
-            "language": {
-                "search": "Buscar:",
-                "lengthMenu": "Mostrar _MENU_ registros por pagina",
-                "zeroRecords": "La busqueda no coincide con ningun registro",
-                "info": "Mostrando pagina _PAGE_ de _PAGES_",
-                "infoEmpty": "No hay registros disponibles",
-                "infoFiltered": "(De _MAX_ registros totales)",
-                "paginate": {
-                    "previous": "Anterior",
-                    "next": "siguiente"
-    }
-                }
-        });
-    });
-           /* $.fancybox.open({
-                src  : event.mapObject.modalUrl,
-                type : 'iframe',
-                opts : {
-                    caption: "Stats Mamalonas ALV XD",
-                    toolbar  : false,
-                    smallBtn : true,
-                    iframe : {
-                        
-                    },
-                    beforeClose : function( instance, current ) {
-                        console.info( 'closing!' );
-                    }
-                }
-            });*/
-        }
-      }]
+            dep = event.mapObject.id;
+            tabla.ajax.reload();              
+}
+      }
+    ]
 });
