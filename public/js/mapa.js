@@ -144,8 +144,9 @@ AmCharts.makeChart("map",{
     "listeners": [{
         "event": "clickMapObject",
         "method": function(event) {
+            if(dep != event.mapObject.id){
             dep = event.mapObject.id;
-            tabla.ajax.reload();              
+            tabla.ajax.reload();  }            
 }
       }
     ]
