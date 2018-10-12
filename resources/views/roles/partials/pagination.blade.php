@@ -1,5 +1,5 @@
-<div class="form-group">
-        <ul id="permissions" class="list-group-item">
+
+        <ul id="permissions" class="list-group-item scrollbar">
             @foreach ($permissions as $permission)
     
             <li>
@@ -10,8 +10,6 @@
                 </label>
                 
             </li>
-                
+            
             @endforeach
         </ul>
-        {{ $permissions->Render() }}
-    </div>

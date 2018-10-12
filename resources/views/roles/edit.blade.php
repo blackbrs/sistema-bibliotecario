@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('header')
+@endsection
 @section('content')
 <div class="container">
     <div class="row">
@@ -9,16 +11,13 @@
                 <div class="panel-heading"> Rol a actualizar </div>
                     </div>
                     <div class="card-body">
-                <div class="panel-body">
-                        
+                <div class="panel-body">           
                         {!! Form::model($role, ['route'=>['roles.update', $role->id],
                         'method' => 'PUT']) !!}
 
                         @include('roles.partials.form')
                         
-                        {!! Form::close() !!}
-
-                        
+                        {!! Form::close() !!}        
                 </div>
             </div>
             </div>
@@ -26,7 +25,6 @@
         </div>
     </div>
     </div>
-
 </div>
     
 @endsection

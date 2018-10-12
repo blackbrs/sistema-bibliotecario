@@ -20,7 +20,9 @@
 </div>
 <hr>
 <h3>Lista de permisos</h3>
+<div id="permissions-group" class="form-group">
 @include('roles.partials.pagination')
+</div>
 <div class="form-group">
        
         {!! Form::submit('Guardar',['class'=>'btn btn-sm btn-primary']) !!}

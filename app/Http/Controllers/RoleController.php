@@ -26,7 +26,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        $permissions = Permission::paginate(5);
+        $permissions = Permission::all();
         return view('roles.create', compact('permissions'));
     }
 
@@ -64,7 +64,7 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        $permissions = Permission::paginate(5);
+        $permissions = Permission::all();
         return view('roles.edit', compact('role', 'permissions'));
     }
 
@@ -97,4 +97,13 @@ class RoleController extends Controller
         $role->delete();
         return back()->with('info', 'Eliminado correctamente');
     }
+    /*
+    Paginacion con AJAX
+    function fetch(Request $request){
+        if($request->ajax()){
+            $actPer = $request->get('permissions');
+            $permissions = Permission::paginate(5);
+            return view('roles.partials.pagination', compact('permissions', 'actPer'))->render();
+        }
+    }*/
 }

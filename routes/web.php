@@ -45,6 +45,8 @@ Route::delete('roles/{role}', 'RoleController@destroy')->name('roles.destroy')
 Route::get('roles/{role}/edit', 'RoleController@edit')->name('roles.edit')
         ->middleware('permission:roles.edit');
 
+// Route::get('/roles/create/fetch', 'RoleController@fetch'); Paginacion con AJAX
+
 //Usuarios
 
 
