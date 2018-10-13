@@ -22,6 +22,7 @@ $(document).ready(function() {
 });
 </script>
 @endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -36,12 +37,11 @@ $(document).ready(function() {
                             <label for="nombres" class="col-md-4 col-form-label text-md-right">Nombres</label>
 
                             <div class="col-md-6">
-
-                                <input id="nombres" type="text" class="form-control{{ $errors->has('nombre') ? ' has-error' : '' }}" name="nombres" value="{{ old('nombres') }}" required autofocus>
+                                <input id="nombres" type="text" class="form-control{{ $errors->has('nombres') ? ' has-error' : '' }}" name="nombres" value="{{ old('nombres') }}" >
 
                                 @if ($errors->has('nombres'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('nombres') }}</strong>
+                                    <span>
+                                        <strong style="color:Tomato;">{{ $errors->first('nombres') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -51,11 +51,11 @@ $(document).ready(function() {
                             <label for="apellidos" class="col-md-4 col-form-label text-md-right">Apellidos</label>
 
                             <div class="col-md-6">
-                                <input id="apellidos" type="text" class="form-control{{ $errors->has('apellidos') ? ' has-error' : '' }}" name="apellidos" value="{{ old('apellidos') }}" required autofocus>
+                                <input id="apellidos" type="text" class="form-control{{ $errors->has('apellidos') ? ' has-error' : '' }}" name="apellidos" value="{{ old('apellidos') }}" >
 
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                @if ($errors->has('apellidos'))
+                                    <span >
+                                        <strong style="color:Tomato;">{{ $errors->first('apellidos') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -65,11 +65,11 @@ $(document).ready(function() {
                             <label for="nacimiento" class="col-md-4 col-form-label text-md-right">Fecha de nacimiento</label>
 
                             <div class="col-md-6">
-                            <input id="nacimiento" type="text" class="form-control{{ $errors->has('nacimiento') ? ' has-error' : '' }}" name="nacimiento" value="{{ old('nacimiento') }}"  placeholder="YYYY-MM-DD" required autofocus>
+                            <input id="nacimiento" type="text" class="form-control{{ $errors->has('nacimiento') ? ' has-error' : '' }}" name="nacimiento" value="{{ old('nacimiento') }}"  placeholder="YYYY-MM-DD" >
 
                                 @if ($errors->has('nacimiento'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('nacimiento') }}</strong>
+                                    <span>
+                                        <strong style="color:Tomato;">{{ $errors->first('nacimiento') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -79,14 +79,14 @@ $(document).ready(function() {
                             <label for="sexo" class="col-md-4 col-form-label text-md-right">Sexo</label>
 
                             <div class="col-md-6">
-                                <select name="sexo" id= "sexo" class="form-control" required>
+                                <select name="sexo" id= "sexo" class="form-control" >
                                     <option value="">--Sexo--</option>
                                     <option value="Masculino"> Masculino</option>
                                     <option value="Femenino">Femenino</option>  
                                 </select>
                                 @if ($errors->has('sexo'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('sexo') }}</strong>
+                                    <span >
+                                        <strong style="color:Tomato;">{{ $errors->first('sexo') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -96,11 +96,11 @@ $(document).ready(function() {
                             <label for="Npadres" class="col-md-4 col-form-label text-md-right">Nombre del padre o madre</label>
 
                             <div class="col-md-6">
-                            <input id="Npadres" type="text" class="form-control{{ $errors->has('Npadres') ? ' has-error' : '' }}" name="Npadres" value="{{ old('Npadres') }}"   required autofocus>
+                            <input id="Npadres" type="text" class="form-control{{ $errors->has('Npadres') ? ' has-error' : '' }}" name="Npadres" value="{{ old('Npadres') }}"   >
 
                                 @if ($errors->has('Npadres'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('Npadres') }}</strong>
+                                    <span>
+                                        <strong style="color:Tomato;">{{ $errors->first('Npadres') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -110,11 +110,11 @@ $(document).ready(function() {
                             <label for="telefono" class="col-md-4 col-form-label text-md-right">Numero de telefono</label>
 
                             <div class="col-md-6">
-                            <input id="telefono" type="numeric" class="form-control{{ $errors->has('telefono') ? ' has-error' : '' }}" name="telefono" value="{{ old('telefono') }}"   required number>
+                            <input id="telefono" type="numeric" class="form-control{{ $errors->has('telefono') ? ' has-error' : '' }}" name="telefono" value="{{ old('telefono') }}"   >
 
                                 @if ($errors->has('telefono'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('telefono') }}</strong>
+                                    <span>
+                                        <strong style="color:Tomato;">{{ $errors->first('telefono') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -122,7 +122,7 @@ $(document).ready(function() {
                         <div class="form-group row">
                             <label for="depBox" class="col-md-4 col-form-label text-md-right">Departamento</label>
                             <div class="col-md-6">
-                                <select name="dept" id= "dep_id" class="form-control dynamic" data-dependent="nMunicipio" required>
+                                <select name="dept" id= "dep_id" class="form-control dynamic" data-dependent="nMunicipio" required autofocus>
                                     <option value="">--Departamento--</option>
                                     @foreach ($lista_dep as $dep)
                                     <option value="{{ $dep->id }}"> {{ $dep->nDepartamento }}</option>  
@@ -133,7 +133,7 @@ $(document).ready(function() {
                         <div class="form-group row">
                             <label for="nMunicipio" class="col-md-4 col-form-label text-md-right">Municipio</label>
                             <div class="col-md-6">
-                                <select name="nMunicipio" id="nMunicipio" class="form-control" required>
+                                <select name="nMunicipio" id="nMunicipio" class="form-control" required autofocus >
                                  <option>--Municipio--</option>
                              </select>
                          </div>
@@ -141,7 +141,7 @@ $(document).ready(function() {
                         <div class="form-group row">
                          <label for="biblioteca_id" class="col-md-4 col-form-label text-md-right">Biblioteca a inscribirse</label>
                             <div class="col-md-6">
-                            <select name="biblioteca_id" id= "biblioteca_id" class="form-control" required>
+                            <select name="biblioteca_id" id= "biblioteca_id" class="form-control" >
                 
                                     <option value="">--Biblioteca--</option>
                                     @foreach ($biblioteca as $bib)
@@ -156,11 +156,11 @@ $(document).ready(function() {
                             <label for="email" class="col-md-4 col-form-label text-md-right">Correo Electronico</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' has-error' : '' }}" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' has-error' : '' }}" name="email" value="{{ old('email') }}" >
 
                                 @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                    <span>
+                                        <strong style="color:Tomato;">{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -170,11 +170,11 @@ $(document).ready(function() {
                             <label for="password" class="col-md-4 col-form-label text-md-right">Contraseña</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' has-error' : '' }}" name="password" required>
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' has-error' : '' }}" name="password" >
 
                                 @if ($errors->has('password'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('password') }}</strong>
+                                <span>
+                                    <strong style="color:Tomato;">{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -184,7 +184,7 @@ $(document).ready(function() {
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Confirme su contraseña</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" >
                             </div>
                         </div>
 
@@ -202,5 +202,4 @@ $(document).ready(function() {
         </div>
     </div>
 </div>
-
 @endsection
