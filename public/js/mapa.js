@@ -1,16 +1,13 @@
 var dep='';
 var tabla ='';
  $(document).ready(function() {
-
         tabla =  $('#users').DataTable( {
                     "responsive": true,
                     "serverSide": true,
                     "autoWidth": true,
                     "ajax": {
                         "url":"api/stats",
-                        "data":function(d){
-                            d.dep = dep
-                        },
+                        "data":function(d){d.dep = dep}
                     },
                     "columns":[
                         {data:'id'},
@@ -18,8 +15,7 @@ var tabla ='';
                         {data:'apellidos'},
                         {data:'telefono'},
                         {data:'email'},
-                        {data:'municipio_id'},
-                
+                        {data:'municipio_id'},      
         ],
             "language": {
                 "search": "Buscar:",
@@ -44,64 +40,7 @@ AmCharts.makeChart("map",{
     "dragMap": false,
     "dataProvider": {
         "map": "elSalvador",
-        "areas": [{
-      "id":"SV-AH",
-      "title":"Ahuachapán",  
-      "selectable": true
-    }, {
-      "id":"SV-CA",
-      "title":"Cabañas",
-      "selectable": true
-    }, {
-      "id":"SV-CH",
-      "title":"Chalatenango",
-      "selectable": true
-    }, {
-        "id":"SV-CU",
-        "title":"Cuscatlán",
-        "selectable": true
-    }, {
-        "id":"SV-LI",
-        "title":"La Libertad",
-        "selectable": true
-    }, {
-        "id":"SV-MO",
-        "title":"Morazán",
-        "selectable": true
-    }, {
-        "id":"SV-PA",
-        "title":"La Paz",
-        "selectable": true
-    }, {
-        "id":"SV-SA",
-        "title":"Santa Ana",
-        "selectable": true
-    }, {
-        "id":"SV-SM",
-        "title":"San Miguel",
-        "selectable": true
-    }, {
-        "id":"SV-SO",
-        "title":"Sonsonate",
-        "selectable": true
-    }, {
-        "id":"SV-SV",
-        "title":"San Vicente",
-        "selectable": true
-    }, {
-        "id":"SV-UN",
-        "title":"La Unión",
-        "selectable": true
-    }, {
-        "id":"SV-US",
-        "title":"Usulután",
-        "selectable": true
-    }, {
-        "id":"SV-SS",
-        "title":"San Salvador",
-        "selectable": true
-    },
-]
+        "getAreasFromMap": true,
     },
     "balloon": {
         "horizontalPadding": 15,
