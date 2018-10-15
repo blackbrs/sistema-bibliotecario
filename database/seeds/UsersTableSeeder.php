@@ -2,7 +2,9 @@
 
 use Illuminate\Database\Seeder;
 use Caffeinated\Shinobi\Models\Role;
+use Illuminate\Support\Facades\DB;
 use App\User;
+use App\Biblioteca;
 
 class UsersTableSeeder extends Seeder
 {
@@ -13,6 +15,14 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+
+        Biblioteca::create([
+            'nombreBiblioteca'=>'Biblioteca Nacional',
+            'direccion'=>'Centro de san salvador',
+            'telefono'=>'23456789',
+            'nombreEncargado'=>'Guillermo Cornejo'
+        ]);
+
         User::create([
             'nombres'       =>'Guillermo Alexander',
             'apellidos'     =>'Cornejo Argueta',
@@ -23,6 +33,8 @@ class UsersTableSeeder extends Seeder
             'penitencia'    =>'false',
             'telefono'      =>'22322009',
             'email'         =>'guillermobrs@gmail.com',
+            'municipio_id'     =>'3',
+            'biblioteca_id'=>'1',
             'password'      =>bcrypt('admin1234')
         ]);
 
@@ -32,5 +44,12 @@ class UsersTableSeeder extends Seeder
             'special'   =>'all-access'
 
         ]);
+
+        DB::table('role_user')->insert([
+            'role_id'=>'1',
+            'user_id'=>'1'
+        ]);
+       
+        
     }
 }

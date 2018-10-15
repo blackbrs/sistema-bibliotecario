@@ -107,9 +107,42 @@ class PermissionsTableSeeder extends Seeder
                  ]);
             
             Permission::create([
-                'name'          =>'Eliminar rol',
+                'name'          =>'Eliminar recurso bibliotecario',
                 'slug'          =>'recursobib.destroy',
-                'description'   =>'Eliminar cualquier rol del sistema'
+                'description'   =>'Eliminar cualquier recurso bibliotecario del sistema'
                  ]);
+
+
+    /* Permisos para gestionar las bibliotecas del sistemas Creado por Guillermo alexander */
+
+            Permission::create([
+                'name'          =>'Navegar las bibliotecas del sistema',
+                'slug'          =>'bibliotecas.index',
+                'description'   =>'Lista que muestra a todos las bibliotecas del sistema bibliotecario'
+                ]);
+
+            Permission::create([
+                'name'          =>'Crear las bibliotecas',
+                'slug'          =>'bibliotecas.create',
+                'description'   =>'Permite crear los libros para nuestro sistema bibliotecario'
+                ]);
+            
+            Permission::create([
+                'name'          =>'Ver los detalles de las bibliotecas del sistema',
+                'slug'          =>'bibliotecas.show',
+                'description'   =>'Ver en detalle cada uno de los libros  del sistema bibliotecario'
+                ]);
+            
+            Permission::create([
+                'name'          =>'Editar la informacion de las bibliotecas',
+                'slug'          =>'bibliotecas.edit',
+                'description'   =>'Editar cualquier dato de las bibliotecas sistema bibliotecario'
+                ]);
+            
+            Permission::create([
+                'name'          =>'Eliminar biblioteca',
+                'slug'          =>'bibliotecas.destroy',
+                'description'   =>'Eliminar cualquier biblioteca del sistema'
+                ]);
     }
 }

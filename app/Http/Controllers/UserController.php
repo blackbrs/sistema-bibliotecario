@@ -48,6 +48,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+       
+        
         return view('users.show',compact('user'));
     }
 
@@ -92,4 +94,5 @@ class UserController extends Controller
        $user -> delete(); 
        return back()->with('info','El usuario ha sido eliminado con exito');
     }
+
 }

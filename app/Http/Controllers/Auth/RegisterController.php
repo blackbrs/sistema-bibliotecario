@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Departamento;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use DB;
 class RegisterController extends Controller
 {
     /*
@@ -56,6 +57,7 @@ class RegisterController extends Controller
             'telefono'      => 'required|numeric',
             'email'         => 'required|string|email|max:255|unique:users',
             'password'      => 'required|string|min:6|confirmed',
+            'biblioteca_id' => 'required|integer'
         ],[
             'nombres.required'      =>'El campo de nombres es obligatorio',
             'apellidos.required'    =>'El campo de apellidos es obligatorio',
@@ -65,7 +67,9 @@ class RegisterController extends Controller
             'telefono.required'     =>'El campo de nuemero de telefono es obligatorio',
             'email.required'        =>'El campo de correo electronico es obligatorio',
             'password.required'     =>'El campo de contraseña es obligatorio',
-            'password.min'          =>'La contraseñ debe poseer almenos 6 caracteres'
+            'password.min'          =>'La contraseña debe poseer almenos 6 caracteres',
+            'nMunicipio.required'   =>'El campo municipio es obligatorio',
+            'biblioteca_id.required'    =>'La biblioteca es requerida'
         ]);
     }
 
@@ -86,6 +90,14 @@ class RegisterController extends Controller
             'telefono'      => $data['telefono'],
             'email'         => $data['email'],
             'password'      => bcrypt($data['password']),
+            'municipio_id'     => $data['nMunicipio'],
+            'biblioteca_id'    =>$data['biblioteca_id']
         ]);
     }
+    public function showregistrationform()
+    {   $biblioteca = DB::table('bibliotecas')->get();
+        $lista_dep = DB::table('departamentos')->get(); // get all
+        return view('auth.register', compact('lista_dep','biblioteca'));
+    }
+    
 }

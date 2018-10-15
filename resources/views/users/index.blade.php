@@ -2,13 +2,20 @@
 
 @section('content')
 <div class="container">
+  <div class="row justify-content-center">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+       
+        <div class="card">
+          
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    Usuarios Del Sistema Bibliotecario
-                </div>
+                    <div class="card-header">
+                            <div class="panel-heading">
+                                  Usuarios Del Sistema Bibliotecario
+                            </div>
+                        </div>
 
+
+           <div class="card-body">          
                 <div class="panel-body">
                     <table class="table table-striped table-hover">
                         <thead>
@@ -27,8 +34,9 @@
                                 <td>{{ $user->apellidos }}</td>
                                 <td>
                                 @can('users.show')
+                                
                                 <a href="{{ route('users.show', $user->id) }}"
-                                    class="btn btn-sm btn-default">
+                                    class="btn btn-sm btn-outline-info" role="button">
                                 Ver Detalles</a>
                                 @endcan
                                 </td>
@@ -36,7 +44,7 @@
                                 <td>
                                         @can('users.edit')
                                         <a href="{{ route('users.edit', $user->id) }}"
-                                            class="btn btn-sm btn-default">
+                                            class="btn btn-sm btn-outline-info" role="button">
                                         Editar Usuario</a>
                                         @endcan
                                  </td> 
@@ -61,6 +69,15 @@
                 </div>
             </div>
         </div>
+        <div class="card-footer">
+                <a href="{{ route('home') }}" class="btn btn-sm btn-success" >  volver</a>
+            </div> 
     </div>
+    
+
+
+    </div>
+
+</div>
 </div>
 @endsection

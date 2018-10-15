@@ -1,146 +1,202 @@
 @extends('layouts.app')
+@section('header')
+<script>
+$(document).ready(function() {
+    $('.dynamic').change(function(){  
+        if($(this).val()!= ''){
+            var select = $(this).attr('id');
+            var value = $(this).val();
+            var dependent = $(this).data('dependent');
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url: "getmunicipio/fetch",
+                method:"POST",
+                data:{select:select, value:value, _token:_token, dependent:dependent},
+                success:function(result){
+                    $('#'+dependent).html(result);
+                }
+            })
+        }
+    });
+
+});
+</script>
+@endsection
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Registro de usuario</div>
-
-                <div class="panel-body">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Registro de usuarios</div>
+                <div class="card-body">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('nombres') ? ' has-error' : '' }}">
-                            <label for="nombres" class="col-md-4 control-label">Nombres</label>
+                        <div class="form-group row">
+                            <label for="nombres" class="col-md-4 col-form-label text-md-right">Nombres</label>
 
                             <div class="col-md-6">
-
-                                <input id="nombres" type="text" class="form-control" name="nombres" value="{{ old('nombres') }}" required autofocus>
+                                <input id="nombres" type="text" class="form-control{{ $errors->has('nombres') ? ' has-error' : '' }}" name="nombres" value="{{ old('nombres') }}" >
 
                                 @if ($errors->has('nombres'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('nombres') }}</strong>
+                                    <span>
+                                        <strong style="color:Tomato;">{{ $errors->first('nombres') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
                         
-                        <div class="form-group{{ $errors->has('apellidos') ? ' has-error' : '' }}">
-                            <label for="apellidos" class="col-md-4 control-label">Apellidos</label>
+                        <div class="form-group row">
+                            <label for="apellidos" class="col-md-4 col-form-label text-md-right">Apellidos</label>
 
                             <div class="col-md-6">
-                                <input id="apellidos" type="text" class="form-control" name="apellidos" value="{{ old('apellidos') }}" required autofocus>
+                                <input id="apellidos" type="text" class="form-control{{ $errors->has('apellidos') ? ' has-error' : '' }}" name="apellidos" value="{{ old('apellidos') }}" >
 
                                 @if ($errors->has('apellidos'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('apellidos') }}</strong>
+                                    <span >
+                                        <strong style="color:Tomato;">{{ $errors->first('apellidos') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
                         
-                        <div class="form-group{{ $errors->has('nacimiento') ? ' has-error' : '' }}">
-                            <label for="nacimiento" class="col-md-4 control-label">Fecha de nacimiento</label>
+                        <div class="form-group row">
+                            <label for="nacimiento" class="col-md-4 col-form-label text-md-right">Fecha de nacimiento</label>
 
                             <div class="col-md-6">
-                            <input id="nacimiento" type="text" class="form-control" name="nacimiento" value="{{ old('nacimiento') }}"  placeholder="YYYY-MM-DD" required autofocus>
+                            <input id="nacimiento" type="text" class="form-control{{ $errors->has('nacimiento') ? ' has-error' : '' }}" name="nacimiento" value="{{ old('nacimiento') }}"  placeholder="YYYY-MM-DD" >
 
                                 @if ($errors->has('nacimiento'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('nacimiento') }}</strong>
+                                    <span>
+                                        <strong style="color:Tomato;">{{ $errors->first('nacimiento') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('sexo') ? ' has-error' : '' }}">
-                            <label for="sexo" class="col-md-4 control-label">Sexo</label>
+                        <div class="form-group row">
+                            <label for="sexo" class="col-md-4 col-form-label text-md-right">Sexo</label>
 
                             <div class="col-md-6">
-                            <input id="sexo" type="text" class="form-control" name="sexo" value="{{ old('sexo') }}"   required autofocus>
-
+                                <select name="sexo" id= "sexo" class="form-control" >
+                                    <option value="">--Sexo--</option>
+                                    <option value="Masculino"> Masculino</option>
+                                    <option value="Femenino">Femenino</option>  
+                                </select>
                                 @if ($errors->has('sexo'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('sexo') }}</strong>
+                                    <span >
+                                        <strong style="color:Tomato;">{{ $errors->first('sexo') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('Npadres') ? ' has-error' : '' }}">
-                            <label for="Npadres" class="col-md-4 control-label">Nombre del papa o mama</label>
+                        <div class="form-group row">
+                            <label for="Npadres" class="col-md-4 col-form-label text-md-right">Nombre del padre o madre</label>
 
                             <div class="col-md-6">
-                            <input id="Npadres" type="text" class="form-control" name="Npadres" value="{{ old('Npadres') }}"   required autofocus>
+                            <input id="Npadres" type="text" class="form-control{{ $errors->has('Npadres') ? ' has-error' : '' }}" name="Npadres" value="{{ old('Npadres') }}"   >
 
                                 @if ($errors->has('Npadres'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('Npadres') }}</strong>
+                                    <span>
+                                        <strong style="color:Tomato;">{{ $errors->first('Npadres') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('telefono') ? ' has-error' : '' }}">
-                            <label for="telefono" class="col-md-4 control-label">Numero de telefono</label>
+                        <div class="form-group row">
+                            <label for="telefono" class="col-md-4 col-form-label text-md-right">Numero de telefono</label>
 
                             <div class="col-md-6">
-                            <input id="telefono" type="numeric" class="form-control" name="telefono" value="{{ old('telefono') }}"   required number>
+                            <input id="telefono" type="numeric" class="form-control{{ $errors->has('telefono') ? ' has-error' : '' }}" name="telefono" value="{{ old('telefono') }}"   >
 
                                 @if ($errors->has('telefono'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('telefono') }}</strong>
+                                    <span>
+                                        <strong style="color:Tomato;">{{ $errors->first('telefono') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
-                        
+                        <div class="form-group row">
+                            <label for="depBox" class="col-md-4 col-form-label text-md-right">Departamento</label>
+                            <div class="col-md-6">
+                                <select name="dept" id= "dep_id" class="form-control dynamic" data-dependent="nMunicipio" required autofocus>
+                                    <option value="">--Departamento--</option>
+                                    @foreach ($lista_dep as $dep)
+                                    <option value="{{ $dep->id }}"> {{ $dep->nDepartamento }}</option>  
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="nMunicipio" class="col-md-4 col-form-label text-md-right">Municipio</label>
+                            <div class="col-md-6">
+                                <select name="nMunicipio" id="nMunicipio" class="form-control" required autofocus >
+                                 <option>--Municipio--</option>
+                             </select>
+                         </div>
+                        </div>
+                        <div class="form-group row">
+                         <label for="biblioteca_id" class="col-md-4 col-form-label text-md-right">Biblioteca a inscribirse</label>
+                            <div class="col-md-6">
+                            <select name="biblioteca_id" id= "biblioteca_id" class="form-control"required >
+                
+                                    <option value="">--Biblioteca--</option>
+                                    @foreach ($biblioteca as $bib)
+                                    <option value="{{ $bib->id }}"> {{ $bib->nombreBiblioteca}} </option>  
+                                    @endforeach
+                                </select>  
+                            </div>
+                        </div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">Correo Electronico</label>
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">Correo Electronico</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' has-error' : '' }}" name="email" value="{{ old('email') }}" >
 
                                 @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                    <span>
+                                        <strong style="color:Tomato;">{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Contraseña</label>
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">Contraseña</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' has-error' : '' }}" name="password" >
 
                                 @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
+                                <span>
+                                    <strong style="color:Tomato;">{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirme su contraseña</label>
+                        <div class="form-group row">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Confirme su contraseña</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" >
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     Registrarse
                                 </button>
                             </div>
                         </div>
                     </form>
+                </div>
                 </div>
             </div>
         </div>
