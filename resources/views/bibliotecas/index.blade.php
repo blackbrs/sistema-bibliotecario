@@ -7,7 +7,7 @@
                     Bibliotecas Registradas en el sistema
                     @can('bibliotecas.create')
                         <a href="{{ route('bibliotecas.create') }}" class="btn btn-sm btn-primary pull-right">
-                            Crear Nueva Biblioteca.
+                            Crear Una Nueva Biblioteca.
                         </a>
                     @endcan
                 </div>
