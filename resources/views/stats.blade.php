@@ -1,4 +1,5 @@
-@extends('layouts.app')
+<!-- extends('layouts.app')-->
+@extends('layouts.admin')
 @section('header')
 
 <link rel="stylesheet" href="css/mapa.css">

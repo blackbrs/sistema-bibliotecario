@@ -3,7 +3,6 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   @include('fragments.main_script_tags')
   <link rel="stylesheet" href="css/adminlte.min.css">
@@ -13,14 +12,16 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  @yield('header')
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <title>{{ config('app.name', 'Laravel') }}</title>
+
 </head>
 <body class="hold-transition sidebar-mini">
 
-  <!-- Site wrapper -->
+  <!-- Wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
   @include('admin.partials.navbar')
@@ -48,6 +49,7 @@
     <!-- Main content -->
     <section class="content">
       @yield('content')
+
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
@@ -77,10 +79,7 @@
   <!-- /.content-wrapper -->
 
   <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+ @include('admin.partials.control-sidebar')
 </div>
 <!-- ./wrapper -->
 
@@ -88,6 +87,5 @@
 <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="plugins/fastclick/fastclick.js"></script>
-
 </body>
 </html>

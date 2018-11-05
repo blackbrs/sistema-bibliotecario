@@ -1,4 +1,3 @@
-  <!-- Navbar -->
 <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -119,4 +118,3 @@
       </li>
     </ul>
   </nav>
-  <!-- /.navbar -->
