@@ -18,5 +18,8 @@
         "lodash": "^4.17.4",
         "popper.js": "^1.14.4",
         "vue": "^2.5.7"
+    },
+    "dependencies": {
+        "admin-lte": "^3.0.0-alpha.2"
     }
 }
