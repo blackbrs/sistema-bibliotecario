@@ -64,6 +64,24 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="../calendar.html" class="nav-link">
+              <i class="nav-icon fa fa-book"></i>
+              <p>
+                Usuarios
+                <span class="badge badge-info right">2</span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../calendar.html" class="nav-link">
+              <i class="nav-icon fa fa-book"></i>
+              <p>
+                Roles
+                <span class="badge badge-info right">2</span>
+              </p>
+            </a>
+          </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-pie-chart"></i>
