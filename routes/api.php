@@ -19,10 +19,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/stats', function (Request $request) {
     if($request->ajax()){
         $data= $request->get('dep');
-    return datatables()->eloquent(\App\User::whereHas('municipio',function($q) use ($data){ //Se puede mejorar la logica y limpiar el codigo (Sprint 2)
-        $q->where('dep_id',$data);
-    }))
-    ->toJson();
+        $q= DB::table('users')->join('municipios','users.municipio_id','=','municipios.id')->where(function($q) use ($data){
+            $q->where('municipios.dep_id',$data);
+        })->get();
+    return datatables()->of($q)->toJson();
     }else{
     //Se puede iniciar la tabla con todos los registros 
     //Este espacio es para $request sin ajax

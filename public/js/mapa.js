@@ -10,12 +10,12 @@ var tabla ='';
                         "data":function(d){d.dep = dep}
                     },
                     "columns":[
-                        {data:'id'},
-                        {data:'nombres'},
-                        {data:'apellidos'},
-                        {data:'telefono'},
-                        {data:'email'},
-                        {data:'municipio_id'},      
+                        {data:'id',name:'users.id'},
+                        {data:'nombres',name:'users.nombres'},
+                        {data:'apellidos',name:'users.apellidos'},
+                        {data:'telefono',name:'users.telefono'},
+                        {data:'email',name:'users.email'},
+                        {data:'nMunicipio',name:'municipios.nMunicipio'}      
         ],
             "language": {
                 "search": "Buscar:",
