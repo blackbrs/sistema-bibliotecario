@@ -4,6 +4,7 @@ var tabla ='';
         tabla =  $('#users').DataTable( {
                     "responsive": true,
                     "serverSide": true,
+                    "autoWidth": false,
                     "ajax": {
                         "url":"api/stats",
                         "data":function(d){d.dep = dep}
@@ -15,9 +16,7 @@ var tabla ='';
                         {data:'telefono',name:'users.telefono'},
                         {data:'email',name:'users.email'},
                         {data:'nMunicipio',name:'municipios.nMunicipio'},
-                        {data:'nMunicipio',name:'municipios.nMunicipio'}, 
-                        {data:'nMunicipio',name:'municipios.nMunicipio'}, 
-                        {data:'nMunicipio',name:'municipios.nMunicipio'}      
+                        {data:'nMunicipio',name:'municipios.nMunicipio'}   
         ],
             "language": {
                 "search": "Buscar:",
@@ -28,7 +27,7 @@ var tabla ='';
                 "infoFiltered": "(De _MAX_ registros totales)",
                 "paginate": {"previous": "Anterior",  "next": "siguiente"}
                 }
-        });
+        }).columns.adjust().responsive.recalc();
     });
 AmCharts.makeChart("map",{
     "type": "map",
@@ -87,7 +86,7 @@ AmCharts.makeChart("map",{
         "method": function(event) {
             if(dep != event.mapObject.id){
             dep = event.mapObject.id;
-            tabla.ajax.reload();  }            
+            tabla.ajax.reload().columns.adjust().responsive.recalc();  }            
 }
       }
     ]
