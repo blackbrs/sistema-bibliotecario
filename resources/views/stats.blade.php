@@ -16,8 +16,8 @@
     <div class="card card-shadow">
     <div class="card-body">
     <div class="row">
-        <div id="map" class="col-sm-6 col-sm-8"></div>
-        <div id="usdiv" class="col-sm-6 col-md-4">
+        <div id="map" class="col-md-6 col-sm-4"></div>
+        <div id="usdiv" class="col-md-6 col-sm-8">
             <div class="card">
                         <div class="card-header">
                                       Usuarios Del Sistema Bibliotecario
