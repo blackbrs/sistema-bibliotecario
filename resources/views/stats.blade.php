@@ -24,8 +24,9 @@
             </div>
             <div class="card-body">
                     <div class="row">
-                            <div id="map" class="col-sm-6"></div>
-                            <div id="usdiv" class="col-sm-6">
+                            <div id="map" class="col-md-6">
+                            </div>
+                            <div id="usdiv" class="col-md-6 col-sm-12">
                                             <table id="users" class="table table-striped table-hover" style="width: 100%;" cellspacing="0">
                                                 <thead>
                                                     <tr>
