@@ -2,8 +2,8 @@
 @section('header')
 
 <link rel="stylesheet" href="css/mapa.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/b-1.5.4/fh-3.1.4/r-2.2.2/sc-1.5.0/datatables.min.css"/>
-<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/b-1.5.4/fh-3.1.4/r-2.2.2/sc-1.5.0/datatables.min.js" defer></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/r-2.2.2/datatables.min.css"/>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/r-2.2.2/datatables.min.js"></script>
 <script type="text/javascript" src={{ asset('js/ammap.js') }}></script>
 <script type="text/javascript" src={{ asset('js/ElSalvador.js') }}></script>
 <script type="text/javascript" src={{ asset('js/mapa.js') }}></script>

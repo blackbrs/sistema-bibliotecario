@@ -4,7 +4,6 @@ var tabla ='';
         tabla =  $('#users').DataTable( {
                     "responsive": true,
                     "serverSide": true,
-                    "autoWidth": true,
                     "ajax": {
                         "url":"api/stats",
                         "data":function(d){d.dep = dep}
@@ -15,6 +14,9 @@ var tabla ='';
                         {data:'apellidos',name:'users.apellidos'},
                         {data:'telefono',name:'users.telefono'},
                         {data:'email',name:'users.email'},
+                        {data:'nMunicipio',name:'municipios.nMunicipio'},
+                        {data:'nMunicipio',name:'municipios.nMunicipio'}, 
+                        {data:'nMunicipio',name:'municipios.nMunicipio'}, 
                         {data:'nMunicipio',name:'municipios.nMunicipio'}      
         ],
             "language": {
