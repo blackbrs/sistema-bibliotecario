@@ -13,15 +13,22 @@ class CreateRecursosTable extends Migration
      */
     public function up()
     {
+        Schema::create('autors', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('nombres');
+            $table->string('apellidos');
+            $table->timestamps();
+        });
+
         Schema::create('recursos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('titulo');
             $table->string('descripcion');
             $table->integer('autor_id')->nullable();
-            $table->integer('genero_id')->nullable();
+            //$table->integer('genero_id')->nullable();
             $table->integer('biblioteca_id')->nullable();
-            $table->foreign('autor_id')->references('id')->on('autores');
-            $table->foreign('genero_id')->references('id')->on('generos');
+            $table->foreign('autor_id')->references('id')->on('autors');
+            //$table->foreign('genero_id')->references('id')->on('generos');
             $table->foreign('biblioteca_id')->references('id')->on('bibliotecas');
             $table->boolean('digital');
             $table->string('categoria');
@@ -37,6 +44,8 @@ class CreateRecursosTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('autors');
         Schema::dropIfExists('recursos');
+        
     }
 }
