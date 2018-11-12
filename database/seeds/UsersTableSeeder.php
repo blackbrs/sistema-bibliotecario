@@ -50,6 +50,7 @@ class UsersTableSeeder extends Seeder
             'user_id'=>'1'
         ]);
        
+        factory(User::class,1050)->create();
         
     }
 }
