@@ -25,6 +25,7 @@ class CreateRecursosTable extends Migration
             $table->string('titulo');
             $table->string('descripcion');
             $table->integer('autor_id')->nullable();
+            $table->string('thumb');
             //$table->integer('genero_id')->nullable();
             $table->integer('biblioteca_id')->nullable();
             $table->foreign('autor_id')->references('id')->on('autors');
