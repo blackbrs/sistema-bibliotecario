@@ -7,6 +7,7 @@ var tabla ='';
                     "autoWidth": false,
                     "ajax": {
                         "url":"api/stats",
+                        "type": "POST",
                         "data":function(d){d.dep = dep}
                     },
                     "columns":[
@@ -16,7 +17,7 @@ var tabla ='';
                         {data:'telefono',name:'users.telefono'},
                         {data:'email',name:'users.email'},
                         {data:'nMunicipio',name:'municipios.nMunicipio'},
-                        {data:'nMunicipio',name:'municipios.nMunicipio'}   
+                        {data:'nMunicipio',name:'municipios.nMunicipio'},   
         ],
             "language": {
                 "search": "Buscar:",

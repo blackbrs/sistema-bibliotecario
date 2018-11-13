@@ -16,12 +16,11 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/stats', function (Request $request) {
+Route::post('/stats', function (Request $request) {
     if($request->ajax()){
         $data= $request->get('dep');
-        $q= DB::table('users')->join('municipios','users.municipio_id','=','municipios.id')->where(function($q) use ($data){
-            $q->where('municipios.dep_id',$data);
-        })->get();
+        
+        $q= DB::table('users')->join('municipios','users.municipio_id','=','municipios.id')->where(function($q) use ($data){$q->where('municipios.dep_id',$data);});
     return datatables()->of($q)->toJson();
     }else{
     //Se puede iniciar la tabla con todos los registros 
