@@ -63,13 +63,5 @@
 <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="plugins/fastclick/fastclick.js"></script>
-<script>
-$(document).ready(function(){
-  $('ul li a').click(function(){
-    $('li a').removeClass("active");
-    $(this).addClass("active");
-});
-});
-</script>
 </body>
 </html>

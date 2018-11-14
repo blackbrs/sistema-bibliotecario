@@ -27,7 +27,7 @@
                with font-awesome or any other icon font library -->
           @can('bibliotecas.index')     
           <li class="nav-item">
-            <a href="{{ route('bibliotecas.index') }}" class="nav-link">
+            <a href="{{ route('bibliotecas.index') }}" class="nav-link {{request()->is('bibliotecas')? 'active':''}}">
               <i class="nav-icon fa fa-book-open"></i>
               <p>
                 Bibliotecas
@@ -37,7 +37,7 @@
           @endcan
           @can('users.index')
           <li class="nav-item">
-            <a href="{{ route('users.index') }}" class="nav-link">
+            <a href="{{ route('users.index') }}" class="nav-link {{request()->is('users')? 'active':''}}">
               <i class="nav-icon fa fa-users"></i>
               <p>
                 Usuarios
@@ -47,7 +47,7 @@
           @endcan
           @can('roles.index')
           <li class="nav-item">
-            <a href="{{ route('roles.index') }}" class="nav-link">
+            <a href="{{ route('roles.index') }}" class="nav-link {{request()->is('roles')? 'active':''}}">
               <i class="nav-icon far fa-address-book"></i>
               <p>
                 Roles
@@ -56,7 +56,10 @@
           </li>
           @endcan
           @can('user.stats')
-          <li class="nav-item has-treeview">
+          @if(\Request::route()->getName() == 'stats')
+          <li class="nav-item has-treeview open menu-open">
+          @else <li class="nav-item has-treeview">
+          @endif 
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
@@ -66,7 +69,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('stats') }}" class="nav-link {{request()->is('stats')? 'active':''}}">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Usuarios</p>
                 </a>
