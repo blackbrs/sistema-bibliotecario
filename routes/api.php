@@ -16,7 +16,7 @@ use \App\User;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/stats', function (Request $request) {
+Route::post('/stats', function (Request $request) {
     if($request->ajax()){
     return datatables(User::join('municipios','users.municipio_id','=','municipios.id')
            ->where('municipios.dep_id',$request->get('dep')))
