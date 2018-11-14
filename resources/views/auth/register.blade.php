@@ -138,6 +138,8 @@ $(document).ready(function() {
                              </select>
                          </div>
                         </div>
+
+                        
                         <div class="form-group row">
                          <label for="biblioteca_id" class="col-md-4 col-form-label text-md-right">Biblioteca a inscribirse</label>
                             <div class="col-md-6">

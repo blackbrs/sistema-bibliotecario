@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Departamento, \App\Municipio;
+use App\Autor;
 use Illuminate\Http\Request;
-use DB;
-class DepartamentoController extends Controller
+
+class AutorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,16 +16,7 @@ class DepartamentoController extends Controller
     {
         //
     }
-    public function getMunicipios(Request $request){
-        $dependent = $request->get('dependent');
-        $data = Municipio::where($request->select, $request->value)->get();
-        $output = '<option value="">Seleccionar municipio</option>';
-        foreach($data as $row){
-            $output .= '<option value="'.$row->id.'">'.$row->$dependent.'</option>';
-        }
-        echo $output;
-    }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -50,10 +41,10 @@ class DepartamentoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Departamento  $departamento
+     * @param  \App\Autor  $autor
      * @return \Illuminate\Http\Response
      */
-    public function show(Departamento $departamento)
+    public function show(Autor $autor)
     {
         //
     }
@@ -61,10 +52,10 @@ class DepartamentoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Departamento  $departamento
+     * @param  \App\Autor  $autor
      * @return \Illuminate\Http\Response
      */
-    public function edit(Departamento $departamento)
+    public function edit(Autor $autor)
     {
         //
     }
@@ -73,10 +64,10 @@ class DepartamentoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Departamento  $departamento
+     * @param  \App\Autor  $autor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Departamento $departamento)
+    public function update(Request $request, Autor $autor)
     {
         //
     }
@@ -84,10 +75,10 @@ class DepartamentoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Departamento  $departamento
+     * @param  \App\Autor  $autor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Departamento $departamento)
+    public function destroy(Autor $autor)
     {
         //
     }

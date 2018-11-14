@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-
+use \App\User;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,16 +16,12 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('/stats', function (Request $request) {
+Route::get('/stats', function (Request $request) {
     if($request->ajax()){
-        $data= $request->get('dep');
-        
-        $q= DB::table('users')->join('municipios','users.municipio_id','=','municipios.id')->where(function($q) use ($data){$q->where('municipios.dep_id',$data);});
-    return datatables()->of($q)->toJson();
-    }else{
-    //Se puede iniciar la tabla con todos los registros 
-    //Este espacio es para $request sin ajax
-    //Siempre con render serverside de DTables
+    return datatables(User::join('municipios','users.municipio_id','=','municipios.id')
+           ->where('municipios.dep_id',$request->get('dep')))
+           ->toJson();
+    }else{//Este espacio es para $request sin ajax - Se puede iniciar la tabla con todos los registros 
     }
 });
 

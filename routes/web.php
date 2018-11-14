@@ -22,7 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 // RUTAS que tendran como requisitos almenos estar loggeados
 Route::middleware(['auth'])->group(function(){
         
-    //bibliotecas
+    //roles
 
 Route::post('roles/store', 'RoleController@store')->name('roles.store')
         ->middleware('permission:roles.create');
