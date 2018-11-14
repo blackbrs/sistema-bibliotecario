@@ -1,0 +1,10 @@
+@media (max-width: 1070px){
+    .dataTables_filter {
+        display: inline;
+        }
+}
+
+#users {
+    table-layout: absolute;
+    width: 100% !important;
+  }

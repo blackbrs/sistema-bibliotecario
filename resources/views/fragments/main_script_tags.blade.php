@@ -8,4 +8,4 @@
 <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 <!-- Styles -->
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<link rel="stylesheet" href={{asset('css/mFix.css')}}>
+<link href="{{ asset('css/mFix.css') }}" rel="stylesheet">

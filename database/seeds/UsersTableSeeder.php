@@ -51,6 +51,5 @@ class UsersTableSeeder extends Seeder
         ]);
        
         factory(User::class,1050)->create();
-        
     }
 }

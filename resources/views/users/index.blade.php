@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
   <div class="row justify-content-center">
     <div class="row">
-       
+       <div class="col-12">
         <div class="card">
           
             <div class="panel panel-default">
@@ -16,7 +16,6 @@
 
 
            <div class="card-body">          
-                <div class="panel-body">
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
@@ -66,7 +65,6 @@
                         </tbody>
                     </table>
                     {{ $users->render() }}
-                </div>
             </div>
         </div>
         <div class="card-footer">
@@ -78,6 +76,7 @@
 
     </div>
 
+</div>
 </div>
 </div>
 @endsection

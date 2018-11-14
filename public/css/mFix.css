@@ -1,8 +1,7 @@
 /*Layout base*/
-.navbar{
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-  }
+::-webkit-scrollbar { 
+  display: none; 
+}
   /*Formularios*/
 textarea {
     resize: none; 
@@ -15,7 +14,8 @@ list-style-type: none;
 .scrollbar
 {
   height: 300px;
-	overflow-y: scroll;
+  overflow-y: scroll;
+  
 }
 
 
