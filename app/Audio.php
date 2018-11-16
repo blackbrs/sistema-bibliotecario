@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Autor extends Model
+class Audio extends Model
 {
-    
+    //
 }
