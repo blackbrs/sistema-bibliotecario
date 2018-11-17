@@ -19,6 +19,7 @@ class CreateFisicosTable extends Migration
             $table->integer('unidadesDisponibles');
             $table->integer('prestamosRealizados');
             $table->timestamps();
+            $table->morphs('linkable');
         });
         Schema::create('digitals', function (Blueprint $table) {
             $table->increments('id');
@@ -26,6 +27,7 @@ class CreateFisicosTable extends Migration
             $table->string('path');
             $table->string('formato');
             $table->timestamps();
+            $table->morphs('linkable');
         });
     }
 

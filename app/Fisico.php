@@ -8,8 +8,9 @@ class Fisico extends Model
 {
     protected $fillable = ['Copias','UnidadesDisponibles','VecesPrestado'];
     public $timestamps = true;
-    public function recurso()
+    
+    public function linkable()
     {
-        return $this->morphMany(\App\Recurso::class, 'linkable');
+        return $this->morphTo();
     }
 }
