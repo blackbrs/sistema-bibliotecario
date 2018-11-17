@@ -15,9 +15,9 @@ class CreateFisicosTable extends Migration
     {
         Schema::create('fisicos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('Copias');
-            $table->integer('UnidadesDisponibles');
-            $table->integer('VecesPrestado');
+            $table->integer('copias');
+            $table->integer('unidadesDisponibles');
+            $table->integer('prestamosRealizados');
             $table->timestamps();
         });
         Schema::create('digitals', function (Blueprint $table) {

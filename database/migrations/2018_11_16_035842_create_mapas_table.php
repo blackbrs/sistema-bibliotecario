@@ -16,7 +16,6 @@ class CreateMapasTable extends Migration
         Schema::create('mapas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('region');
-            $table->timestamps();
         });
     }
 

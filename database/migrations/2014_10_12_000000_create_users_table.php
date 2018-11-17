@@ -16,7 +16,6 @@ class CreateUsersTable extends Migration
         Schema::create('departamentos', function (Blueprint $table) {
             $table->string("id")->primary();
             $table->string('nDepartamento');
-            $table->timestamps();
         });
 
         Schema::create('municipios', function (Blueprint $table) {
@@ -24,7 +23,6 @@ class CreateUsersTable extends Migration
             $table->string('dep_id');
             $table->foreign('dep_id')->references('id')->on('departamentos');
             $table->string('nMunicipio');
-            $table->timestamps();
         });
 
         Schema::create('users', function (Blueprint $table) {

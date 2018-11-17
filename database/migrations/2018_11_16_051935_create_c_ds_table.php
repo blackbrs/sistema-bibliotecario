@@ -15,9 +15,9 @@ class CreateCDsTable extends Migration
     {
         Schema::create('cds', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('NumeroPistas');
+            $table->integer('nPistas');
             $table->integer('duracion');
-            $table->timestamps();
+  
         });
     }
 
@@ -28,6 +28,6 @@ class CreateCDsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('c_ds');
+        Schema::dropIfExists('cds');
     }
 }

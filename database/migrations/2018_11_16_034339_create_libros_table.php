@@ -19,7 +19,6 @@ class CreateLibrosTable extends Migration
             $table->string('volumen');
             $table->string('ISBN', 13);
             $table->integer('paginas');
-            $table->timestamps();
         });
     }
 

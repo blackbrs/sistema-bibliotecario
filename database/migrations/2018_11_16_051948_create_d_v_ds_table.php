@@ -16,7 +16,6 @@ class CreateDVDsTable extends Migration
         Schema::create('dvds', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('duracion');
-            $table->timestamps();
         });
     }
 
@@ -27,6 +26,6 @@ class CreateDVDsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('d_v_ds');
+        Schema::dropIfExists('dvds');
     }
 }

@@ -16,7 +16,6 @@ class CreatePlanosTable extends Migration
         Schema::create('planos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('dimension');
-            $table->timestamps();
         });
     }
 
