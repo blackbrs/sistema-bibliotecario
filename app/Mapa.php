@@ -8,4 +8,9 @@ class Mapa extends Model
 {
     protected $fillable = ['region'];
     public $timestamps = false;
+
+    public function fisico()
+    {
+        return $this->morphOne(Fisico::class, 'fisLink');
+    }
 }

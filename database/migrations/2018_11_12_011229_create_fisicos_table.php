@@ -19,6 +19,7 @@ class CreateFisicosTable extends Migration
             $table->integer('unidadesDisponibles');
             $table->integer('prestamosRealizados');
             $table->timestamps();
+            $table->morphs('fisLink');
           //$table->morphs('linkable');
             //$table->unsignedInteger("recurso_id")->after('formato');
             //$table->string("recurso_type")->after('recurso_id');
@@ -30,6 +31,7 @@ class CreateFisicosTable extends Migration
             $table->string('path');
             $table->string('formato');
             $table->timestamps();
+            $table->morphs('digLink');
           //$table->morphs('linkable');
             //$table->unsignedInteger("recurso_id")->nullable()->after('formato');
             //$table->string("recurso_type")->nullable()->after('recurso_id');

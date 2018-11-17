@@ -32,7 +32,7 @@ class CreateRecursosTable extends Migration
             $table->foreign('biblioteca_id')->references('id')->on('bibliotecas');
             $table->boolean('versionDigital');
             $table->string('categoria');
-            $tanñe->morphs('recurso');
+            $table->morphs('recursoLink');
             $table->timestamps();
 
         });

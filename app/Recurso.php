@@ -8,12 +8,8 @@ class Recurso extends Model
 {
     protected $fillable = ['titulo', 'descripcion','autor_id','año','thumb','biblioteca_id','versionDigital','categoria','genero'];
 
-    public function fisico()
+    public function recursoLink()
     {
-        return $this->morphOne(\App\Fisico::class, 'recurso');
-    }
-    public function digital()
-    {
-        return $this->morphOne(\App\Digital::class, 'recurso');
+        return $this->morphTo();
     }
 }

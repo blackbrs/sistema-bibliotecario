@@ -8,4 +8,9 @@ class CD extends Model
 {
     protected $fillable = ['nPistas','duracion'];
     public $timestamps = false; 
+
+    public function fisico()
+    {
+        return $this->morphOne(Fisico::class, 'fisLink');
+    }
 }

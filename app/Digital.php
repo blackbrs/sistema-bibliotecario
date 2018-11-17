@@ -11,6 +11,10 @@ class Digital extends Model
 
     public function recurso()
     {
+        return $this->morphOne(Recurso::class, 'recursoLink');
+    }
+    public function digLink()
+    {
         return $this->morphTo();
     }
 }

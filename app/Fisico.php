@@ -8,8 +8,12 @@ class Fisico extends Model
 {
     protected $fillable = ['copias','unidadesDisponibles','prestamosRealizados'];
     public $timestamps = true;
-    protected $hidden = ['recurso_id','recurso_type','created_at'];
+
     public function recurso()
+    {
+        return $this->morphOne(Recurso::class, 'recursoLink');
+    }
+    public function fisLink()
     {
         return $this->morphTo();
     }
