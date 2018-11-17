@@ -8,8 +8,9 @@ class Digital extends Model
 {
     protected $fillable = ['peso','path','formato'];
     public $timestamps = true;
+
     public function recurso()
     {
-        return $this->morphMany(\App\Recurso::class, 'linkable');
+        return $this->morphTo();
     }
 }

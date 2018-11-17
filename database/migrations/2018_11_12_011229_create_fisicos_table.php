@@ -19,7 +19,10 @@ class CreateFisicosTable extends Migration
             $table->integer('unidadesDisponibles');
             $table->integer('prestamosRealizados');
             $table->timestamps();
-            $table->morphs('linkable');
+          //$table->morphs('linkable');
+            //$table->unsignedInteger("recurso_id")->after('formato');
+            //$table->string("recurso_type")->after('recurso_id');
+            //$table->index(["recurso_id", "recurso_type"]);
         });
         Schema::create('digitals', function (Blueprint $table) {
             $table->increments('id');
@@ -27,7 +30,10 @@ class CreateFisicosTable extends Migration
             $table->string('path');
             $table->string('formato');
             $table->timestamps();
-            $table->morphs('linkable');
+          //$table->morphs('linkable');
+            //$table->unsignedInteger("recurso_id")->nullable()->after('formato');
+            //$table->string("recurso_type")->nullable()->after('recurso_id');
+            //$table->index(["recurso_id", "recurso_type"]);
         });
     }
 

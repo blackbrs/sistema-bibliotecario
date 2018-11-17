@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Fisico extends Model
 {
-    protected $fillable = ['Copias','UnidadesDisponibles','VecesPrestado'];
+    protected $fillable = ['copias','unidadesDisponibles','prestamosRealizados'];
     public $timestamps = true;
-    
-    public function linkable()
+    protected $hidden = ['recurso_id','recurso_type','created_at'];
+    public function recurso()
     {
         return $this->morphTo();
     }

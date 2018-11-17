@@ -17,7 +17,6 @@ class CreateTesesTable extends Migration
             $table->increments('id');
             $table->string('carrera');
             $table->integer('paginas');
-            $table->timestamps();
         });
     }
 
