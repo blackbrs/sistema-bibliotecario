@@ -4,11 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Departamento;
-use App\Biblioteca;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use DB;
 class RegisterController extends Controller
 {
     /*
@@ -96,8 +95,8 @@ class RegisterController extends Controller
         ]);
     }
     public function showregistrationform()
-    {   $biblioteca = Biblioteca::all();
-        $lista_dep = Departamento::all();
+    {   $biblioteca = DB::table('bibliotecas')->get();
+        $lista_dep = DB::table('departamentos')->get(); // get all
         return view('auth.register', compact('lista_dep','biblioteca'));
     }
     

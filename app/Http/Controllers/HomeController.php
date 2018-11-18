@@ -28,7 +28,4 @@ class HomeController extends Controller
         }
         else return view('home');
     }
-    public function uploadFile(){
-        return view('upload');
-    }
 }
