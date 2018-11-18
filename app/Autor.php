@@ -8,4 +8,8 @@ class Autor extends Model
 {
     protected $fillable = ['nombres','apellidos'];
     public $timestamps = false;
+
+    public function recursos(){
+        return $this->hasMany(Recurso::class);
+    }
 }

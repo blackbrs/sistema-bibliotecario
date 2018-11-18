@@ -12,4 +12,8 @@ class Recurso extends Model
     {
         return $this->morphTo();
     }
+    public function autor(){
+        return $this->belongsTo(Autor::class);
+    }
+
 }
