@@ -27,7 +27,7 @@
                with font-awesome or any other icon font library -->
           @can('bibliotecas.index')     
           <li class="nav-item">
-            <a href="{{ route('bibliotecas.index') }}" class="nav-link {{request()->is('bibliotecas')? 'active':''}}">
+            <a href="{{ route('upload') }}" class="nav-link {{request()->is('upload')? 'active':''}}">
               <i class="nav-icon fa fa-book-open"></i>
               <p>
                 Bibliotecas

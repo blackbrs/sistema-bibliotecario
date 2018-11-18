@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Departamento, \App\Municipio;
+use App\Departamento;
+use App\Municipio;
 use Illuminate\Http\Request;
 use DB;
 class DepartamentoController extends Controller
@@ -18,7 +19,7 @@ class DepartamentoController extends Controller
     }
     public function getMunicipios(Request $request){
         $dependent = $request->get('dependent');
-        $data = Municipio::where($request->select, $request->value)->get();
+        $data = \App\Municipio::where($request->select, $request->value)->get();
         $output = '<option value="">Seleccionar municipio</option>';
         foreach($data as $row){
             $output .= '<option value="'.$row->id.'">'.$row->$dependent.'</option>';
