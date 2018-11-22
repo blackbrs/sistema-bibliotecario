@@ -11,6 +11,9 @@ class Plano extends Model
 
     public function digital()
     {
-        return $this->morphOne(Digital::class, 'digLink');
+        return $this->morphOne(Digital::class, 'linkable');
+    }
+    public function recurso(){
+        return $this->belongsTo(Recurso::class);
     }
 }

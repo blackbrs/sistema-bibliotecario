@@ -28,4 +28,20 @@ class HomeController extends Controller
         }
         else return view('home');
     }
+    public function upload(){
+        return view('upload');
+    }
+    public function uploadPost(Request $request){
+        $request->validate([
+            'fileToUpload' => 'required|file|max:46000',
+        ]);
+        $nombre = definirNombre($request);
+        $request->fileToUpload->storeAs('thumbs',$nombre);
+
+        return back()
+            ->with('success','Archivo subido con exito');
+
+    }
+
+    
 }

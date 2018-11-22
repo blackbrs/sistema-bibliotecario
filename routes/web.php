@@ -18,7 +18,14 @@ Route::get('/', function () {
 Auth::routes();
 Route::post('getmunicipio/fetch', 'DepartamentoController@getMunicipios');
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('upload','HomeController@upload')->name('upload');
+Route::post('upload','HomeController@uploadPost');
+Route::get('/recurso/create/p1','RecursoController@createP1');
+Route::post('/recurso/create/p1','RecursoController@postCreateP1');
+Route::get('/recurso/create/p2', 'RecursoController@createP2');
+Route::post('/recurso/create/p2', 'RecursoController@postCreateP2');
+Route::get('/recurso/create/p3', 'RecursoController@createP3');
+Route::post('/recurso/store', 'RecursoController@store');
 // RUTAS que tendran como requisitos almenos estar loggeados
 Route::middleware(['auth'])->group(function(){
         

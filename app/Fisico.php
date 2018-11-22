@@ -9,11 +9,7 @@ class Fisico extends Model
     protected $fillable = ['copias','unidadesDisponibles','prestamosRealizados'];
     public $timestamps = true;
 
-    public function recurso()
-    {
-        return $this->morphOne(Recurso::class, 'recursoLink');
-    }
-    public function fisLink()
+    public function linkable()
     {
         return $this->morphTo();
     }

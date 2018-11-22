@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <img src="img/AdminLTELogo.png"
+      <img src="/img/AdminLTELogo.png"
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
            style="opacity: .8">
@@ -37,7 +37,7 @@
           @endcan
           @can('users.index')
           <li class="nav-item">
-            <a href="{{ route('users.index') }}" class="nav-link {{request()->is('users')? 'active':''}}">
+            <a href="{{ route('upload') }}" class="nav-link {{request()->is('upload')? 'active':''}}">
               <i class="nav-icon fa fa-users"></i>
               <p>
                 Usuarios

@@ -24,15 +24,16 @@ class CreateRecursosTable extends Migration
             $table->string('titulo');
             $table->string('descripcion');
             $table->integer('año');
-            $table->string('thumb');
-            $table->integer('autor_id')->nullable();
+            $table->string('autor');
+            $table->string('thumb')->nullable();
+            //$table->integer('autor_id')->nullable();
             $table->integer('biblioteca_id')->nullable();
-            $table->foreign('autor_id')->references('id')->on('autors');
+            //$table->foreign('autor_id')->references('id')->on('autors');
             $table->string('genero');
             $table->foreign('biblioteca_id')->references('id')->on('bibliotecas');
             $table->boolean('versionDigital');
             $table->string('categoria');
-            $table->morphs('recursoLink');
+            $table->string('principal');
             $table->timestamps();
 
         });

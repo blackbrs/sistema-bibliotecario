@@ -9,11 +9,7 @@ class Digital extends Model
     protected $fillable = ['peso','path','formato'];
     public $timestamps = true;
 
-    public function recurso()
-    {
-        return $this->morphOne(Recurso::class, 'recursoLink');
-    }
-    public function digLink()
+    public function linkable()
     {
         return $this->morphTo();
     }

@@ -11,6 +11,9 @@ class CD extends Model
 
     public function fisico()
     {
-        return $this->morphOne(Fisico::class, 'fisLink');
+        return $this->morphOne(Fisico::class, 'linkable');
+    }
+    public function recurso(){
+        return $this->belongsTo(Recurso::class);
     }
 }
