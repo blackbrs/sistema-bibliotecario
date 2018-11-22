@@ -111,6 +111,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                  <a href="{{ route('editorials.index') }}" class="nav-link {{request()->is('editorials')? 'active':''}}">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Editoriales</p>
+                  </a>
+                </li>
+              <li class="nav-item">
                 <a href="../tables/data.html" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Otro</p>
