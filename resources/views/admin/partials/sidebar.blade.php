@@ -30,7 +30,7 @@
             <a href="{{ route('bibliotecas.index') }}" class="nav-link {{request()->is('bibliotecas')? 'active':''}}">
               <i class="nav-icon fa fa-book-open"></i>
               <p>
-                Bibliotecas
+                Bibliotecas 
               </p>
             </a>
           </li>
@@ -102,6 +102,12 @@
                 <a href="../tables/simple.html" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Gestionar</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('autors.index') }}" class="nav-link {{request()->is('autors')? 'active':''}}">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Autores</p>
                 </a>
               </li>
               <li class="nav-item">

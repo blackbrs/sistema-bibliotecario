@@ -14,7 +14,8 @@ class AutorController extends Controller
      */
     public function index()
     {
-        //
+        $autor = Autor::paginate();
+        return view('autors.index',compact('autor'));
     }
 
     /**
@@ -24,7 +25,7 @@ class AutorController extends Controller
      */
     public function create()
     {
-        //
+        return view('autors.create');
     }
 
     /**
@@ -35,7 +36,10 @@ class AutorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $autor = Autor::create($request->all());
+        $autor2 = Autor::paginate();
+        return redirect()->route('autors.index',$autor2)
+        ->with('info','Autor guardado con exito.');
     }
 
     /**
@@ -57,7 +61,7 @@ class AutorController extends Controller
      */
     public function edit(Autor $autor)
     {
-        //
+        return view('autors.edit',compact('autor'));
     }
 
     /**
@@ -69,7 +73,10 @@ class AutorController extends Controller
      */
     public function update(Request $request, Autor $autor)
     {
-        //
+        $autor->update($request->all());
+        $autor2 = Autor::paginate();
+        return redirect()->route('autors.index',$autor2)
+        ->with('info', 'Autor actualizada con exito');
     }
 
     /**
@@ -80,6 +87,7 @@ class AutorController extends Controller
      */
     public function destroy(Autor $autor)
     {
-        //
+        $autor->delete();
+        return back()->with('info', 'Autor Eliminado con exito');
     }
 }

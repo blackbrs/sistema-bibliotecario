@@ -97,3 +97,48 @@ Route::delete('bibliotecas/{biblioteca}', 'BibliotecaController@destroy')->name(
 
 Route::get('bibliotecas/{biblioteca}/edit', 'BibliotecaController@edit')->name('bibliotecas.edit')
         ->middleware('permission:bibliotecas.edit');
+
+/****************************************  AUTORES*****************************************************/ 
+
+Route::post('autors/store', 'AutorController@store')->name('autors.store')
+        ->middleware('permission:autors.create');
+
+Route::get('autors', 'AutorController@index')->name('autors.index')
+        ->middleware('permission:autors.index');
+
+Route::get('autors/create', 'AutorController@create')->name('autors.create')
+       ->middleware('permission:autors.create');
+
+Route::put('autors/{autor}', 'AutorController@update')->name('autors.update')
+        ->middleware('permission:autors.edit');
+
+Route::get('autors/{autor}', 'AutorController@show')->name('autors.show')
+        ->middleware('permission:autors.show');
+
+Route::delete('autors/{autor}', 'AutorController@destroy')->name('autors.destroy')
+        ->middleware('permission:autors.destroy');
+
+Route::get('autors/{autor}/edit', 'AutorController@edit')->name('autors.edit')
+        ->middleware('permission:autors.edit');
+
+/***************************************************Editoriales.**************************************************/
+Route::post('editorials/store', 'EditorialController@store')->name('editorials.store')
+        ->middleware('permission:editorials.create');
+
+Route::get('edictorials', 'EditorialController@index')->name('editorials.index')
+        ->middleware('permission:editorials.index');
+
+Route::get('editorials/create', 'EditorialController@create')->name('editorials.create')
+       ->middleware('permission:editorials.create');
+
+Route::put('editorials/{editorial}', 'EditorialController@update')->name('editorials.update')
+        ->middleware('permission:editorials.edit');
+
+Route::get('editorials/{editorial}', 'EditorialController@show')->name('editorials.show')
+        ->middleware('permission:editorials.show');
+
+Route::delete('editorials/{editorial}', 'EditorialController@destroy')->name('editorials.destroy')
+        ->middleware('permission:editotials.destroy');
+
+Route::get('editorials/{editorial}/edit', 'EditorialController@edit')->name('editorials.edit')
+        ->middleware('permission:editorials.edit');
