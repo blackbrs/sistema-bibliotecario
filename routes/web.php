@@ -18,62 +18,61 @@ Route::get('/', function () {
 Auth::routes();
 Route::post('getmunicipio/fetch', 'DepartamentoController@getMunicipios');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('upload','HomeController@upload')->name('upload');
-Route::post('upload','HomeController@uploadPost');
-Route::get('/recurso/create/p1','RecursoController@createP1');
-Route::post('/recurso/create/p1','RecursoController@postCreateP1');
+Route::get('upload', 'HomeController@upload')->name('upload');
+Route::post('upload', 'HomeController@uploadPost');
+Route::get('/recurso/create/p1', 'RecursoController@createP1');
+Route::post('/recurso/create/p1', 'RecursoController@postCreateP1');
 Route::get('/recurso/create/p2', 'RecursoController@createP2');
 Route::post('/recurso/create/p2', 'RecursoController@postCreateP2');
 Route::get('/recurso/create/p3', 'RecursoController@createP3');
 Route::post('/recurso/store', 'RecursoController@store');
 // RUTAS que tendran como requisitos almenos estar loggeados
-Route::middleware(['auth'])->group(function(){
-        
+Route::middleware(['auth'])->group(function () {
     //roles
 
-Route::post('roles/store', 'RoleController@store')->name('roles.store')
+    Route::post('roles/store', 'RoleController@store')->name('roles.store')
         ->middleware('permission:roles.create');
 
-Route::get('roles', 'RoleController@index')->name('roles.index')
+    Route::get('roles', 'RoleController@index')->name('roles.index')
         ->middleware('permission:roles.index');
 
-Route::get('roles/create', 'RoleController@create')->name('roles.create')
+    Route::get('roles/create', 'RoleController@create')->name('roles.create')
        ->middleware('permission:roles.create');
 
-Route::put('roles/{role}', 'RoleController@update')->name('roles.update')
+    Route::put('roles/{role}', 'RoleController@update')->name('roles.update')
         ->middleware('permission:roles.edit');
 
-Route::get('roles/{role}', 'RoleController@show')->name('roles.show')
+    Route::get('roles/{role}', 'RoleController@show')->name('roles.show')
         ->middleware('permission:roles.show');
 
-Route::delete('roles/{role}', 'RoleController@destroy')->name('roles.destroy')
+    Route::delete('roles/{role}', 'RoleController@destroy')->name('roles.destroy')
         ->middleware('permission:roles.destroy');
 
-Route::get('roles/{role}/edit', 'RoleController@edit')->name('roles.edit')
+    Route::get('roles/{role}/edit', 'RoleController@edit')->name('roles.edit')
         ->middleware('permission:roles.edit');
 
-// Route::get('/roles/create/fetch', 'RoleController@fetch'); Paginacion con AJAX
+    // Route::get('/roles/create/fetch', 'RoleController@fetch'); Paginacion con AJAX
 
-//Usuarios
+    //Usuarios
 
-
-Route::get('users', 'UserController@index')->name('users.index')
+    Route::get('users', 'UserController@index')->name('users.index')
         ->middleware('permission:users.index');
 
-Route::put('users/{user}', 'UserController@update')->name('users.update')
+    Route::put('users/{user}', 'UserController@update')->name('users.update')
         ->middleware('permission:users.edit');
 
-Route::get('users/{user}', 'UserController@show')->name('users.show')
+    Route::get('users/{user}', 'UserController@show')->name('users.show')
         ->middleware('permission:users.show');
 
-Route::delete('users/{user}', 'UserController@destroy')->name('users.destroy')
+    Route::delete('users/{user}', 'UserController@destroy')->name('users.destroy')
         ->middleware('permission:users.destroy');
 
-Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit')
+    Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit')
         ->middleware('permission:users.edit');
 
-//Estadisticas
-Route::get('stats', function(){return view('stats');})->name('stats')->middleware('permission:users.stats');});
+    //Estadisticas
+    Route::get('stats', function () {return view('stats'); })->name('stats')->middleware('permission:users.stats');
+});
 
 //Bibliotecas
 
@@ -98,7 +97,7 @@ Route::delete('bibliotecas/{biblioteca}', 'BibliotecaController@destroy')->name(
 Route::get('bibliotecas/{biblioteca}/edit', 'BibliotecaController@edit')->name('bibliotecas.edit')
         ->middleware('permission:bibliotecas.edit');
 
-/****************************************  AUTORES*****************************************************/ 
+/****************************************  AUTORES*****************************************************/
 
 Route::post('autors/store', 'AutorController@store')->name('autors.store')
         ->middleware('permission:autors.create');
@@ -125,7 +124,7 @@ Route::get('autors/{autor}/edit', 'AutorController@edit')->name('autors.edit')
 Route::post('editorials/store', 'EditorialController@store')->name('editorials.store')
         ->middleware('permission:editorials.create');
 
-Route::get('edictorials', 'EditorialController@index')->name('editorials.index')
+Route::get('editorials', 'EditorialController@index')->name('editorials.index')
         ->middleware('permission:editorials.index');
 
 Route::get('editorials/create', 'EditorialController@create')->name('editorials.create')
