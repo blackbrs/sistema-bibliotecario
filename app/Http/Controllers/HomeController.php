@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 class HomeController extends Controller
 {
     /**
@@ -33,11 +33,15 @@ class HomeController extends Controller
     }
     public function uploadPost(Request $request){
         $request->validate([
-            'fileToUpload' => 'required|file|max:46000',
+            'file' => 'required|file|max:46000',
         ]);
-        $nombre = definirNombre($request);
-        $request->fileToUpload->storeAs('thumbs',$nombre);
-
+        // Set the destination path
+        $destinationPath = 'public/uploads/';
+        // Store the file and it's destination path INCLUDING THE NEW FILENAME
+        $storagePath = Storage::disk('local')->put($destinationPath, $request->file);
+        // Extract the filename
+        $storageName = basename($storagePath);
+        dd($storageName);
         return back()
             ->with('success','Archivo subido con exito');
 

@@ -18,17 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 Route::post('getmunicipio/fetch', 'DepartamentoController@getMunicipios');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('upload','HomeController@upload')->name('upload');
-Route::post('upload','HomeController@uploadPost');
-Route::get('/recurso/create/p1','RecursoController@createP1');
-Route::post('/recurso/create/p1','RecursoController@postCreateP1');
-Route::get('/recurso/create/p2', 'RecursoController@createP2');
-Route::post('/recurso/create/p2', 'RecursoController@postCreateP2');
-Route::get('/recurso/create/p3', 'RecursoController@createP3');
-Route::post('/recurso/store', 'RecursoController@store');
+Route::post('/upload', 'HomeController@uploadPost');
+Route::get('/upload', 'HomeController@upload');
 // RUTAS que tendran como requisitos almenos estar loggeados
-Route::middleware(['auth'])->group(function(){
-        
+Route::middleware(['auth'])->group(function(){  
+  
     //roles
 
 Route::post('roles/store', 'RoleController@store')->name('roles.store')
@@ -73,7 +67,17 @@ Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit')
         ->middleware('permission:users.edit');
 
 //Estadisticas
-Route::get('stats', function(){return view('stats');})->name('stats')->middleware('permission:users.stats');});
+Route::get('stats', function(){return view('stats');})->name('stats')->middleware('permission:users.stats');
+
+//Recursos
+
+Route::get('/recurso/create/p1','RecursoController@createP1');
+Route::post('/recurso/create/p1','RecursoController@postCreateP1');
+Route::get('/recurso/create/p2', 'RecursoController@createP2');
+Route::post('/recurso/create/p2', 'RecursoController@postCreateP2');
+Route::get('/recurso/create/p3', 'RecursoController@createP3');
+Route::post('/recurso/store', 'RecursoController@store');
+});
 
 //Bibliotecas
 

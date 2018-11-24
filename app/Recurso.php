@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recurso extends Model
 {
-    protected $fillable = ['titulo', 'descripcion','autor','año','thumb','biblioteca_id','versionDigital','categoria','genero', 'principal'];
+    protected $fillable = ['titulo', 'descripcion','autor','año','thumb','biblioteca_id','versionAlt','categoria','genero', 'principal'];
     private $sansi;//inaccesible ext.
     public function getRes($sansi){
 

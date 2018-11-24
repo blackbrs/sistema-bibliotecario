@@ -1,40 +1,35 @@
-<script>
+<script defer>
         $(document).ready(function() {
-            if($('#principal').val() != "-1"){ 
-                $('#changeTR').show();
-            }
+            checkRB();
             $("input:radio").change(function() {
-                $('#changeTR').hide();
                 $('#principal').prop('selectedIndex',0);
-                $('#principal').prop('disabled',false);
+                checkRB();
+                });
+            $("#versionAlt").on('change', function() {
+                if ($(this).is(':checked')) {$(this).attr('value', '1');} 
+                else {$(this).attr('value', '0');}
+                });
+            function checkRB(){
+                let lb = document.getElementById('lb1');
                 if(document.getElementById('fisicoRB').checked){
-                $('.opcDig').removeClass('show');
-                $('.opcFis').addClass('show');
+                    $('.opcDig').hide();
+                    $('.opcFis').show();
+                    $('#versionAlt').show();
+                    lb.innerText = "\tIncluir una version alt. en digital";
                 }
-                else {
-                $('.opcFis').removeClass('show');
-                $('.opcDig').addClass('show');
+                else if(document.getElementById('fisicoRB').checked){
+                    $('.opcFis').hide();
+                    $('.opcDig').show();
+                    $('#versionAlt').show();
+                    lb.innerText = "\tIncluir una version alt. en fisico";
                 }
+                else{
+                    $('#versionAlt').hide();
+                    $('.opcDig').hide();
+                    $('.opcFis').hide();
+                }
+            
+            }
+             
             });
-        });
 </script>
-<script>
-function enableTR() {
-    $('#principal').prop('disabled',false);
-    $('#changeTR').hide();
-    }
-</script>
-<style>
-        .opcFis {
-            display: none;
-        }
-        .opcDig {
-            display: none;
-        }
-        .opcDig.show {
-            display: block;
-        }
-        .opcFis.show{
-            display: block;
-        }
-</style>

@@ -31,7 +31,7 @@ class CreateRecursosTable extends Migration
             //$table->foreign('autor_id')->references('id')->on('autors');
             $table->string('genero');
             $table->foreign('biblioteca_id')->references('id')->on('bibliotecas');
-            $table->boolean('versionDigital');
+            $table->boolean('versionAlt');
             $table->string('categoria');
             $table->string('principal');
             $table->timestamps();

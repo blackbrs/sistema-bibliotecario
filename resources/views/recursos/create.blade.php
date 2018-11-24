@@ -57,9 +57,8 @@
                                                     <label class="form-check-label" for="digitalRB">Digital</label>
                                                   </div>
                                             </div>
-                                            <button id="changeTR" type="button" class="btn btn-link btn-sm" onclick="enableTR()" style="display:none;">Cambiar</button>
-                                                  <select name="principal" id= "principal" class="form-control" disabled="disabled" required>
-                                                        <option value="-1">Seleccionar tipo de recurso</option>
+                                                  <select name="principal" id= "principal" class="form-control" placeholder="Seleccionar recurso" required>
+                                                        <option value="" disabled selected>Selecciona una opcion</option>
                                                         <option class="opcFis" {{{ (isset($recurso->principal) && $recurso->principal == 'Libro') ? "selected=\"selected\"" : "" }}}>Libro</option>
                                                         <option class="opcFis" {{{ (isset($recurso->principal) && $recurso->principal == 'CD') ? "selected=\"selected\"" : "" }}}>CD</option>
                                                         <option class="opcFis" {{{ (isset($recurso->principal) && $recurso->principal == 'DVD') ? "selected=\"selected\"" : "" }}}>DVD</option>
@@ -70,9 +69,13 @@
                                                         <option {{{ (isset($recurso->principal) && $recurso->principal == 'Tesis') ? "selected=\"selected\"" : "" }}}>Tesis</option>
                                                     </select>      
                                     </div>
+                                    <div class="form-group">
+                                            <input type="checkbox" id="versionAlt" name="versionAlt" style="display:none" value="1" {{{ (isset($recurso->versionAlt) && $recurso->versionAlt == '1') ? "checked" : "" }}}>
+                                        <label class="form-check-label" id="lb1" for="versionAlt"> </label>
+                                    </div>
                                     <button type="buttom" id="btnf1" class="btn btn-info">Continuar</button> 
                             </form>
-                                
+                              
                         </div>
                     </div>
                     </div>

@@ -24,4 +24,5 @@ Route::post('/stats', function (Request $request) {
     }else{//Este espacio es para $request sin ajax - Se puede iniciar la tabla con todos los registros 
     }
 });
-
+Route::get('upload/formato={type}','HomeController@upload');
+Route::post('upload/formato={type}','HomeController@uploadPost');
