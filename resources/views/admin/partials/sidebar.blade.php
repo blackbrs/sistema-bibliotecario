@@ -30,7 +30,7 @@
             <a href="{{ route('bibliotecas.index') }}" class="nav-link {{request()->is('bibliotecas')? 'active':''}}">
               <i class="nav-icon fa fa-book-open"></i>
               <p>
-                Bibliotecas
+                Bibliotecas 
               </p>
             </a>
           </li>
@@ -104,6 +104,18 @@
                   <p>Gestionar</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{ route('autors.index') }}" class="nav-link {{request()->is('autors')? 'active':''}}">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Autores</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                  <a href="{{ route('editorials.index') }}" class="nav-link {{request()->is('editorials')? 'active':''}}">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Editoriales</p>
+                  </a>
+                </li>
               <li class="nav-item">
                 <a href="../tables/data.html" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>

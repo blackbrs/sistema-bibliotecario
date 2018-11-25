@@ -144,5 +144,33 @@ class PermissionsTableSeeder extends Seeder
                 'slug'          =>'bibliotecas.destroy',
                 'description'   =>'Eliminar cualquier biblioteca del sistema'
                 ]);
+
+
+  /* Permisos para gestionar los autores del sistemas Creado por Guillermo alexander */
+
+            Permission::create([
+                'name'          =>'Navegar los autores',
+                'slug'          =>'autors.index',
+                'description'   =>'Lista que muestra a todos los autores ingresados'
+                ]);
+
+            Permission::create([
+                'name'          =>'Ingresar Nuevos Autores',
+                'slug'          =>'autors.create',
+                'description'   =>'Permite ingresar nuevos autores'
+                ]);
+            
+            
+            Permission::create([
+                'name'          =>'Editar la informacion de los autores',
+                'slug'          =>'autors.edit',
+                'description'   =>'Editar cualquier dato los autores ingresados'
+                ]);
+            
+            Permission::create([
+                'name'          =>'Eliminar autores',
+                'slug'          =>'autors.destroy',
+                'description'   =>'Eliminar cualquier Autor'
+                ]);
     }
 }

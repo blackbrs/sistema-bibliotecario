@@ -14,7 +14,9 @@ class EditorialController extends Controller
      */
     public function index()
     {
-        //
+        $editorial = Editorial::paginate();
+
+        return view('editorials.index', compact('editorial'));
     }
 
     /**
@@ -24,62 +26,76 @@ class EditorialController extends Controller
      */
     public function create()
     {
-        //
+        return view('editorials.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $editorial = Editorial::create($request->all());
+        $editorial2 = Editorial::paginate();
+
+        return redirect()->route('editorials.index', $editorial2)
+        ->with('info', 'editorial guardado con exito.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Editorial  $editorial
+     * @param \App\editorial $editorial
+     *
      * @return \Illuminate\Http\Response
      */
-    public function show(Editorial $editorial)
+    public function show(editorial $editorial)
     {
-        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Editorial  $editorial
+     * @param \App\editorial $editorial
+     *
      * @return \Illuminate\Http\Response
      */
-    public function edit(Editorial $editorial)
+    public function edit(editorial $editorial)
     {
-        //
+        return view('editorials.edit', compact('editorial'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Editorial  $editorial
+     * @param \Illuminate\Http\Request $request
+     * @param \App\editorial           $editorial
+     *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Editorial $editorial)
+    public function update(Request $request, editorial $editorial)
     {
-        //
+        $editorial->update($request->all());
+        $editorial2 = Editorial::paginate();
+
+        return redirect()->route('editorials.index', $editorial2)
+        ->with('info', 'editorial actualizada con exito');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Editorial  $editorial
+     * @param \App\editorial $editorial
+     *
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Editorial $editorial)
+    public function destroy(editorial $editorial)
     {
-        //
+        $editorial->delete();
+
+        return back()->with('info', 'editorial Eliminado con exito');
     }
 }
