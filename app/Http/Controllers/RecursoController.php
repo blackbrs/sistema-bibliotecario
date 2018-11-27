@@ -48,7 +48,10 @@ class RecursoController extends Controller
             $rselect = $request->get('recursoRB');
             $recurso->fill($validatedData);
 
-            if($request->get('versionAlt')){$recurso->versionAlt = true;}else{$recurso->versionAlt = false;}
+            if($request->get('versionAlt')){
+                $recurso->versionAlt = true;
+            }else{
+                $recurso->versionAlt = false;}
 
             $recurso->save();
             $request->session()->put('recurso', $recurso);
@@ -57,7 +60,11 @@ class RecursoController extends Controller
             $recurso = $request->session()->get('recurso');
             $recurso->fill($validatedData);
 
-            if($request->get('versionAlt')){$recurso->versionAlt = true;}else{$recurso->versionAlt = false;}
+            if($request->get('versionAlt')){
+                $recurso->versionAlt = true;
+            }else{
+                $recurso->versionAlt = false;
+            }
 
             $recurso->save();
             $rselect = $request->get('recursoRB');
