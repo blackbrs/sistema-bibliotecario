@@ -68,9 +68,9 @@
                                 
     
                                 <div class="col">
-                                        <label  class=" col-form-label ">{{ __('Correo Electronico:') }}</label>
+                                    <label  class=" col-form-label ">{{ __('Correo Electronico:') }}</label>
                                     <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
-    
+                                    
                                     @if ($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('email') }}</strong>

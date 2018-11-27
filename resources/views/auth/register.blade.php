@@ -65,7 +65,7 @@ $(document).ready(function() {
                             <label for="nacimiento" class="col-md-4 col-form-label text-md-right">Fecha de nacimiento</label>
 
                             <div class="col-md-6">
-                            <input id="nacimiento" type="text" class="form-control{{ $errors->has('nacimiento') ? ' has-error' : '' }}" name="nacimiento" value="{{ old('nacimiento') }}"  placeholder="YYYY-MM-DD" >
+                            <input id="nacimiento" type="date" class="form-control{{ $errors->has('nacimiento') ? ' has-error' : '' }}" name="nacimiento" value="{{ old('nacimiento') }}"  placeholder="YYYY-MM-DD" >
 
                                 @if ($errors->has('nacimiento'))
                                     <span>
