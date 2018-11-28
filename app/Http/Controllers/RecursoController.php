@@ -47,25 +47,16 @@ class RecursoController extends Controller
             $recurso = new Recurso();
             $rselect = $request->get('recursoRB');
             $recurso->fill($validatedData);
-
-            if($request->get('versionAlt')){
-                $recurso->versionAlt = true;
-            }else{
-                $recurso->versionAlt = false;}
-
+            $recurso->biblioteca_id = $request->user()->biblioteca_id;
+            if($request->get('versionAlt')){$recurso->versionAlt = true;}else{$recurso->versionAlt = false;}
             $recurso->save();
             $request->session()->put('recurso', $recurso);
             $request->session()->put('rselect', $rselect);
         }else{
             $recurso = $request->session()->get('recurso');
             $recurso->fill($validatedData);
-
-            if($request->get('versionAlt')){
-                $recurso->versionAlt = true;
-            }else{
-                $recurso->versionAlt = false;
-            }
-
+            $recurso->biblioteca_id = $request->user()->biblioteca_id;
+            if($request->get('versionAlt')){$recurso->versionAlt = true;}else{$recurso->versionAlt = false;}
             $recurso->save();
             $rselect = $request->get('recursoRB');
             $request->session()->put('recurso', $recurso);
@@ -80,7 +71,6 @@ class RecursoController extends Controller
         $pr = $recurso->principal;
         $resclass = $request->session()->get($pr);
         $rselect = $request->session()->get('rselect');
-
        if($rselect == "fisico"){
            $fisico = $request->session()->get('fisico');
            if($recurso->versionAlt){
@@ -121,13 +111,14 @@ class RecursoController extends Controller
             }
             
         }else if($rselect == 'digital'){
+            $validatedDataDigital = $request->validate([
+                'file' => 'required|file|max:46000',
+            ]);
             if(empty($request->session()->get('digital'))){
                 $digital = new Digital();
-                $digital->fill($validatedDataDigital);
                 $request->session()->put('digital', $digital);
             }else{
-                $digital = $request->session()->get('fisico');
-                $digital->fill($validatedDataDigital);
+                $digital = $request->session()->get('digital');
                 $request->session()->put('digital', $digital);
             }
         }else{
@@ -136,7 +127,6 @@ class RecursoController extends Controller
         if(empty($resclass)){
             $model = 'App\\'.$pr;
             $resclass = new $model;
-            //$resclass->fill($validatedData);
         }
         else{}
             return redirect('/recurso/create/p3');

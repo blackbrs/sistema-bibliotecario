@@ -30,6 +30,7 @@ var tabla ='';
                 }
         }).columns.adjust().responsive.recalc();
     });
+    
 AmCharts.makeChart("map",{
     "type": "map",
     "addClassNames": true,

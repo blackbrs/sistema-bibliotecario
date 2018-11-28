@@ -15,7 +15,8 @@ class CreateLibrosTable extends Migration
     {
         Schema::create('libros', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('editorial');
+            $table->integer('editorial_id');
+            $table->foreign('editorial_id')->references('id')->on('editorials');
             $table->string('volumen');
             $table->string('ISBN', 13);
             $table->integer('paginas');

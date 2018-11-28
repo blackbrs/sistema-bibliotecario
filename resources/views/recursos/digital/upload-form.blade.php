@@ -5,19 +5,13 @@
         <div class="row justify-content-center">
             <div class="card">
                 <div class="card-header">Subir recurso</div>
-
                 <div class="card-body">
                     @if ($message = Session::get('success'))
-
                         <div class="alert alert-success alert-block">
-
                             <button type="button" class="close" data-dismiss="alert">×</button>
-
                             <strong>{{ $message }}</strong>
                         </div>
-
                     @endif
-
                     @if (count($errors) > 0)
                         <div class="alert alert-danger">
                             <strong>Whoops!</strong> There were some problems with your input.<br><br>

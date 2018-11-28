@@ -35,11 +35,8 @@ class HomeController extends Controller
         $request->validate([
             'file' => 'required|file|max:46000',
         ]);
-        // Set the destination path
         $destinationPath = 'public/uploads/';
-        // Store the file and it's destination path INCLUDING THE NEW FILENAME
         $storagePath = Storage::disk('local')->put($destinationPath, $request->file);
-        // Extract the filename
         $storageName = basename($storagePath);
         dd($storageName);
         return back()

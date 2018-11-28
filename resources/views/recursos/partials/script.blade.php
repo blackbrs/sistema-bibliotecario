@@ -17,7 +17,7 @@
                     $('#versionAlt').show();
                     lb.innerText = "\tIncluir una version alt. en digital";
                 }
-                else if(document.getElementById('fisicoRB').checked){
+                else if(document.getElementById('digitalRB').checked){
                     $('.opcFis').hide();
                     $('.opcDig').show();
                     $('#versionAlt').show();
