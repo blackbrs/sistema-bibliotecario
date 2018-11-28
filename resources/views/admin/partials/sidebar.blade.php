@@ -37,7 +37,7 @@
           @endcan
           @can('users.index')
           <li class="nav-item">
-            <a href="{{ route('bibliotecas.index') }}" class="nav-link {{request()->is('upload')? 'active':''}}">
+            <a href="{{ route('users.index') }}" class="nav-link {{request()->is('users')? 'active':''}}">
               <i class="nav-icon fa fa-users"></i>
               <p>
                 Usuarios
