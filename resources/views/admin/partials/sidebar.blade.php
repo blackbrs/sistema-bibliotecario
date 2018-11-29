@@ -7,7 +7,6 @@
            style="opacity: .8">
       <span class="brand-text font-weight-light">Sistema Bibliotecario</span>
     </a>
-
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user (optional) -->
