@@ -18,6 +18,8 @@ class CreateVideosTable extends Migration
             $table->integer('duracion');
             $table->double('bitrate');
             $table->integer('calidad');
+            $table->integer('recurso_id');
+            $table->foreign('recurso_id')->references('id')->on('recursos')->onDelete('cascade');
             $table->timestamps();
         });
     }

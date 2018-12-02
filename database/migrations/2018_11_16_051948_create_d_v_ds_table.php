@@ -16,6 +16,8 @@ class CreateDVDsTable extends Migration
         Schema::create('dvds', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('duracion');
+            $table->integer('recurso_id');
+            $table->foreign('recurso_id')->references('id')->on('recursos')->onDelete('cascade');
         });
     }
 

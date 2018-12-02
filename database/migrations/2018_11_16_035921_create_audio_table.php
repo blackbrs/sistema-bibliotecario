@@ -16,6 +16,8 @@ class CreateAudioTable extends Migration
         Schema::create('audio', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('duracion');
+            $table->integer('recurso_id');
+            $table->foreign('recurso_id')->references('id')->on('recursos')->onDelete('cascade');
         });
     }
 

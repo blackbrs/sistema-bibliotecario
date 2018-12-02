@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recurso extends Model
 {
-    protected $fillable = ['titulo', 'descripcion','autor','año','thumb','biblioteca_id','versionAlt','categoria','genero', 'principal'];
+    protected $fillable = ['titulo', 'descripcion','autor_id','año','thumb','biblioteca_id','versionAlt','categoria','genero', 'principal'];
     private $sansi;//inaccesible ext.
     public function getRes($sansi){
 
@@ -14,7 +14,9 @@ class Recurso extends Model
                                 controller $Request->get('tipoRecurso')*/
         return $this->recurso; //invoca a la funcion recurso 'hasOne'
     }
-     
+    protected function biblioteca(){
+        return $this->belongsTo(Biblioteca::class);
+    }
     protected function recurso(){  //Cualquier tipo de recurso
         return $this->hasOne(app("App\\$this->sansi"));
     }

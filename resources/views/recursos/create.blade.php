@@ -3,6 +3,7 @@
 @include('recursos.partials.script')  
 @endsection
 @section('content')
+@php( $autor = \App\Autor::all()) 
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -32,7 +33,12 @@
                                     </div>
                                     <div class="form-group">
                                             {!! Form::label('autor', 'Autor/es') !!}
-                                            <input type="text" value="{{{ $recurso->autor or '' }}}" class="form-control" id="RC_autor"  name="autor" required>
+                                            <select name="autor_id" id= "autor_id" class="form-control"required >        
+                                                    <option value="">Autor</option>
+                                                    @foreach ($autor as $aut)
+                                                    <option value="{{ $aut->id }}">{{ $aut->nombres}} {{ $aut->apellidos}}</option>  
+                                                    @endforeach
+                                                </select>    
                                               
                                      </div>
                                     <div class="form-group">

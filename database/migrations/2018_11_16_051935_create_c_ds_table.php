@@ -17,6 +17,8 @@ class CreateCDsTable extends Migration
             $table->increments('id');
             $table->integer('nPistas');
             $table->integer('duracion');
+            $table->integer('recurso_id');
+            $table->foreign('recurso_id')->references('id')->on('recursos')->onDelete('cascade');
   
         });
     }

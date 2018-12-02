@@ -6,6 +6,7 @@ use App\Recurso;
 use App\Fisico;
 use App\Digital;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RecursoController extends Controller
 {
@@ -16,7 +17,8 @@ class RecursoController extends Controller
      */
     public function index()
     {
-        //
+        $bib= Auth::user()->biblioteca;
+        return view('recursos.index',compact('bib'));
     }
 
     /**
@@ -24,151 +26,6 @@ class RecursoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createP1(Request $request)
-    {
-        $recurso = $request->session()->get('recurso');
-        $rselect = $request->session()->get('rselect');
-        return view('recursos.create',compact('recurso', 'rselect'));
-    }
-    public function postCreateP1(Request $request)
-    {
-        
-        $validatedData = $request->validate([
-            'titulo' => 'required',
-            'año' => 'required|numeric',
-            'autor' => 'required',
-            'categoria' => 'required',
-            'genero' => 'required',
-            'descripcion' => 'required|string|max:255',
-            "principal" => 'required',
-        ]);
-        if(empty($request->session()->get('recurso'))){
-            
-            $recurso = new Recurso();
-            $rselect = $request->get('recursoRB');
-            $recurso->fill($validatedData);
-            $recurso->biblioteca_id = $request->user()->biblioteca_id;
-            if($request->get('versionAlt')){$recurso->versionAlt = true;}else{$recurso->versionAlt = false;}
-            $recurso->save();
-            $request->session()->put('recurso', $recurso);
-            $request->session()->put('rselect', $rselect);
-        }else{
-            $recurso = $request->session()->get('recurso');
-            $recurso->fill($validatedData);
-            $recurso->biblioteca_id = $request->user()->biblioteca_id;
-            if($request->get('versionAlt')){$recurso->versionAlt = true;}else{$recurso->versionAlt = false;}
-            $recurso->save();
-            $rselect = $request->get('recursoRB');
-            $request->session()->put('recurso', $recurso);
-            $request->session()->put('rselect', $rselect);
-
-        }
-        return redirect('/recurso/create/p2');
-    }
-    public function createP2(Request $request)
-    {
-        $recurso = $request->session()->get('recurso');
-        $pr = $recurso->principal;
-        $resclass = $request->session()->get('resclass');
-        $rselect = $request->session()->get('rselect');
-       if($rselect == "fisico"){
-           $fisico = $request->session()->get('fisico');
-           if($recurso->versionAlt){
-               $alt= $request->session()->get('alt');
-           }
-           return view('recursos.create2', compact('recurso', 'alt','fisico', 'pr','rselect', 'resclass'));
-        }
-       elseif($rselect == "digital"){
-           $digital = $request->session()->get('digital');
-           if($recurso->versionAlt){
-            $alt= $request->session()->get('alt');
-            }
-            return view('recursos.create2', compact('recurso', 'alt','digital', 'pr','rselect', 'resclass'));
-        }
-        
-    }
-    public function postCreateP2(Request $request)
-    {
-        $recurso = $request->session()->get('recurso');
-        $pr = $recurso->principal;
-        $resclass = $request->session()->get('resclass');
-        $rselect = $request->session()->get('rselect');
-        $alt= $request->session()->get('alt');
-
-        if(empty($resclass)){
-            $model = 'App\\'.$pr;
-            $resclass = new $model;
-            $resclass->fill(self::validatePrincipal($request, $pr));
-            $resclass->recurso_id=$recurso->id;
-            $resclass->save();
-        }
-        else{
-            $resclass->fill(self::validatePrincipal($request, $pr));
-            $resclass->recurso_id=$recurso->id;
-            $resclass->save();
-        }
-
-        if($rselect=='fisico'){
-            if(empty($request->session()->get('fisico'))){
-                $fisico = new Fisico();
-                $fisico->fill(self::validateFisico($request));
-                $resclass->fisico()->save($fisico);
-                $request->session()->put('fisico', $fisico);
-                $request->session()->put('resclass', $resclass);
-            }else{
-                $fisico = $request->session()->get('fisico');
-                $fisico->fill(self::validateFisico($request));
-                $resclass->fisico()->save($fisico);
-                $request->session()->put('fisico', $fisico);
-                $request->session()->put('resclass', $resclass);
-            }
-            if($recurso->versionAlt){
-                $validateAltD = $request->validate([
-                    'file' => 'required|file|max:46000',
-                ]);
-            if(empty($alt)){
-                $alt = new Digital();
-               // $alt->fill($validateAltD);
-                $request->session()->put('alt', $alt);
-            }else{
-                //$alt->fill($validateAltD);
-                $request->session()->put('alt', $alt);
-            }
-        }
-            
-        }else if($rselect == 'digital'){
-            if(empty($request->session()->get('digital'))){
-                $digital = new Digital();
-                $fisico->save($request->session()->get('resclass'));
-                $request->session()->put('digital', $digital);
-            }else{
-                $digital = $request->session()->get('digital');
-                $fisico->save($request->session()->get('resclass'));
-                $request->session()->put('digital', $digital);
-            }
-            /*
-            if($recurso->versionAlt){
-            if(empty($alt)){
-                $alt = new Fisico();
-                $alt->fill($validateAltF);
-                $request->session()->put('alt', $alt);
-            }
-            else{
-                $alt->fill($validateAltF);
-                $request->session()->put('alt', $alt);
-            }
-            
-        }
-          */  
-        }else{
-            //
-        }
-            return redirect('/recurso/create/p3');
-    }
-    public function createP3()
-    {
-        //
-    }
     /**
      * Store a newly created resource in storage.
      *
@@ -183,21 +40,21 @@ class RecursoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Recursos  $recursos
+     * @param  \App\Recurso  $recursos
      * @return \Illuminate\Http\Response
      */
-    public function show(Recursos $recursos)
+    public function show(Recurso $recurso)
     {
-        //
+        
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Recursos  $recursos
+     * @param  \App\Recurso  $recursos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Recursos $recursos)
+    public function edit(Recurso $recurso)
     {
         //
     }
@@ -206,10 +63,10 @@ class RecursoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Recursos  $recursos
+     * @param  \App\Recurso  $recursos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Recursos $recursos)
+    public function update(Request $request, Recurso $recurso)
     {
         //
     }
@@ -220,10 +77,21 @@ class RecursoController extends Controller
      * @param  \App\Recursos  $recursos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Recursos $recursos)
+    public function destroy(Recurso $recurso)
     {
-        //
+        $f=$recurso->getRes($recurso->principal)->fisico;
+        $d=$recurso->getRes($recurso->principal)->digital;
+        if($f){
+        $f->delete();
+        }
+        if($d){
+        $d->delete();
+        }
+        $recurso->delete();
+        return back()->with('info','El recurso ha sido eliminado con exito');
     }
+
+
     private function validateFisico(Request $request){
         return $request->validate([
                 'copias' => 'required|numeric',
@@ -343,5 +211,146 @@ class RecursoController extends Controller
             default:
                 break;
         }
+    }
+    public function createP1(Request $request)
+    {
+        $recurso = $request->session()->get('recurso');
+        $rselect = $request->session()->get('rselect');
+        return view('recursos.create',compact('recurso', 'rselect'));
+    }
+    public function postCreateP1(Request $request)
+    {
+        
+        $validatedData = $request->validate([
+            'titulo' => 'required',
+            'año' => 'required|numeric',
+            'autor_id' => 'required',
+            'categoria' => 'required',
+            'genero' => 'required',
+            'descripcion' => 'required|string|max:255',
+            "principal" => 'required',
+        ]);
+        if(empty($request->session()->get('recurso'))){
+            
+            $recurso = new Recurso();
+            $rselect = $request->get('recursoRB');
+            $recurso->fill($validatedData);
+            $recurso->biblioteca_id = Auth::user()->biblioteca_id;
+            if($request->get('versionAlt')){$recurso->versionAlt = true;}else{$recurso->versionAlt = false;}
+            $recurso->save();
+            $request->session()->put('recurso', $recurso);
+            $request->session()->put('rselect', $rselect);
+        }else{
+            $recurso = $request->session()->get('recurso');
+            $recurso->fill($validatedData);
+            $recurso->biblioteca_id = Auth::user()->biblioteca_id;
+            if($request->get('versionAlt')){$recurso->versionAlt = true;}else{$recurso->versionAlt = false;}
+            $recurso->save();
+            $rselect = $request->get('recursoRB');
+            $request->session()->put('recurso', $recurso);
+            $request->session()->put('rselect', $rselect);
+
+        }
+        return redirect('/recurso/create/p2');
+    }
+    public function createP2(Request $request)
+    {
+        $recurso = $request->session()->get('recurso');
+        $pr = $recurso->principal;
+        $resclass = $request->session()->get('resclass');
+        $rselect = $request->session()->get('rselect');
+       if($rselect == "fisico"){
+           $fisico = $request->session()->get('fisico');
+           if($recurso->versionAlt){
+               $alt= $request->session()->get('alt');
+           }
+           return view('recursos.create2', compact('recurso', 'alt','fisico', 'pr','rselect', 'resclass'));
+        }
+       elseif($rselect == "digital"){
+           $digital = $request->session()->get('digital');
+           if($recurso->versionAlt){
+            $alt= $request->session()->get('alt');
+            }
+            return view('recursos.create2', compact('recurso', 'alt','digital', 'pr','rselect', 'resclass'));
+        }
+        
+    }
+    public function postCreateP2(Request $request)
+    {
+        $recurso = $request->session()->get('recurso');
+        $pr = $recurso->principal;
+        $resclass = $request->session()->get('resclass');
+        $rselect = $request->session()->get('rselect');
+        $alt= $request->session()->get('alt');
+
+        if(empty($resclass)){
+            $model = 'App\\'.$pr;
+            $resclass = new $model;
+            $resclass->fill(self::validatePrincipal($request, $pr));
+            $resclass->recurso_id=$recurso->id;
+            $resclass->save();
+        }
+        else{
+            $resclass->fill(self::validatePrincipal($request, $pr));
+            $resclass->recurso_id=$recurso->id;
+            $resclass->save();
+        }
+
+        if($rselect=='fisico'){
+            if(empty($request->session()->get('fisico'))){
+                $fisico = new Fisico();
+                $fisico->fill(self::validateFisico($request));
+                $resclass->fisico()->save($fisico);
+                $request->session()->put('fisico', $fisico);
+                $request->session()->put('resclass', $resclass);
+            }else{
+                $fisico = $request->session()->get('fisico');
+                $fisico->fill(self::validateFisico($request));
+                $resclass->fisico()->save($fisico);
+                $request->session()->put('fisico', $fisico);
+                $request->session()->put('resclass', $resclass);
+            }
+            if($recurso->versionAlt){
+                $validateAltD = $request->validate([
+                    'file' => 'required|file|max:46000',
+                ]);
+            if(empty($alt)){
+                $alt = new Digital();
+               // $alt->fill($validateAltD);
+                $request->session()->put('alt', $alt);
+            }else{
+                //$alt->fill($validateAltD);
+                $request->session()->put('alt', $alt);
+            }
+        }
+            
+        }else if($rselect == 'digital'){
+            if(empty($request->session()->get('digital'))){
+                $digital = new Digital();
+                $fisico->save($request->session()->get('resclass'));
+                $request->session()->put('digital', $digital);
+            }else{
+                $digital = $request->session()->get('digital');
+                $fisico->save($request->session()->get('resclass'));
+                $request->session()->put('digital', $digital);
+            }
+            /*
+            if($recurso->versionAlt){
+            if(empty($alt)){
+                $alt = new Fisico();
+                $alt->fill($validateAltF);
+                $request->session()->put('alt', $alt);
+            }
+            else{
+                $alt->fill($validateAltF);
+                $request->session()->put('alt', $alt);
+            }
+            
+        }
+          */  
+        }else{
+            //
+        }
+            return redirect('/recurso/create/p3');
     }
 }

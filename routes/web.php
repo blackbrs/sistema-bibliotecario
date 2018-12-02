@@ -20,12 +20,16 @@ Route::post('getmunicipio/fetch', 'DepartamentoController@getMunicipios');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('upload', 'HomeController@upload')->name('upload');
 Route::post('upload', 'HomeController@uploadPost');
-Route::get('/recurso/create/p1', 'RecursoController@createP1');
+Route::get('/recurso/create/p1', 'RecursoController@createP1')->name('recurso.create');
 Route::post('/recurso/create/p1', 'RecursoController@postCreateP1');
 Route::get('/recurso/create/p2', 'RecursoController@createP2');
 Route::post('/recurso/create/p2', 'RecursoController@postCreateP2');
 Route::get('/recurso/create/p3', 'RecursoController@createP3');
-Route::post('/recurso/store', 'RecursoController@store');
+Route::get('/recursos','RecursoController@index')->name('recurso.index');
+Route::put('/recursos/{recurso}','RecursoController@update')->name('recurso.update');
+Route::get('/recursos/{recurso}','RecursoController@show')->name('recurso.show');
+Route::get('/recursos/{recurso}/edit','RecursoController@edit')->name('recurso.edit');
+Route::delete('/recursos/{recurso}','RecursoController@destroy')->name('recurso.destroy');
 // RUTAS que tendran como requisitos almenos estar loggeados
 Route::middleware(['auth'])->group(function () {
     //roles
@@ -50,8 +54,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('roles/{role}/edit', 'RoleController@edit')->name('roles.edit')
         ->middleware('permission:roles.edit');
-
-    // Route::get('/roles/create/fetch', 'RoleController@fetch'); Paginacion con AJAX
 
     //Usuarios
 

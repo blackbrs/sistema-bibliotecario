@@ -98,8 +98,4 @@ class EditorialController extends Controller
 
         return back()->with('info', 'editorial Eliminado con exito');
     }
-    public static function getEdt()
-    {
-        return $biblioteca = DB::table('editorials')->get();
-    }
 }

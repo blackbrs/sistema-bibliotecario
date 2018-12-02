@@ -12,6 +12,7 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/annotations": "5.5.*",
         "laravelcollective/html": "5.5.*",
+        "shiftonelabs/laravel-cascade-deletes": "^1.0",
         "yajra/laravel-datatables-oracle": "~8.0"
     },
     "require-dev": {

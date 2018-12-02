@@ -17,6 +17,8 @@ class CreateTesesTable extends Migration
             $table->increments('id');
             $table->string('carrera');
             $table->integer('paginas');
+            $table->integer('recurso_id');
+            $table->foreign('recurso_id')->references('id')->on('recursos')->onDelete('cascade');
         });
     }
 

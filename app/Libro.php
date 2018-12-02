@@ -3,12 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
 class Libro extends Model
 {
     protected $fillable = ['recurso_id','editorial_id','volumen','ISBN','paginas'];
     public $timestamps = false;
-
     public function fisico(){
         return $this->morphOne(Fisico::class, 'linkable');
     }

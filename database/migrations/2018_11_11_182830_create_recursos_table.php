@@ -24,11 +24,10 @@ class CreateRecursosTable extends Migration
             $table->string('titulo');
             $table->string('descripcion');
             $table->integer('año');
-            $table->string('autor');
             $table->string('thumb')->nullable();
-            //$table->integer('autor_id');
+            $table->integer('autor_id');
             $table->integer('biblioteca_id');
-            //$table->foreign('autor_id')->references('id')->on('autors');
+            $table->foreign('autor_id')->references('id')->on('autors');
             $table->string('genero');
             $table->foreign('biblioteca_id')->references('id')->on('bibliotecas');
             $table->boolean('versionAlt');

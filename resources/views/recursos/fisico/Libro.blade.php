@@ -10,7 +10,7 @@
     </div>
     <div class="form-group">
          {!! Form::label('volumen', 'Volumen') !!}
-        <textarea type="text"  class="form-control" id="volumen" name="volumen" style="resize: none;" required>{{{ $resclass->descripcion or '' }}}</textarea>     
+        <input type="text" value="{{{ $resclass->volumen or '' }}}" class="form-control" id="volumen" name="volumen" style="resize: none;" required>{{{ $resclass->descripcion or '' }}}</textarea>     
     </div>
     <div class="form-group">
             {!! Form::label('ISBN', 'ISBN') !!}
