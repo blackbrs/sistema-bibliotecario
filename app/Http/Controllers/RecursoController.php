@@ -359,12 +359,15 @@ class RecursoController extends Controller
         $request->session()->forget('pr');
         $request->session()->forget('fisico');
         $request->session()->forget('digital');
+
         return redirect()->route('recursos.index')
         ->with('info','Recurso Guardado con exito');   
     }
     public function cancelarP1(Request $request){
         $recurso = $request->session()->forget('recurso');
         $rselect = $request->session()->forget('rselect');
+
+        return redirect()->route('recursos.index');
     }
     public function cancelarP2(Request $request){
         $request->session()->forget('alt');
@@ -372,5 +375,7 @@ class RecursoController extends Controller
         $request->session()->forget('fisico');
         $request->session()->forget('digital');
         $request->session()->forget('resclass');
+        
+        return redirect()->route('recursos.index');
     }
 }

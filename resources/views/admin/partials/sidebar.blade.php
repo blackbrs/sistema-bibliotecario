@@ -110,7 +110,7 @@
             </a> 
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('recursos.index') }}" class="nav-link {{request()->is('recursos')? 'active':''}}">
+                <a href="{{route('recursos.index')}}" class="nav-link {{request()->is('recursos')? 'active':''}}">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Recursos de la biblioteca</p>
                 </a>
