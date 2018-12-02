@@ -16,7 +16,7 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>{{ config('app.name', 'Laravel') }}</title>
+  <title>{{ config('app.name', 'SBM - ADMIN') }}</title>
 
 </head>
 <body class="hold-transition sidebar-mini">
