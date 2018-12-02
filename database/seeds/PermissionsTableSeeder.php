@@ -172,5 +172,32 @@ class PermissionsTableSeeder extends Seeder
                 'slug'          =>'autors.destroy',
                 'description'   =>'Eliminar cualquier Autor'
                 ]);
+
+    /* Permisos para gestionar las editoriales */
+
+    Permission::create([
+        'name'          =>'Navegar los editoriales',
+        'slug'          =>'editorials.index',
+        'description'   =>'Lista que muestra a todos las editoriales ingresados'
+        ]);
+
+    Permission::create([
+        'name'          =>'Ingresar Nuevas editoriales',
+        'slug'          =>'editorials.create',
+        'description'   =>'Permite ingresar nuevas editoriales'
+        ]);
+    
+    
+    Permission::create([
+        'name'          =>'Editar la informacion de las editorirales',
+        'slug'          =>'editorials.edit',
+        'description'   =>'Editar cualquier dato las editoriales ingresados'
+        ]);
+    
+    Permission::create([
+        'name'          =>'Eliminar editoriales',
+        'slug'          =>'editorials.destroy',
+        'description'   =>'Eliminar cualquier editorial'
+        ]);
     }
 }
