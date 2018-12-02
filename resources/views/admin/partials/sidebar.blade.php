@@ -98,9 +98,9 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../tables/simple.html" class="nav-link">
+                <a href="{{ route('recurso.index') }}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Gestionar</p>
+                  <p>Recursos de la biblioteca</p>
                 </a>
               </li>
               @can('autors.index')

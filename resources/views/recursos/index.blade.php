@@ -9,9 +9,18 @@
           
             <div class="panel panel-default">
                     <div class="card-header">
+                            <table class="table table-striped table-hover">
+                                
                             <div class="panel-heading">
-                                  Recursos de {{$bib->nombreBiblioteca}}
-                            </div>
+                                    <th>  Recursos de {{$bib->nombreBiblioteca}}  </th>
+                                @can('users.create')
+                                <th><a href="{{ route('recurso.create') }}" class="btn btn-sm btn-primary">
+                                    Agregar un nuevo recurso 
+                                </a></th> 
+                                </div>
+                                @endcan
+                            </table>
+
                         </div>
 
 
