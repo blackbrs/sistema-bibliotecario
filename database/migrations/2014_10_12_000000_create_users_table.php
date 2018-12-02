@@ -40,7 +40,7 @@ class CreateUsersTable extends Migration
             $table->integer('municipio_id');
             $table->foreign('municipio_id')->references('id')->on('municipios');
             $table->integer('biblioteca_id')->nullable();
-            $table->foreign('biblioteca_id')->references('id')->on('bibliotecas');
+            $table->foreign('biblioteca_id')->references('id')->on('bibliotecas')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

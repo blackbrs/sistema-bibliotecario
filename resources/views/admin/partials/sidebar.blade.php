@@ -103,88 +103,26 @@
                   <p>Gestionar</p>
                 </a>
               </li>
+              @can('autors.index')
               <li class="nav-item">
                 <a href="{{ route('autors.index') }}" class="nav-link {{request()->is('autors')? 'active':''}}">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Autores</p>
                 </a>
               </li>
+              @endcan
+              @can('editorials.index')
               <li class="nav-item">
                   <a href="{{ route('editorials.index') }}" class="nav-link {{request()->is('editorials')? 'active':''}}">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>Editoriales</p>
                   </a>
                 </li>
+                @endcan
               <li class="nav-item">
                 <a href="../tables/data.html" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Otro</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-header">CONFIGURACIÓN</li>
-          
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-envelope"></i>
-              <p>
-                Mailbox
-                <i class="fa fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../mailbox/mailbox.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Inbox</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../mailbox/compose.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Compose</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../mailbox/read-mail.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Read</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-book"></i>
-              <p>
-                Autentificación
-                <i class="fa fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../examples/profile.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Perfil</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../examples/login.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Login</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../examples/register.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Register</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../examples/lockscreen.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>User home</p>
                 </a>
               </li>
             </ul>

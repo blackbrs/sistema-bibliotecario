@@ -23,7 +23,7 @@
                         @endcan
                         @can('user.stats')
                         <li class="nav-item">
-                            <a href="{{ route('stats') }}" class="nav-link">Estadisticas</a>
+                            <a href="{{ route('stats') }}" class="nav-link">Estadisticas </a>
                            </li>
                            @endcan
 
