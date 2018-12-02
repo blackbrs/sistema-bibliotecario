@@ -43,17 +43,9 @@
                             </div>
                         </div>
             </div>
-            <!-- /.card-body -->
-            <div class="card-footer">
-              Footer
-            </div>
-            <!-- /.card-footer-->
           </div>
     
     <div class="card card-shadow">
-    <div class="card-body">
-    
-    </div>
     </div>
 </div>
 @endsection
