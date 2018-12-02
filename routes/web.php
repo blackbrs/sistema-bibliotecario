@@ -25,7 +25,7 @@ Route::post('/recurso/create/p1', 'RecursoController@postCreateP1');
 Route::get('/recurso/create/p2', 'RecursoController@createP2');
 Route::post('/recurso/create/p2', 'RecursoController@postCreateP2');
 Route::get('/recurso/create/p3', 'RecursoController@createP3');
-Route::get('/recursos','RecursoController@index')->name('recurso.index');
+Route::get('/recursos','RecursoController@index')->name('recursos.index');
 Route::put('/recursos/{recurso}','RecursoController@update')->name('recurso.update');
 Route::get('/recursos/{recurso}','RecursoController@show')->name('recurso.show');
 Route::get('/recursos/{recurso}/edit','RecursoController@edit')->name('recurso.edit');
@@ -73,7 +73,7 @@ Route::middleware(['auth'])->group(function () {
         ->middleware('permission:users.edit');
 
     //Estadisticas
-    Route::get('stats', function () {return view('stats'); })->name('stats')->middleware('permission:users.stats');
+    Route::get('/stats/users', function () {return view('stats.users'); })->name('users.stats')->middleware('permission:users.stats');
 });
 
 //Bibliotecas

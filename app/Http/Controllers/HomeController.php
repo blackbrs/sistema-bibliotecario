@@ -24,7 +24,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         if($request->user()->isRole('admin')){
-            return view('stats');
+            return view('stats.users');
         }
         else return view('home');
     }

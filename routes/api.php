@@ -16,7 +16,7 @@ use \App\User;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('/stats', function (Request $request) {
+Route::post('users', function (Request $request) {
     if($request->ajax()){
     return datatables(User::join('municipios','users.municipio_id','=','municipios.id')
            ->where('municipios.dep_id',$request->get('dep')))
@@ -24,5 +24,3 @@ Route::post('/stats', function (Request $request) {
     }else{//Este espacio es para $request sin ajax - Se puede iniciar la tabla con todos los registros 
     }
 });
-Route::get('upload/formato={type}','HomeController@upload');
-Route::post('upload/formato={type}','HomeController@uploadPost');
