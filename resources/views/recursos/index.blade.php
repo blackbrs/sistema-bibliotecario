@@ -13,7 +13,7 @@
                             <div class="panel-heading">
                                     <th>  Recursos de {{$bib->nombreBiblioteca}}  </th>
                                 @can('users.create')
-                                <th><a href="{{ route('recurso.create') }}" class="btn btn-sm btn-primary">
+                                <th><a href="{{ route('recursos.create') }}" class="btn btn-sm btn-primary">
                                     Agregar un nuevo recurso 
                                 </a></th> 
                                 </div>
@@ -21,10 +21,6 @@
                             </table>
 
                         </div>
-
-                        <a href="{{ route('recursos.create') }}" class="btn btn-sm btn-primary pull-right">
-                                Registrar un nuevo recurso.
-                            </a>
            <div class="card-body">          
                     <table class="table table-striped table-hover">
                         <thead>
