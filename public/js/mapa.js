@@ -6,7 +6,7 @@ var tabla ='';
                     "serverSide": true,
                     "autoWidth": false,
                     "ajax": {
-                        "url":"api/stats",
+                        "url":"/api/users",
                         "type": "POST",
                         "data":function(d){d.dep = dep}
                     },

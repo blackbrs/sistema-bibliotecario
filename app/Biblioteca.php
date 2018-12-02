@@ -13,4 +13,8 @@ class Biblioteca extends Model
     {
         return $this->hasMany(Recurso::class);
     }
+    public function prestamos()
+    {
+        return $this->hasMany(prestamo::class);
+    }
 }

@@ -55,9 +55,13 @@
           </li>
           @endcan
           @can('user.stats')
-          @if(\Request::route()->getName() == 'stats')
+          @if(\Request::route()->getName() == 'users.stats')
           <li class="nav-item has-treeview open menu-open">
-          @else <li class="nav-item has-treeview">
+          @elseif(\Request::route()->getName() == 'recursos.stats')
+          <li class="nav-item has-treeview open menu-open">
+          @elseif(\Request::route()->getName() == 'prestamos.stats')
+          @else
+          <li class="nav-item has-treeview">
           @endif 
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
@@ -68,7 +72,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('stats') }}" class="nav-link {{request()->is('stats')? 'active':''}}">
+                <a href="{{ route('users.stats') }}" class="nav-link {{request()->is('users.stats')? 'active':''}}">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Usuarios</p>
                 </a>
@@ -88,17 +92,25 @@
             </ul>
           </li>
           @endcan
+          @if(\Request::route()->getName() == 'recursos.index')
+          <li class="nav-item has-treeview open menu-open">
+          @elseif(\Request::route()->getName() == 'autors.index')
+          <li class="nav-item has-treeview open menu-open">
+          @elseif(\Request::route()->getName() == 'editorials.index')
+          <li class="nav-item has-treeview open menu-open">
+          @else
           <li class="nav-item has-treeview">
+          @endif 
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-boxes"></i>
               <p>
                 Recursos
                 <i class="fa fa-angle-left right"></i>
               </p>
-            </a>
+            </a> 
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('recurso.index') }}" class="nav-link">
+                <a href="{{ route('recursos.index') }}" class="nav-link {{request()->is('recursos')? 'active':''}}">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Recursos de la biblioteca</p>
                 </a>

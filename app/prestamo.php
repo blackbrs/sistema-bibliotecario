@@ -21,4 +21,5 @@ class prestamo extends Model
     public function recurso(){
         return $this->belongsTo(Recurso::class);
     }
+    
 }

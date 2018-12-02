@@ -45,7 +45,8 @@ class RecursoController extends Controller
      */
     public function show(Recurso $recurso)
     {
-        
+        $pr=$recurso->principal;
+        return view('recursos.show', compact('pr'));
     }
 
     /**
@@ -351,6 +352,7 @@ class RecursoController extends Controller
         }else{
             //
         }
-            return redirect('/recurso/create/p3');
+        return redirect()->route('recursos.index')
+        ->with('info','Recurso Guardado con exito');   
     }
 }

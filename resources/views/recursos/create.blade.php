@@ -84,6 +84,9 @@
                               
                         </div>
                     </div>
+                    <div class="card-footer">
+                            <a href="{{ route('recursos.index') }}" class="btn btn-sm btn-danger" > Cancelar y volver</a>
+                    </div>
                     </div>
                 </div>
         </div>
