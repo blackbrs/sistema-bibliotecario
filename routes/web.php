@@ -30,6 +30,7 @@ Route::put('/recursos/{recurso}','RecursoController@update')->name('recurso.upda
 Route::get('/recursos/{recurso}','RecursoController@show')->name('recurso.show');
 Route::get('/recursos/{recurso}/edit','RecursoController@edit')->name('recurso.edit');
 Route::delete('/recursos/{recurso}','RecursoController@destroy')->name('recurso.destroy');
+Route::get('/recursos','RecursoController@cancelarP1')->name('recursos.cancelar.p1');
 // RUTAS que tendran como requisitos almenos estar loggeados
 Route::middleware(['auth'])->group(function () {
     //roles

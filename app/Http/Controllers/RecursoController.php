@@ -328,11 +328,11 @@ class RecursoController extends Controller
         }else if($rselect == 'digital'){
             if(empty($request->session()->get('digital'))){
                 $digital = new Digital();
-                $fisico->save($request->session()->get('resclass'));
+                $digital->save($request->session()->get('resclass'));
                 $request->session()->put('digital', $digital);
             }else{
                 $digital = $request->session()->get('digital');
-                $fisico->save($request->session()->get('resclass'));
+                $digital->save($request->session()->get('resclass'));
                 $request->session()->put('digital', $digital);
             }
             /*
@@ -352,7 +352,25 @@ class RecursoController extends Controller
         }else{
             //
         }
+        $request->session()->forget('recurso');
+        $request->session()->forget('resclass');
+        $request->session()->forget('rselect');
+        $request->session()->forget('alt');
+        $request->session()->forget('pr');
+        $request->session()->forget('fisico');
+        $request->session()->forget('digital');
         return redirect()->route('recursos.index')
         ->with('info','Recurso Guardado con exito');   
+    }
+    public function cancelarP1(Request $request){
+        $recurso = $request->session()->forget('recurso');
+        $rselect = $request->session()->forget('rselect');
+    }
+    public function cancelarP2(Request $request){
+        $request->session()->forget('alt');
+        $request->session()->forget('pr');
+        $request->session()->forget('fisico');
+        $request->session()->forget('digital');
+        $request->session()->forget('resclass');
     }
 }
