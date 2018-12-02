@@ -17,6 +17,8 @@ class CreateLibrosTable extends Migration
             $table->increments('id');
             $table->integer('editorial_id');
             $table->foreign('editorial_id')->references('id')->on('editorials');
+            $table->integer('recurso_id');
+            $table->foreign('recurso_id')->references('id')->on('recursos');
             $table->string('volumen');
             $table->string('ISBN', 13);
             $table->integer('paginas');

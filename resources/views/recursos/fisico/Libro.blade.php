@@ -1,10 +1,16 @@
+@php( $edt = \App\Editorial::all()) 
 <div class="form-group">
     {!! Form::label('editorial', 'Editorial') !!}
-    <input type="text" value="{{{ $resclass->editorial or '' }}}" class="form-control" id="editorial"  name="editorial" required>  
+    <select name="editorial_id" id= "editorial_id" class="form-control"required >        
+        <option value="">Editorial</option>
+        @foreach ($edt as $ed)
+        <option value="{{ $ed->id }}"> {{ $ed->nombre}} </option>  
+        @endforeach
+    </select>    
     </div>
     <div class="form-group">
          {!! Form::label('volumen', 'Volumen') !!}
-        <textarea type="text"  class="form-control" id="volumen" name="volumen" style="resize: none;" required>{{{ $recurso->descripcion or '' }}}</textarea>     
+        <textarea type="text"  class="form-control" id="volumen" name="volumen" style="resize: none;" required>{{{ $resclass->descripcion or '' }}}</textarea>     
     </div>
     <div class="form-group">
             {!! Form::label('ISBN', 'ISBN') !!}

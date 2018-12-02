@@ -19,6 +19,6 @@ class Tesis extends Model
         return $this->morphOne(Digital::class, 'linkable');
     }
     public function recurso(){
-        return $this->belongsTo(Recurso::class);
+        return $this->hasOne(Recurso::class);
     }
 }

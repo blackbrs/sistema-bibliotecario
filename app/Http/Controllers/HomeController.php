@@ -33,7 +33,7 @@ class HomeController extends Controller
     }
     public function uploadPost(Request $request){
         $request->validate([
-            'file' => 'required|file|max:46000',
+            'file' => 'required|file|max:46000|mimes:jpeg,bmp,png',
         ]);
         $destinationPath = 'public/uploads/';
         $storagePath = Storage::disk('local')->put($destinationPath, $request->file);

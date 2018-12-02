@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Editorial;
 use Illuminate\Http\Request;
-
+use DB;
 class EditorialController extends Controller
 {
     /**
@@ -97,5 +97,9 @@ class EditorialController extends Controller
         $editorial->delete();
 
         return back()->with('info', 'editorial Eliminado con exito');
+    }
+    public static function getEdt()
+    {
+        return $biblioteca = DB::table('editorials')->get();
     }
 }

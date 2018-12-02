@@ -95,59 +95,73 @@ class RecursoController extends Controller
         $rselect = $request->session()->get('rselect');
         $alt= $request->session()->get('alt');
 
-        if($rselect=='fisico'){
-            $validatedDataFisico = $request->validate([
-                'copias' => 'required|numeric',
-                'unidadesDisponibles' => 'required|numeric',
-                'prestamosRealizados' => 'required|numeric',
-            ]);
-            if(empty($request->session()->get('fisico'))){
-                $fisico = new Fisico();
-                $fisico->fill($validatedDataFisico);
-                $request->session()->put('fisico', $fisico);
-            }else{
-                $fisico = $request->session()->get('fisico');
-                $fisico->fill($validatedDataFisico);
-                $request->session()->put('fisico', $fisico);
-            }
-            if(empty($alt)){
-                $alt = new Digital();
-                $request->session()->put('alt', $alt);
-            }else{
-                $request->session()->put('alt', $alt);
-            }
-            
-        }else if($rselect == 'digital'){
-            $validatedDataDigital = $request->validate([
-                'file' => 'required|file|max:46000',
-            ]);
-            if(empty($request->session()->get('digital'))){
-                $digital = new Digital();
-                $request->session()->put('digital', $digital);
-            }else{
-                $digital = $request->session()->get('digital');
-                $request->session()->put('digital', $digital);
-            }
-
-            if(empty($alt)){
-                $alt = new Fisico();
-                $request->session()->put('alt', $alt);
-            }
-            else{
-
-            }
-            
-        }else{
-            //
-        }
-
         if(empty($resclass)){
             $model = 'App\\'.$pr;
             $resclass = new $model;
-            $request->session()->put('resclass', $resclass);
+            $resclass->fill(self::validatePrincipal($request, $pr));
+            $resclass->recurso_id=$recurso->id;
+            $resclass->save();
         }
         else{
-            $request->session()->put('resclass', $resclass);
+            $resclass->fill(self::validatePrincipal($request, $pr));
+            $resclass->recurso_id=$recurso->id;
+            $resclass->save();
+        }
+
+        if($rselect=='fisico'){
+            if(empty($request->session()->get('fisico'))){
+                $fisico = new Fisico();
+                $fisico->fill(self::validateFisico($request));
+                $resclass->fisico()->save($fisico);
+                $request->session()->put('fisico', $fisico);
+                $request->session()->put('resclass', $resclass);
+            }else{
+                $fisico = $request->session()->get('fisico');
+                $fisico->fill(self::validateFisico($request));
+                $resclass->fisico()->save($fisico);
+                $request->session()->put('fisico', $fisico);
+                $request->session()->put('resclass', $resclass);
+            }
+            if($recurso->versionAlt){
+                $validateAltD = $request->validate([
+                    'file' => 'required|file|max:46000',
+                ]);
+            if(empty($alt)){
+                $alt = new Digital();
+               // $alt->fill($validateAltD);
+                $request->session()->put('alt', $alt);
+            }else{
+                //$alt->fill($validateAltD);
+                $request->session()->put('alt', $alt);
+            }
+        }
+            
+        }else if($rselect == 'digital'){
+            if(empty($request->session()->get('digital'))){
+                $digital = new Digital();
+                $fisico->save($request->session()->get('resclass'));
+                $request->session()->put('digital', $digital);
+            }else{
+                $digital = $request->session()->get('digital');
+                $fisico->save($request->session()->get('resclass'));
+                $request->session()->put('digital', $digital);
+            }
+            /*
+            if($recurso->versionAlt){
+            if(empty($alt)){
+                $alt = new Fisico();
+                $alt->fill($validateAltF);
+                $request->session()->put('alt', $alt);
+            }
+            else{
+                $alt->fill($validateAltF);
+                $request->session()->put('alt', $alt);
+            }
+            
+        }
+          */  
+        }else{
+            //
         }
             return redirect('/recurso/create/p3');
     }
@@ -209,5 +223,125 @@ class RecursoController extends Controller
     public function destroy(Recursos $recursos)
     {
         //
+    }
+    private function validateFisico(Request $request){
+        return $request->validate([
+                'copias' => 'required|numeric',
+                'unidadesDisponibles' => 'required|numeric',
+                'prestamosRealizados' => 'required|numeric',
+            ]);
+    }
+    private function validateDigital(Request $request, String $pr){
+        switch ($pr) {
+            case 'Video':
+            return $request->validate([
+                'file' => 'required|file|max:46000|mimes:mp4,avi,mov,wmv,webm',
+            ]);
+            case 'Tesis':
+                return $request->validate([
+                'file' => 'required|file|max:46000|mimes:pdf',
+            ]);
+            case 'Audio':
+                return $request->validate([
+                'file' => 'required|file|max:46000|mimes:mp3,wav,ogg,wma',
+            ]);
+            case 'Planos':
+                return $request->validate([
+                'file' => 'required|file|max:46000|mimes:pdf',
+            ]);
+            case 'Hemeroteca':
+                return $request->validate([
+                'file' => 'required|file|max:46000|mimes:pdf',
+            ]);
+            default:
+                break;
+    }
+}
+    private function validateDigitalAlt(Request $request, String $pr){
+        switch ($pr) {
+            case 'Libro':
+            return $request->validate([
+                
+            ]);
+            case 'Tesis':
+            return $request->validate([
+                
+                ]);  
+            case 'CD':
+            return $request->validate([
+                
+                ]);  
+            case 'DVD':
+            return $request->validate([
+                
+                ]);  
+            case 'Mapa':
+            return $request->validate([
+                
+                ]); 
+            case 'Hemeroteca':
+            return $request->validate([
+                
+                ]); 
+            default:
+                break;
+        }
+    }
+    public function validatePrincipal(Request $request, String $pr){
+        switch ($pr) {
+            case 'Libro':
+            return $request->validate([
+                'editorial_id' => 'required',
+                'volumen' => 'required',
+                'ISBN' => 'required',
+                'paginas' => 'required',
+            ]);
+            case 'Tesis':
+            return $request->validate([
+                'carrera' => 'required',
+                'paginas' => 'required|numeric'
+                ]);  
+            case 'CD':
+            return $request->validate([
+                '' => '',
+                '' => ''
+                ]);  
+            case 'DVD':
+            return $request->validate([
+                '' => '',
+                ]);  
+            case 'Mapa':
+            return $request->validate([
+                '' => '',
+                ]); 
+            case 'Hemeroteca':
+            return $request->validate([
+                '' => '',
+                '' => '',
+                '' => ''
+            ]);
+            case 'Video':
+            return $request->validate([
+                'file' => 'required|file|max:46000|mimes:mp4,avi,mov,wmv,webm',
+            ]);
+            case 'Tesis':
+                return $request->validate([
+                'file' => 'required|file|max:46000|mimes:pdf',
+            ]);
+            case 'Audio':
+                return $request->validate([
+                'file' => 'required|file|max:46000|mimes:mp3,wav,ogg,wma',
+            ]);
+            case 'Planos':
+                 return $request->validate([
+                'file' => 'required|file|max:46000|mimes:pdf',
+             ]);
+             case 'Hemeroteca':
+                return $request->validate([
+                'file' => 'required|file|max:46000|mimes:pdf',
+            ]); 
+            default:
+                break;
+        }
     }
 }

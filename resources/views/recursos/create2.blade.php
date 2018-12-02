@@ -22,7 +22,6 @@
                                     @else
                                         <!--no hacer nada / hay errores en el form anterior - permanecer ahi-->
                                     @endif
-                                    @if()
                                     <button type="buttom" id="btnf2" class="btn btn-primary">Finalizar</button>  
                                 </form>
                               

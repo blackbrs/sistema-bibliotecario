@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Libro extends Model
 {
-    protected $fillable = ['editorial','volumen','ISBN','paginas'];
+    protected $fillable = ['recurso_id','editorial_id','volumen','ISBN','paginas'];
     public $timestamps = false;
 
     public function fisico(){
