@@ -69,7 +69,7 @@ class RecursoController extends Controller
     {
         $recurso = $request->session()->get('recurso');
         $pr = $recurso->principal;
-        $resclass = $request->session()->get($pr);
+        $resclass = $request->session()->get('resclass');
         $rselect = $request->session()->get('rselect');
        if($rselect == "fisico"){
            $fisico = $request->session()->get('fisico');
@@ -91,8 +91,9 @@ class RecursoController extends Controller
     {
         $recurso = $request->session()->get('recurso');
         $pr = $recurso->principal;
-        $resclass = $request->session()->get($pr);
+        $resclass = $request->session()->get('resclass');
         $rselect = $request->session()->get('rselect');
+        $alt= $request->session()->get('alt');
 
         if($rselect=='fisico'){
             $validatedDataFisico = $request->validate([
@@ -109,6 +110,12 @@ class RecursoController extends Controller
                 $fisico->fill($validatedDataFisico);
                 $request->session()->put('fisico', $fisico);
             }
+            if(empty($alt)){
+                $alt = new Digital();
+                $request->session()->put('alt', $alt);
+            }else{
+                $request->session()->put('alt', $alt);
+            }
             
         }else if($rselect == 'digital'){
             $validatedDataDigital = $request->validate([
@@ -121,14 +128,27 @@ class RecursoController extends Controller
                 $digital = $request->session()->get('digital');
                 $request->session()->put('digital', $digital);
             }
+
+            if(empty($alt)){
+                $alt = new Fisico();
+                $request->session()->put('alt', $alt);
+            }
+            else{
+
+            }
+            
         }else{
             //
         }
+
         if(empty($resclass)){
             $model = 'App\\'.$pr;
             $resclass = new $model;
+            $request->session()->put('resclass', $resclass);
         }
-        else{}
+        else{
+            $request->session()->put('resclass', $resclass);
+        }
             return redirect('/recurso/create/p3');
     }
     public function createP3()
