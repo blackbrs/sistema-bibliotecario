@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-                <div class="card">
+                <div class="card" style="width: 40.5em;margin:0 auto;">
             <div class=" panel panel-default">
                     <div class="card-header">
                 <div class="panel-heading"> Rol a actualizar </div>
