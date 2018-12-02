@@ -6,7 +6,6 @@
     <div class="row">
        <div class="col-12">
         <div class="card">
-          
             <div class="panel panel-default">
                     <div class="card-header">
                             <div class="panel-heading">
@@ -14,7 +13,9 @@
                             </div>
                         </div>
 
-
+                        <a href="{{ route('recursos.create') }}" class="btn btn-sm btn-primary pull-right">
+                                Registrar un nuevo recurso.
+                            </a>
            <div class="card-body">          
                     <table class="table table-striped table-hover">
                         <thead>

@@ -20,7 +20,7 @@ Route::post('getmunicipio/fetch', 'DepartamentoController@getMunicipios');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('upload', 'HomeController@upload')->name('upload');
 Route::post('upload', 'HomeController@uploadPost');
-Route::get('/recurso/create/p1', 'RecursoController@createP1')->name('recurso.create');
+Route::get('/recurso/create/p1', 'RecursoController@createP1')->name('recursos.create');
 Route::post('/recurso/create/p1', 'RecursoController@postCreateP1');
 Route::get('/recurso/create/p2', 'RecursoController@createP2');
 Route::post('/recurso/create/p2', 'RecursoController@postCreateP2');

@@ -352,6 +352,7 @@ class RecursoController extends Controller
         }else{
             //
         }
-            return redirect('/recurso/create/p3');
+        return redirect()->route('recursos.index')
+        ->with('info','Recurso Guardado con exito');   
     }
 }

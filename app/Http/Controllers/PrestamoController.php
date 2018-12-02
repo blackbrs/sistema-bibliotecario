@@ -14,7 +14,8 @@ class PrestamoController extends Controller
      */
     public function index()
     {
-        //
+        $prestamos = Auth::user()->biblioteca()->prestamos;
+        
     }
 
     /**
