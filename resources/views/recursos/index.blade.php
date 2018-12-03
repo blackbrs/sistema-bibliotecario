@@ -12,7 +12,7 @@
                                 
                             <div class="panel-heading">
                                     <th>  Recursos de {{$bib->nombreBiblioteca}}  </th>
-                                @can('users.create')
+                                @can('recursobib.create')
                                 <th><a href="{{ route('recursos.create') }}" class="btn btn-sm btn-primary">
                                     Agregar un nuevo recurso 
                                 </a></th> 
@@ -45,7 +45,7 @@
                                 <td>{{ $recurso->principal }}</td>
                                 <td>{{ $recurso->año }}</td>
                                 <td>
-                                @can('users.show')
+                                @can('recursobib.show')
                                 
                                 <a href="{{ route('recurso.show', $recurso->id) }}"
                                     class="btn btn-sm btn-outline-info" role="button">
@@ -54,7 +54,7 @@
                                 </td>
 
                                 <td>
-                                        @can('users.edit')
+                                        @can('recursobib.edit')
                                         <a href="{{ route('recurso.edit', $recurso->id) }}"
                                             class="btn btn-sm btn-outline-info" role="button">
                                         Editar</a>
@@ -62,7 +62,7 @@
                                  </td> 
 
                                  <td>
-                                        @can('users.destroy') 
+                                        @can('recursobib.destroy') 
                                        {!! Form::open(['route'=> ['recurso.destroy', $recurso->id],
                                        'method'=>'DELETE']) !!}
                                        <button class="btn btn-sm btn-danger"> Eliminar</button>
@@ -72,7 +72,7 @@
                                  </td> 
 
                                  <td>
-                                     @can('users.show')
+                                     @can('recurso.prestar')
                                      <a href="{{ route('recurso.prestar',[$recurso->id , Auth::user()->id ]) }}" class="btn btn-sm  btn-warning" role="button">
                                         Prestar Libro</a>
                                      @endcan
