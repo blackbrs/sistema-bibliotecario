@@ -80,9 +80,9 @@
                                         <label class="form-check-label" id="lb1" for="versionAlt"> </label>
                                     </div>
                                     <div class="form-group">
-                                    <label for="thumb">Nombre del recurso:</label>
+                                    <label for="thumb">Miniatura:</label>
                                     {{ csrf_field() }}
-                                    <input type="file" class="form-control-file" name="thumb" id="RC_thumb" aria-describedby="fileHelp">
+                                    <input type="file" class="form-control-file" name="thumb" id="RC_thumb" aria-describedby="fileHelp" disabled>
                                     <small id="fileHelp" class="form-text text-muted">El archivo debe ser menor de 2MB</small>
                                 </div>
                                     </div>

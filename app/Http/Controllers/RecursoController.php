@@ -9,6 +9,7 @@ use App\prestamo;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use DB;
 class RecursoController extends Controller
 {
@@ -52,19 +53,19 @@ class RecursoController extends Controller
             $f=$recurso->getRes($recurso->principal)->id;
             $pres->save();
             DB::table('fisicos')->where('linkable_id',$f)->decrement('unidadesDisponibles', 1 );
-            return redirect()->route('recursos.index')->with('info','Presatamo realizado con exito');
+            return redirect()->route('recursos.index')->with('info','Prestamo realizado con exito');
 
         }
         return redirect()->route('recursos.index')->with('fail','USTED NO PUEDE REALIZAR EL PRESTAMO YA POSEE TRES');
     }
 
-    public function devolver($idrecurso,$idprestamo,$idusuario){
-        $prestamo = prestamo::where('user_id',$idusuario)->where('id',$idprestamo)->first();
-        
-            $prestamo->prestamoActivo = FALSE;
+    public function devolver($recurso, $prestamoid, $userid){
+        $prestamo = prestamo::where('user_id',$userid)->where('id',$prestamoid)->first();
+        $prestamo->prestamoActivo = FALSE;
+        DB::table('fisicos')->where('linkable_id',$recurso)->increment('unidadesDisponibles', 1 );
 
         $prestamo->save();
-        return redirect()->route('home')->with('info','Gracias por devolver el recurso.');
+        return redirect()->back()->with('info','Gracias por devolver el recurso.');
     }
 
     /**
@@ -244,7 +245,7 @@ class RecursoController extends Controller
                     $validateThumb = $request->validate([
                         'thumb' => 'file|max:46000|mimes:jpeg,bmp,png,gif,jpg',
                     ]);
-                    $thumb = Storage::disk('local')->put('public/uploads/', $request->file);
+                    $thumb = Storage::disk('local')->put($request->file);
                     $recurso->thumb = $thumb;
                 }
             $recurso->biblioteca_id = Auth::user()->biblioteca_id;
@@ -265,7 +266,7 @@ class RecursoController extends Controller
                         'thumb' => 'file|max:46000|mimes:jpeg,bmp,png,gif,jpg',
                     ]);
                     Storage::disk('local')->delete($recurso->thumb);
-                    $thumb = Storage::disk('local')->put('public/uploads/', $request->file);
+                    $thumb = Storage::disk('local')->put($request->file);
                     $recurso->thumb = $thumb;
                 }
 
@@ -371,7 +372,7 @@ class RecursoController extends Controller
             if(empty($request->session()->get('digital'))){
                 $digital = new Digital();
                 $digital->formato=$request->file('file')->extension();
-                $path = Storage::disk('local')->put('public/uploads/', $request->file);
+                $path = Storage::disk('local')->put($request->file);
                 $peso = Storage::size($storagePath)/1000000;
                 $digital->path = $path;
                 $digital->peso  = $size;
@@ -380,7 +381,7 @@ class RecursoController extends Controller
                 $digital = $request->session()->get('digital');
                 Storage::disk('local')->delete($digital->path);
                 $digital->formato=$request->file('file')->extension();
-                $path = Storage::disk('local')->put('public/uploads/', $request->file);
+                $path = Storage::disk('local')->put($request->file);
                 $peso = Storage::size($storagePath)/1000000;
                 $digital->path = $path;
                 $digital->peso  = $size;
