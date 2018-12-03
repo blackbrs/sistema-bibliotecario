@@ -56,11 +56,7 @@
                               <div class="col-sm">
                                   <div class="row">
                                       <div class="col-sm">
-                                          @if(!empty($recurso->thumb))
                                           <img src="/img/nothumb.gif" class="img-fluid" alt="">
-                                          @else
-                                          <img src="/img/nothumb.gif" class="img-fluid" alt="">
-                                          @endif
                                       </div>
                                     </div>
                               </div>
