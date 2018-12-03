@@ -44,6 +44,12 @@ class RecursoController extends Controller
     public function prestar(Recurso $recurso, User $user)
     {
         $cuenta = DB::table('prestamos')->where('user_id',$user->id)->where('prestamoActivo',TRUE)->count();
+        $f=$recurso->getRes($recurso->principal)->id;
+        $cuenta2 = DB::table('fisicos')->where('linkable_id',$f)->first();
+       // dd($cuenta2);
+        if($cuenta2->unidadesDisponibles <= 0){
+            return redirect()->route('recursos.index')->with('fail','NO HAY COPIAS DISPONIBLES.');
+        }
         if($cuenta < 3){
             $pres = new prestamo(); 
             $pres->user_id = $user->id;
