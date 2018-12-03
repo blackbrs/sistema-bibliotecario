@@ -17,4 +17,7 @@ class Libro extends Model
     public function recurso(){
         return $this->belongsTo(Recurso::class);
     }
+    public function editorial(){
+        return $this->belongsTo(Editorial::class);
+    }
 }
