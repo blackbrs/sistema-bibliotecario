@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Recurso;
 use App\Fisico;
 use App\Digital;
+use App\prestamo;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,6 +37,19 @@ class RecursoController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    // FUNCION QUE HACE EL PRESTAMO !!!!
+    public function prestar(Recurso $recurso, User $user)
+    {
+        $pres = new prestamo(); 
+        $pres->usuario_id = $user->id;
+        $pres->biblioteca_id = $recurso->biblioteca_id;
+        $pres->recurso_id = $recurso->id;
+        $pres->save();
+       // DB::table('fisicos')->decrement('unidadesDisponibles', 1 )->where('id');
+        return redirect()->route('recursos.index')->with('info','Presatamo realizado con exito');
+
     }
 
     /**
