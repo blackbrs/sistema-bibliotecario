@@ -55,10 +55,11 @@ class RecursoController extends Controller
             return redirect()->route('recursos.index')->with('info','Prestamo realizado con exito');
 
         }
-        return redirect()->route('recursos.index')->with('fail','USTED NO PUEDE REALIZAR EL PRESTAMO YA POSEE TRES');
+        return redirect()->route('recursos.index')->with('fail','USTED NO PUEDE REALIZAR EL PRESTAMO YA POSEE TRES SIN ENTREGAR REGISTRADOS EN EL SISTEMA.');
     }
 
     public function devolver($idrecurso,$idprestamo,$idusuario){
+   
         $prestamo = prestamo::where('user_id',$idusuario)->where('id',$idprestamo)->first();
         $prestamo->prestamoActivo = FALSE;
         $prestamo->save();
