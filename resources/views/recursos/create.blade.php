@@ -43,12 +43,41 @@
                                      </div>
                                     <div class="form-group">
                                             {!! Form::label('genero', 'Genero') !!}
-                                            <input type="text" value="{{{ $recurso->genero or '' }}}" class="form-control" id="RC_genero"  name="genero" required>
+                                            <select name="genero" id= "genero" class="form-control"required >        
+                                                <option value="" disabled selected>Selecciona una opcion</option>
+                                                <option value="">Narrativo</option>
+                                                <option value="">Didactico</option>
+                                                <option value="">Otro</option>
+                                            </select>  
 
                                     </div>
                                     <div class="form-group">
                                             {!! Form::label('categoria', 'Categoria') !!}
-                                            <input type="text" value="{{{ $recurso->categoria or '' }}}" class="form-control" id="RC_categoria"  name="categoria" required>
+                                            <select name="genero" id= "genero" class="form-control"required >        
+                                                <option value="" disabled selected>Selecciona una opcion</option>
+                                                <option value="">Literatura</option>
+                                                <option value="">Arte</option>
+                                                <option value="">Arquitectura</option>
+                                                <option value="">Biografia</option>
+                                                <option value="">Negocios</option>
+                                                <option value="">Economia</option>
+                                                <option value="">Matematicas</option>
+                                                <option value="">Ciencias politicas</option>
+                                                <option value="">Fisica</option>
+                                                <option value="">Filosofia</option>
+                                                <option value="">Psicologia</option>
+                                                <option value="">Ciencias sociales</option>
+                                                <option value="">Deportes</option>
+                                                <option value="">Salud</option>
+                                                <option value="">Lengua</option>
+                                                <option value="">Leyes</option>
+                                                <option value="">Medicina</option>
+                                                <option value="">Musica</option>
+                                                <option value="">Tecnologia</option>
+                                                <option value="">Ingenieria</option>
+                                                <option value="">Otro</option>
+                                                <option value="">Entretenimiento</option>
+                                            </select>  
                                              
                                     </div>
                                     <div class="form-group">

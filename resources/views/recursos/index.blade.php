@@ -47,7 +47,7 @@
                                 <td>
                                 @can('recursobib.show')
                                 
-                                <a href="{{ route('recurso.show', $recurso->id) }}"
+                                <a href="{{ route('recurso.show', $recurso->id) }}" 
                                     class="btn btn-sm btn-outline-info" role="button">
                                 Ver Detalles</a>
                                 @endcan
@@ -55,8 +55,8 @@
 
                                 <td>
                                         @can('recursobib.edit')
-                                        <a href="{{ route('recurso.edit', $recurso->id) }}"
-                                            class="btn btn-sm btn-outline-info" role="button">
+                                        <a disabled href="{{ route('recurso.edit', $recurso->id) }}"
+                                           style='pointer-events: none;' class="btn btn-sm btn-outline-info" role="button">
                                         Editar</a>
                                         @endcan
                                  </td> 
@@ -74,7 +74,7 @@
                                  <td>
                                      @can('recurso.prestar')
                                      <a href="{{ route('recurso.prestar',[$recurso->id , Auth::user()->id ]) }}" class="btn btn-sm  btn-warning" role="button">
-                                        Prestar Libro</a>
+                                        Prestar recurso</a>
                                      @endcan
                                  </td>
 
