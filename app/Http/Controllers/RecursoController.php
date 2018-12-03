@@ -43,7 +43,7 @@ class RecursoController extends Controller
     public function prestar(Recurso $recurso, User $user)
     {
         $pres = new prestamo(); 
-        $pres->usuario_id = $user->id;
+        $pres->user_id = $user->id;
         $pres->biblioteca_id = $recurso->biblioteca_id;
         $pres->recurso_id = $recurso->id;
         $f=$recurso->getRes($recurso->principal)->id;

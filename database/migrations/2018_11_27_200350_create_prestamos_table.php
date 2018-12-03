@@ -15,8 +15,8 @@ class CreatePrestamosTable extends Migration
     {
         Schema::create('prestamos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('usuario_id');
-            $table->foreign('usuario_id')->references('id')->on('users');
+            $table->integer('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->integer('biblioteca_id');
             $table->foreign('biblioteca_id')->references('id')->on('bibliotecas');
             $table->integer('recurso_id');

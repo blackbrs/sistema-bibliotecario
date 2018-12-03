@@ -37,10 +37,10 @@
 
 
           <li class="nav-item">
-            <a href="#" class="nav-link ">
+            <a href="{{ route('prestamos.index',  Auth::user()->biblioteca_id ) }}" class="nav-link ">
               <i class="nav-icon fa fa-book-open"></i>
               <p>
-                Ver Mis Prestamos
+                Ver  Prestamos Generales
               </p>
             </a>
           </li>
@@ -124,6 +124,12 @@
                 <a href="{{route('recursos.index')}}" class="nav-link {{request()->is('recursos')? 'active':''}}">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Recursos de la biblioteca</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('prestamosPersonal.index', Auth::user()->biblioteca_id)}}" class="nav-link {{request()->is('prestamo')? 'active':''}}">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Ver mis prestamos</p>
                 </a>
               </li>
               @can('autors.index')

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class prestamo extends Model
 {
     protected $fillable = [
-        'usuario_id','biblioteca_id','recurso_id',
+        'user_id','biblioteca_id','recurso_id',
     ];
 
     public function biblioteca(){
