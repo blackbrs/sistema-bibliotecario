@@ -47,18 +47,21 @@
 
     <!-- Main content -->
     <section class="content">
+
+      
+        @if (session('fail'))
+        <div class="container">
+                    <div class="alert alert-danger">
+                        {{ session('fail') }}
+                    </div>
+        </div>     
+        @endif
         
             @if (session('info'))
             <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
                         <div class="alert alert-success">
                             {{ session('info') }}
-            
-                        </div>
-            
-                    </div>
-                </div>
+                        </div>     
             </div>     
             @endif
     

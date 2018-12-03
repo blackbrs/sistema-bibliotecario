@@ -79,6 +79,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cancelar/recurso/p2','RecursoController@cancelarP2')->name('recursos.cancelar.p2');
     //RUTA PARA HACER LOS PRESTAMOS!!!!
     Route::get('/recursos/{recurso}/prestamo/{user}','RecursoController@prestar')->name('recurso.prestar');
+    Route::get('/recursos/{recurso}/{prestamo}/{user}','RecursoController@devolver')->name('recurso.devolver');
+
 });
 
 //Bibliotecas
@@ -153,7 +155,7 @@ Route::get('prestamos/PorBiblioteca/{prestamo}', 'PrestamoController@index')->na
         ->middleware('permission:prestamos.index');
 
 Route::get('prestamos/PorUsuario/{prestamo}', 'PrestamoController@indexPersonal')->name('prestamosPersonal.index')
-        ->middleware('permission:prestamos.index');
+        ->middleware('permission:prestamosPersonal.index');
 
 Route::get('prestamos/{prestamo}', 'PrestamoController@show')->name('prestamos.show')
         ->middleware('permission:prestamos.show');

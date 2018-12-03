@@ -42,16 +42,29 @@ class RecursoController extends Controller
     // FUNCION QUE HACE EL PRESTAMO !!!!
     public function prestar(Recurso $recurso, User $user)
     {
-        $pres = new prestamo(); 
-        $pres->user_id = $user->id;
-        $pres->biblioteca_id = $recurso->biblioteca_id;
-        $pres->recurso_id = $recurso->id;
-        $pres->prestamoActivo = TRUE;
-        $f=$recurso->getRes($recurso->principal)->id;
-        $pres->save();
-        DB::table('fisicos')->where('linkable_id',$f)->decrement('unidadesDisponibles', 1 );
-        return redirect()->route('recursos.index')->with('info','Presatamo realizado con exito');
+        $cuenta = DB::table('prestamos')->where('user_id',$user->id)->where('prestamoActivo',TRUE)->count();
+        if($cuenta < 3){
+            $pres = new prestamo(); 
+            $pres->user_id = $user->id;
+            $pres->biblioteca_id = $recurso->biblioteca_id;
+            $pres->recurso_id = $recurso->id;
+            $pres->prestamoActivo = TRUE;
+            $f=$recurso->getRes($recurso->principal)->id;
+            $pres->save();
+            DB::table('fisicos')->where('linkable_id',$f)->decrement('unidadesDisponibles', 1 );
+            return redirect()->route('recursos.index')->with('info','Presatamo realizado con exito');
 
+        }
+        return redirect()->route('recursos.index')->with('fail','USTED NO PUEDE REALIZAR EL PRESTAMO YA POSEE TRES');
+    }
+
+    public function devolver($idrecurso,$idprestamo,$idusuario){
+        $prestamo = prestamo::where('user_id',$idusuario)->where('id',$idprestamo)->first();
+        
+            $prestamo->prestamoActivo = FALSE;
+
+        $prestamo->save();
+        return redirect()->route('home')->with('info','Gracias por devolver el recurso.');
     }
 
     /**

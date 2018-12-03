@@ -36,7 +36,7 @@
           </li>
           @endcan
 
-
+          @can('prestamos.index')
           <li class="nav-item">
             <a href="{{ route('prestamos.index',  Auth::user()->biblioteca_id ) }}" class="nav-link ">
               <i class="nav-icon fa fa-book-open"></i>
@@ -45,6 +45,7 @@
               </p>
             </a>
           </li>
+          @endcan
 
           @can('users.index')
           <li class="nav-item">
@@ -127,12 +128,15 @@
                   <p>Recursos de la biblioteca</p>
                 </a>
               </li>
+              @can('prestamosPersonal.index')
               <li class="nav-item">
-                <a href="{{route('prestamosPersonal.index', Auth::user()->id)}}" class="nav-link {{request()->is('prestamo')? 'active':''}}">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Ver mis prestamos</p>
-                </a>
-              </li>
+                  <a href="{{route('prestamosPersonal.index', Auth::user()->id)}}" class="nav-link {{request()->is('prestamo')? 'active':''}}">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Ver mis prestamos</p>
+                  </a>
+                </li>
+              @endcan
+              
               @can('autors.index')
               <li class="nav-item">
                 <a href="{{ route('autors.index') }}" class="nav-link {{request()->is('autors')? 'active':''}}">
