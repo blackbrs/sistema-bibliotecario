@@ -1,6 +1,6 @@
 <tr>
         <th scope="row">Duración:</th>
-        <td>{{$principal->editorial->nombre}}</td>
+        <td>{{$principal->nPistas->nombre}}</td>
     </tr>
     <tr>
         <th scope="row">Numero de pistas:</th>
