@@ -34,6 +34,17 @@
             </a>
           </li>
           @endcan
+
+
+          <li class="nav-item">
+            <a href="#" class="nav-link ">
+              <i class="nav-icon fa fa-book-open"></i>
+              <p>
+                Ver Mis Prestamos
+              </p>
+            </a>
+          </li>
+
           @can('users.index')
           <li class="nav-item">
             <a href="{{ route('users.index') }}" class="nav-link {{request()->is('users')? 'active':''}}">
