@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\prestamo;
+use App\User;
 use Illuminate\Http\Request;
+
 
 class PrestamoController extends Controller
 {
@@ -12,10 +14,16 @@ class PrestamoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($numero)
     {
-        $prestamos = Auth::user()->biblioteca()->prestamos;
-        return view('prestamos.index', compact('prestamos'));
+         $prest = prestamo::where('biblioteca_id', $numero)->paginate(10);
+         return view('prestamos.index', compact('prest'));
+    }
+
+    public function indexPersonal(User $user)
+    {
+        
+        return view('prestamos.index', compact(''));
     }
 
     /**

@@ -148,3 +148,13 @@ Route::delete('editorials/{editorial}', 'EditorialController@destroy')->name('ed
 
 Route::get('editorials/{editorial}/edit', 'EditorialController@edit')->name('editorials.edit')
         ->middleware('permission:editorials.edit');
+/* RUTAS PARA VER PRESTAMOS  */
+Route::get('prestamos/PorBiblioteca/{prestamo}', 'PrestamoController@index')->name('prestamos.index')
+        ->middleware('permission:prestamos.index');
+
+Route::get('prestamos/PorUsuario/{prestamo}', 'PrestamoController@indexPersonal')->name('prestamosPersonal.index')
+        ->middleware('permission:prestamos.index');
+
+Route::get('prestamos/{prestamo}', 'PrestamoController@show')->name('prestamos.show')
+        ->middleware('permission:prestamos.show');
+
