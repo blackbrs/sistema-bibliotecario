@@ -22,7 +22,7 @@
                     <form action="/upload" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <input type="file" class="form-control-file" name="file" id="exampleInputFile" aria-describedby="fileHelp">
+                            <input type="file" class="form-control-file" name="file" id="file" aria-describedby="fileHelp">
                             <small id="fileHelp" class="form-text text-muted">El archivo debe ser menor de 2MB</small>
                         </div>
                         <button type="submit" class="btn btn-primary">Subir</button>

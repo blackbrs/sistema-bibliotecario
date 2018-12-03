@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CD extends Model
 {
+    protected $table = 'cds';
     protected $fillable = ['nPistas','duracion'];
     public $timestamps = false; 
 

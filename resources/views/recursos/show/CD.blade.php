@@ -1,8 +1,8 @@
 <tr>
         <th scope="row">Duración:</th>
-        <td>{{$principal->nPistas->nombre}}</td>
+        <td>{{$principal->duracion}}</td>
     </tr>
     <tr>
         <th scope="row">Numero de pistas:</th>
-        <td>{{$principal->volumen}}</td>
+        <td>{{$principal->nPistas}}</td>
     </tr>
