@@ -46,6 +46,7 @@ class RecursoController extends Controller
         $pres->user_id = $user->id;
         $pres->biblioteca_id = $recurso->biblioteca_id;
         $pres->recurso_id = $recurso->id;
+        $pres->prestamoActivo = TRUE;
         $f=$recurso->getRes($recurso->principal)->id;
         $pres->save();
         DB::table('fisicos')->where('linkable_id',$f)->decrement('unidadesDisponibles', 1 );
