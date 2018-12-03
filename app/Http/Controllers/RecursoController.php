@@ -9,7 +9,7 @@ use App\prestamo;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use DB;
 class RecursoController extends Controller
 {
     /**
@@ -46,8 +46,9 @@ class RecursoController extends Controller
         $pres->usuario_id = $user->id;
         $pres->biblioteca_id = $recurso->biblioteca_id;
         $pres->recurso_id = $recurso->id;
+        $f=$recurso->getRes($recurso->principal)->id;
         $pres->save();
-       // DB::table('fisicos')->decrement('unidadesDisponibles', 1 )->where('id');
+        DB::table('fisicos')->where('linkable_id',$f)->decrement('unidadesDisponibles', 1 );
         return redirect()->route('recursos.index')->with('info','Presatamo realizado con exito');
 
     }
