@@ -39,38 +39,20 @@
                                   <td>{{ $pre->biblioteca->nombreBiblioteca }}</td> 
                                   <td>{{ $pre->user->nombres}}</td>
                                   @if ( $pre->prestamoActivo  ==TRUE)
-                                  <td> SIN DEVOLVER</td>
+                                  <td><p style="color:red;"> SIN DEVOLVER</p></td>
+                                  <td>
+                                        @can('users.edit')
+                                        <a href="{{ route('recurso.devolver',[$pre->recurso_id,$pre->id,$pre->user_id]) }}"
+                                            class="btn btn-sm btn-info" role="button">
+                                        Revolver Recuso</a>
+                                        @endcan
+                                 </td> 
                                   @else
-                                  <td> DEVUELTO </td>
+                                  <td><p style="color:green;"> DEVUELTO</p> </td>
+                                  <td>---------------------</td>
                                   @endif
                                  
-                                  <td>
-                                  @can('users.show')
                                   
-                                  <a href="#"
-                                      class="btn btn-sm btn-outline-info" role="button">
-                                  Ver Detalles</a>
-                                  @endcan
-                                  </td>
-  
-                                  <td>
-                                          @can('users.edit')
-                                          <a href="#"
-                                              class="btn btn-sm btn-outline-info" role="button">
-                                          Editar Usuario</a>
-                                          @endcan
-                                   </td> 
-  
-                                   {{--  <td>
-                                          @can('users.destroy') 
-                                         {!! Form::open(['route'=> ['users.destroy', $user->id],
-                                         'method'=>'DELETE']) !!}
-                                         <button class="btn btn-sm btn-danger"> Eliminar</button>
-                                         {!! Form::close() !!}
-                                         
-                                          @endcan
-                                   </td> 
-    --}}
                                   
                               </tr>
                                   
