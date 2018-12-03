@@ -155,7 +155,7 @@ Route::get('prestamos/PorBiblioteca/{prestamo}', 'PrestamoController@index')->na
         ->middleware('permission:prestamos.index');
 
 Route::get('prestamos/PorUsuario/{prestamo}', 'PrestamoController@indexPersonal')->name('prestamosPersonal.index')
-        ->middleware('permission:prestamos.index');
+        ->middleware('permission:prestamosPersonal.index');
 
 Route::get('prestamos/{prestamo}', 'PrestamoController@show')->name('prestamos.show')
         ->middleware('permission:prestamos.show');

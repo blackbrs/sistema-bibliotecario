@@ -199,5 +199,28 @@ class PermissionsTableSeeder extends Seeder
         'slug'          =>'editorials.destroy',
         'description'   =>'Eliminar cualquier editorial'
         ]);
+/* PARA VER LOS PRESTAMOS */
+        Permission::create([
+            'name'          =>'Ver los prestamos personales',
+            'slug'          =>'prestamosPersonal.index',
+            'description'   =>'Permite ver al usuario los prestamos personales en la biblioteca'
+        ]);
+            Permission::create([
+                'name'          =>'Ver los prestamos TOTALES de la biblioteca',
+                'slug'          =>'prestamos.index',
+                'description'   =>'Permite ver al usuario los prestamos personales en la biblioteca'
+         ]);
+
+         Permission::create([
+            'name'          =>'Permite Hacer un prestamo',
+            'slug'          =>'recurso.prestar',
+            'description'   =>'Permite al usuario realizar un prestamo'
+            ]);
+
+            Permission::create([
+                'name'          =>'Permite Devolver un recurso',
+                'slug'          =>'recurso.devolver',
+                'description'   =>'Permite al usuario realizar una devolcion'
+                ]);
     }
 }
