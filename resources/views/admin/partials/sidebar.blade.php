@@ -49,7 +49,7 @@
 
           @can('users.index')
           <li class="nav-item">
-            <a href="{{ route('users.index') }}" class="nav-link {{request()->is('users')? 'active':''}}">
+            <a href="{{ route('users.index',[Auth::user()->id, Auth::user()->biblioteca_id]) }}" class="nav-link {{request()->is('users')? 'active':''}}">
               <i class="nav-icon fa fa-users"></i>
               <p>
                 Usuarios
