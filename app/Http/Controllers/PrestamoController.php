@@ -20,10 +20,10 @@ class PrestamoController extends Controller
          return view('prestamos.index', compact('prest'));
     }
 
-    public function indexPersonal(User $user)
+    public function indexPersonal($numero)
     {
-        
-        return view('prestamos.index', compact(''));
+        $prest = prestamo::where('user_id', $numero)->paginate(10);
+        return view('prestamos.index', compact('prest'));
     }
 
     /**

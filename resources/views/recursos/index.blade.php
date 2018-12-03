@@ -73,7 +73,7 @@
 
                                  <td>
                                      @can('users.show')
-                                     <a href="{{ route('recurso.prestar',[$recurso->id ,$bib->id]) }}" class="btn btn-sm  btn-warning" role="button">
+                                     <a href="{{ route('recurso.prestar',[$recurso->id , Auth::user()->id ]) }}" class="btn btn-sm  btn-warning" role="button">
                                         Prestar Libro</a>
                                      @endcan
                                  </td>

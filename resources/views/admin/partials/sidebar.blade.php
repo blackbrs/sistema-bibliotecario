@@ -16,6 +16,7 @@
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ Auth::user()->nombres }}</a>
+          echo({{Auth::user()->id  }});
         </div>
       </div>
 
@@ -127,7 +128,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('prestamosPersonal.index', Auth::user()->biblioteca_id)}}" class="nav-link {{request()->is('prestamo')? 'active':''}}">
+                <a href="{{route('prestamosPersonal.index', Auth::user()->id)}}" class="nav-link {{request()->is('prestamo')? 'active':''}}">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Ver mis prestamos</p>
                 </a>
