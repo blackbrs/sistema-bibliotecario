@@ -13,7 +13,7 @@
             <ul class="navbar-nav mr-auto">
                     @can('users.index')
                     <li class="nav-item">
-                        <a href="{{ route('users.index') }}" class="nav-link">Usuarios</a> 
+                        <a href="{{ route('users.index',[Auth::user()->id, Auth::user()->biblioteca_id]) }}" class="nav-link">Usuarios</a> 
                     </li>
                     @endcan
                     @can('roles.index')

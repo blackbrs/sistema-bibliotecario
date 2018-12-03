@@ -22,7 +22,7 @@
 
                                     </div>
                                     <div class="card-footer">
-                                            <a href="{{ route('users.index') }}" class="btn btn-sm btn-success" > Volver</a>
+                                            <a href="{{ route('home') }}" class="btn btn-sm btn-success" > Volver</a>
                                     </div>
                             </div>
                         </div>         

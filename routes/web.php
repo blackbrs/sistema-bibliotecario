@@ -46,7 +46,7 @@ Route::middleware(['auth'])->group(function () {
 
     //Usuarios
 
-    Route::get('users', 'UserController@index')->name('users.index')
+    Route::get('users/opc/{admin}/despliegue/{biblioteca}', 'UserController@index')->name('users.index')
         ->middleware('permission:users.index');
 
     Route::put('users/{user}', 'UserController@update')->name('users.update')

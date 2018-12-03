@@ -6,6 +6,7 @@ use App\User;
 use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Http\Request;
 
+
 class UserController extends Controller
 {
     /**
@@ -13,10 +14,16 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($admin,$biblio)
     {
-        $users = User::paginate();
-        return view('users.index', compact('users'));
+        if($admin==1){
+            $users = User::paginate();
+            return view('users.index', compact('users'));
+        }else{
+            $users = User::where('biblioteca_id', $biblio)->paginate();
+            return view('users.index', compact('users'));
+        }
+       
     }
 
     /**
