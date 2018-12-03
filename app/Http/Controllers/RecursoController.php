@@ -52,7 +52,7 @@ class RecursoController extends Controller
             $f=$recurso->getRes($recurso->principal)->id;
             $pres->save();
             DB::table('fisicos')->where('linkable_id',$f)->decrement('unidadesDisponibles', 1 );
-            return redirect()->route('recursos.index')->with('info','Presatamo realizado con exito');
+            return redirect()->route('recursos.index')->with('info','Prestamo realizado con exito');
 
         }
         return redirect()->route('recursos.index')->with('fail','USTED NO PUEDE REALIZAR EL PRESTAMO YA POSEE TRES');
@@ -60,9 +60,7 @@ class RecursoController extends Controller
 
     public function devolver($idrecurso,$idprestamo,$idusuario){
         $prestamo = prestamo::where('user_id',$idusuario)->where('id',$idprestamo)->first();
-        
-            $prestamo->prestamoActivo = FALSE;
-
+        $prestamo->prestamoActivo = FALSE;
         $prestamo->save();
         return redirect()->route('home')->with('info','Gracias por devolver el recurso.');
     }
