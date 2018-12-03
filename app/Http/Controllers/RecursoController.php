@@ -61,7 +61,8 @@ class RecursoController extends Controller
      */
     public function show(Recurso $recurso)
     {
-        return view('recursos.show.base', compact('recurso'));
+        $principal=$recurso->getRes($recurso->principal);
+        return view('recursos.show.base', compact('recurso','principal'));
     }
 
     /**

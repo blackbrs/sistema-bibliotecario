@@ -1,75 +1,86 @@
 @extends('layouts.admin')
+@section('header')
 
+@endsection
 @section('content')
+<div class="container">
 <div id="accordion">
         <div class="card">
           <div class="card-header" id="headingOne">
             <h5 class="mb-0">
               <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Collapsible Group Item #1
+                Datos generales
               </button>
             </h5>
           </div>
       
           <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
             <div class="card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    <div class="container-fluid">
+                            <div class="row">
+                              <div class="col-sm">
+                                    <table class="table">
+                                            <tbody>
+                                                    <tr>
+                                                    <th scope="row"> Titulo:</th>
+                                                    <td>{{ $recurso->titulo }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                    <th scope="row">Descripción:</th>
+                                                    <td>{{ $recurso->descripcion }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                    <th scope="row">Autor:</th>
+                                                    <td>{{ $recurso->Autor->nombres}} {{ $recurso->Autor->apellidos}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                    <th scope="row">Año de publicación:</th>
+                                                    <td>{{ $recurso->año}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                    <th scope="row">Genero:</th>
+                                                    <td>{{ $recurso->genero}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                    <th scope="row">Categoria</th>
+                                                    <td>{{ $recurso->categoria }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                    <th scope="row">Tipo</th>
+                                                    <td>{{ $recurso->principal }}</td>
+                                                    </tr>
+                                                    @include('recursos.show.'.$recurso->principal)
+                                                </tbody>
+                                            </table>
+                            </div>
+                              <div class="col-sm">
+                                  <div class="row">
+                                      <div class="col-sm">
+                                          <img src="/img/nothumb.gif" class="img-fluid" alt="">
+                                      </div>
+                                    </div>
+                              </div>
+                            </div>
+                          </div>
             </div>
           </div>
         </div>
+        @if($recurso->versionAlternativa)
         <div class="card">
           <div class="card-header" id="headingTwo">
             <h5 class="mb-0">
               <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Collapsible Group Item #2
+                Alternativa digital
               </button>
             </h5>
           </div>
           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
             <div class="card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+             
             </div>
           </div>
         </div>
-        <div class="card">
-          <div class="card-header" id="headingThree">
-            <h5 class="mb-0">
-              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Collapsible Group Item #3
-              </button>
-            </h5>
-          </div>
-          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-            <div class="card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-            </div>
-          </div>
-        </div>
+        @endif
       </div>
-<div class="container">
-        <div class="row justify-content-center">
-            <div class="row">
-                    <div class="card">
-                            <div class="panel panel-default">
-                                    <div class="card-header">
-                                <div class="panel-heading">Informacion del Usuario</div>
-                                    </div>
-                                    <div class="card-body">
-                                <p><strong>  Titulo: </strong>{{ $recurso->nombres }}</p>
-                                <p><strong>  Descripción: </strong>{{ $recurso->apellidos }}</p>
-                                <p><strong>  Autor: </strong>{{ $recurso->Autor }}</p>
-                                <p><strong>  Año de publicacion: </strong>{{ $recurso->sexo }}</p>
-                                <p><strong>  Genero: </strong>{{ $recurso->municipio->nMunicipio}}</p>
-                                <p><strong>  Categoria: </strong>{{ $recurso->Npadres }}</p>
-                                <p><strong>  Tipo: </strong>{{ $recurso->telefono }}</p>
-
-                                    </div>
-                                    <div class="card-footer">
-                                            <a href="{{ route('users.index') }}" class="btn btn-sm btn-success" > Volver</a>
-                                    </div>
-                            </div>
-                        </div>         
-            </div>       
     </div>
-</div>
 @endsection
