@@ -27,6 +27,9 @@
                               
                             </div>
                         </div>
+                        <div class="card-footer">
+                                <a href="{{ route('recursos.cancelar.p2') }}" class="btn btn-sm btn-danger" > Cancelar y volver</a>
+                        </div>
                     </div>
                 </div>
             </div>

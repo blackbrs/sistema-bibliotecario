@@ -45,8 +45,7 @@ class RecursoController extends Controller
      */
     public function show(Recurso $recurso)
     {
-        $pr=$recurso->principal;
-        return view('recursos.show', compact('pr'));
+        return view('recursos.show.base', compact('recurso'));
     }
 
     /**
@@ -82,10 +81,10 @@ class RecursoController extends Controller
     {
         $f=$recurso->getRes($recurso->principal)->fisico;
         $d=$recurso->getRes($recurso->principal)->digital;
-        if($f){
+        if(is_object($f)){
         $f->delete();
         }
-        if($d){
+        if(is_object($d)){
         $d->delete();
         }
         $recurso->delete();
@@ -370,12 +369,14 @@ class RecursoController extends Controller
         return redirect()->route('recursos.index');
     }
     public function cancelarP2(Request $request){
+        $recurso = $request->session()->forget('recurso');
+        $rselect = $request->session()->forget('rselect');
         $request->session()->forget('alt');
         $request->session()->forget('pr');
         $request->session()->forget('fisico');
         $request->session()->forget('digital');
         $request->session()->forget('resclass');
-        
+
         return redirect()->route('recursos.index');
     }
 }

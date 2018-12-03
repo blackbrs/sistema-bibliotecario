@@ -75,7 +75,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/recursos/{recurso}','RecursoController@show')->name('recurso.show');
     Route::get('/recursos/{recurso}/edit','RecursoController@edit')->name('recurso.edit');
     Route::delete('/recursos/{recurso}','RecursoController@destroy')->name('recurso.destroy');
-    Route::get('/cancelar','RecursoController@cancelarP1')->name('recursos.cancelar.p1');
+    Route::get('/cancelar/recurso/p1','RecursoController@cancelarP1')->name('recursos.cancelar.p1');
+    Route::get('/cancelar/recurso/p2','RecursoController@cancelarP2')->name('recursos.cancelar.p2');
 });
 
 //Bibliotecas
