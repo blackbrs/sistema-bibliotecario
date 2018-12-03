@@ -11,9 +11,7 @@
                 <input type="number" min=0 max=99 value="{{{ $fisico->prestamosRealizados or 0 }}}" class="form-control" id="prestamosRealizados"  name="prestamosRealizados" 
                 data-toggle="tooltip" data-placement="top" title="Dejar vacio o en 0 si no se ha prestado anteriormente" required>
         </div>
-        @if ($pr == 'CD' || $pr == 'DVD')
-        @include('recursos.fisico.cd-dvd')
-        @else
+        @if ($pr)
         @include('recursos.fisico.'.$pr)
         @endif
        

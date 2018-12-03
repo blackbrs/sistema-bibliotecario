@@ -38,7 +38,8 @@ class HomeController extends Controller
         $destinationPath = 'public/uploads/';
         $storagePath = Storage::disk('local')->put($destinationPath, $request->file);
         $storageName = basename($storagePath);
-        dd($storageName);
+        $size = Storage::size($storagePath)/1000000;
+        dd($size);
         return back()
             ->with('success','Archivo subido con exito');
 

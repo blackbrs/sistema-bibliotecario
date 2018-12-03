@@ -128,32 +128,6 @@ class RecursoController extends Controller
                 'prestamosRealizados' => 'required|numeric',
             ]);
     }
-    private function validateDigital(Request $request, String $pr){
-        switch ($pr) {
-            case 'Video':
-            return $request->validate([
-                'file' => 'required|file|max:46000|mimes:mp4,avi,mov,wmv,webm',
-            ]);
-            case 'Tesis':
-                return $request->validate([
-                'file' => 'required|file|max:46000|mimes:pdf',
-            ]);
-            case 'Audio':
-                return $request->validate([
-                'file' => 'required|file|max:46000|mimes:mp3,wav,ogg,wma',
-            ]);
-            case 'Planos':
-                return $request->validate([
-                'file' => 'required|file|max:46000|mimes:pdf',
-            ]);
-            case 'Hemeroteca':
-                return $request->validate([
-                'file' => 'required|file|max:46000|mimes:pdf',
-            ]);
-            default:
-                break;
-    }
-}
     private function validateDigitalAlt(Request $request, String $pr){
         switch ($pr) {
             case 'Libro':
@@ -200,16 +174,16 @@ class RecursoController extends Controller
                 ]);  
             case 'CD':
             return $request->validate([
-                '' => '',
-                '' => ''
+                'duracion' => 'required|numeric',
+                'nPistas' => 'required|numeric'
                 ]);  
             case 'DVD':
             return $request->validate([
-                '' => '',
+                'duracion' => 'required|numeric'
                 ]);  
             case 'Mapa':
             return $request->validate([
-                '' => '',
+                'region' => 'required',
                 ]); 
             case 'Hemeroteca':
             return $request->validate([
@@ -260,19 +234,41 @@ class RecursoController extends Controller
             "principal" => 'required',
         ]);
         if(empty($request->session()->get('recurso'))){
-            
             $recurso = new Recurso();
             $rselect = $request->get('recursoRB');
             $recurso->fill($validatedData);
+            if(empty($request->file('thumb'))){}
+                else{
+                    $validateThumb = $request->validate([
+                        'thumb' => 'file|max:46000|mimes:jpeg,bmp,png,gif,jpg',
+                    ]);
+                    $thumb = Storage::disk('local')->put('public/uploads/', $request->file);
+                    $recurso->thumb = $thumb;
+                }
             $recurso->biblioteca_id = Auth::user()->biblioteca_id;
-            if($request->get('versionAlt')){$recurso->versionAlt = true;}else{$recurso->versionAlt = false;}
+
+            if($request->get('versionAlt')){$recurso->versionAlt = true;}
+            else{$recurso->versionAlt = false;}
+
             $recurso->save();
             $request->session()->put('recurso', $recurso);
             $request->session()->put('rselect', $rselect);
         }else{
             $recurso = $request->session()->get('recurso');
             $recurso->fill($validatedData);
+
+            if(empty($request->file('thumb'))){}
+                else{
+                    $validateThumb = $request->validate([
+                        'thumb' => 'file|max:46000|mimes:jpeg,bmp,png,gif,jpg',
+                    ]);
+                    Storage::disk('local')->delete($recurso->thumb);
+                    $thumb = Storage::disk('local')->put('public/uploads/', $request->file);
+                    $recurso->thumb = $thumb;
+                }
+
             $recurso->biblioteca_id = Auth::user()->biblioteca_id;
+
             if($request->get('versionAlt')){$recurso->versionAlt = true;}else{$recurso->versionAlt = false;}
             $recurso->save();
             $rselect = $request->get('recursoRB');
@@ -315,14 +311,23 @@ class RecursoController extends Controller
         if(empty($resclass)){
             $model = 'App\\'.$pr;
             $resclass = new $model;
+
+            if($rselect=='fisico'){
             $resclass->fill(self::validatePrincipal($request, $pr));
             $resclass->recurso_id=$recurso->id;
             $resclass->save();
+            }else if($rselect=='digital'){
+                self::validatePrincipal($request, $pr);
+            }
         }
         else{
+            if($rselect=='fisico'){
             $resclass->fill(self::validatePrincipal($request, $pr));
             $resclass->recurso_id=$recurso->id;
             $resclass->save();
+            }else if($rselect=='digital'){
+                self::validatePrincipal($request, $pr);
+            }
         }
 
         if($rselect=='fisico'){
@@ -332,13 +337,16 @@ class RecursoController extends Controller
                 $resclass->fisico()->save($fisico);
                 $request->session()->put('fisico', $fisico);
                 $request->session()->put('resclass', $resclass);
-            }else{
+                
+            }
+            else{
                 $fisico = $request->session()->get('fisico');
                 $fisico->fill(self::validateFisico($request));
                 $resclass->fisico()->save($fisico);
                 $request->session()->put('fisico', $fisico);
                 $request->session()->put('resclass', $resclass);
             }
+
             if($recurso->versionAlt){
                 $validateAltD = $request->validate([
                     'file' => 'required|file|max:46000',
@@ -347,20 +355,33 @@ class RecursoController extends Controller
                 $alt = new Digital();
                // $alt->fill($validateAltD);
                 $request->session()->put('alt', $alt);
-            }else{
+            }
+            else{
                 //$alt->fill($validateAltD);
                 $request->session()->put('alt', $alt);
             }
         }
-            
+         
+        
+
+
         }else if($rselect == 'digital'){
             if(empty($request->session()->get('digital'))){
                 $digital = new Digital();
-                $digital->save($request->session()->get('resclass'));
+                $digital->formato=$request->file('file')->extension();
+                $path = Storage::disk('local')->put('public/uploads/', $request->file);
+                $peso = Storage::size($storagePath)/1000000;
+                $digital->path = $path;
+                $digital->peso  = $size;
                 $request->session()->put('digital', $digital);
             }else{
                 $digital = $request->session()->get('digital');
-                $digital->save($request->session()->get('resclass'));
+                Storage::disk('local')->delete($digital->path);
+                $digital->formato=$request->file('file')->extension();
+                $path = Storage::disk('local')->put('public/uploads/', $request->file);
+                $peso = Storage::size($storagePath)/1000000;
+                $digital->path = $path;
+                $digital->peso  = $size;
                 $request->session()->put('digital', $digital);
             }
             /*
