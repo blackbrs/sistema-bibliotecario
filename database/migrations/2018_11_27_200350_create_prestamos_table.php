@@ -21,6 +21,7 @@ class CreatePrestamosTable extends Migration
             $table->foreign('biblioteca_id')->references('id')->on('bibliotecas');
             $table->integer('recurso_id');
             $table->foreign('recurso_id')->references('id')->on('recursos');
+            $table->boolean('prestamoActivo');
 
             $table->timestamps();
         });

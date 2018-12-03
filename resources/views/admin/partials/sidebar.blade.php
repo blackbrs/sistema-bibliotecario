@@ -16,7 +16,7 @@
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ Auth::user()->nombres }}</a>
-          echo({{Auth::user()->id  }});
+       
         </div>
       </div>
 
