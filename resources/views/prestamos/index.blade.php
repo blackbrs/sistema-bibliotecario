@@ -44,7 +44,7 @@
                                         @can('users.edit')
                                         <a href="{{ route('recurso.devolver',[$pre->recurso_id,$pre->id,$pre->user_id]) }}"
                                             class="btn btn-sm btn-info" role="button">
-                                        Revolver Recuso</a>
+                                        Devolver Recurso</a>
                                         @endcan
                                  </td> 
                                   @else
