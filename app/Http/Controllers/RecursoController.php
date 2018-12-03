@@ -55,7 +55,7 @@ class RecursoController extends Controller
             return redirect()->route('recursos.index')->with('info','Presatamo realizado con exito');
 
         }
-        return redirect()->route('recursos.index')->with('info','USTED NO PUEDE REALIZAR EL PRESTAMO YA POSEE TRES');
+        return redirect()->route('recursos.index')->with('fail','USTED NO PUEDE REALIZAR EL PRESTAMO YA POSEE TRES');
 
         
        
