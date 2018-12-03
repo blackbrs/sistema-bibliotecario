@@ -36,9 +36,7 @@
                                   <td>{{ $pre->recurso->descripcion }}</td>
                                   <td>{{ $pre->recurso->año }}</td>
                                   <td>{{ $pre->biblioteca->nombreBiblioteca }}</td> 
-                                  <td>{{ $pre->user_id}}</td>
-                                  
-                                  {{--  <td>{{ $pre->descripcion }}</td>   --}}
+                                  <td>{{ $pre->user->nombres}}</td>
                                   <td>
                                   @can('users.show')
                                   
