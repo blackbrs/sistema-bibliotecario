@@ -252,7 +252,7 @@ class RecursoController extends Controller
                     $validateThumb = $request->validate([
                         'thumb' => 'file|max:46000|mimes:jpeg,bmp,png,gif,jpg',
                     ]);
-                    $thumb = Storage::disk('local')->put($request->file);
+                    $thumb = Storage::disk('local')->put('public',$request->file);
                     $recurso->thumb = $thumb;
                 }
             $recurso->biblioteca_id = Auth::user()->biblioteca_id;
