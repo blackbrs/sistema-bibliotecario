@@ -13,7 +13,7 @@
                          </div>
                          <div class="card-body">
                         <div class="panel-body">
-                                <form id="RC2" action="/recurso/create/p2" method="post">
+                                <form id="RC2" action="/recurso/create/p2" method="post" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                     @if ($rselect == 'fisico')
                                         @include('recursos.partials.fisico')

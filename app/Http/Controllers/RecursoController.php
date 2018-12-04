@@ -203,25 +203,42 @@ class RecursoController extends Controller
             ]);
             case 'Video':
             return $request->validate([
-                'file' => 'required|file|max:46000|mimes:mp4,avi,mov,wmv,webm',
+                'file' => 'required|file|mimes:mp4,avi,mov,wmv,webm',
             ]);
             case 'Tesis':
                 return $request->validate([
-                'file' => 'required|file|max:46000|mimes:pdf',
+                'file' => 'required|file|mimes:pdf',
             ]);
             case 'Audio':
                 return $request->validate([
-                'file' => 'required|file|max:46000|mimes:mp3,wav,ogg,wma',
+                'file' => 'required|file|mimes:mp3,wav,ogg,wma,mpga',
             ]);
             case 'Planos':
                  return $request->validate([
-                'file' => 'required|file|max:46000|mimes:pdf',
+                'file' => 'required|file|mimes:pdf',
+                'dimension'=> 'required'
              ]);
              case 'Hemeroteca':
                 return $request->validate([
-                'file' => 'required|file|max:46000|mimes:pdf',
+                'file' => 'required|file|mimes:pdf',
+                'fecha'=>'requied',
             ]); 
             default:
+                break;
+        }
+    }
+    public function fillDigitalRes($resclass,$pr,$digital){
+        switch ($pr) {
+            case 'Video':
+                break;
+            case 'Audio':
+                # code...
+                break;
+            case 'Plano':
+                # code...
+                break;
+            default:
+                # code...
                 break;
         }
     }
@@ -250,9 +267,10 @@ class RecursoController extends Controller
             if(empty($request->file('thumb'))){}
                 else{
                     $validateThumb = $request->validate([
-                        'thumb' => 'file|max:46000|mimes:jpeg,bmp,png,gif,jpg',
+                        'thumb' => 'file|max: 40000|mimes:jpeg,bmp,png,gif,jpg',
                     ]);
-                    $thumb = Storage::disk('local')->put('public',$request->file);
+                    $storagePath = Storage::putFile("public",$request->file('thumb'));
+                    $thumb= basename($storagePath);
                     $recurso->thumb = $thumb;
                 }
             $recurso->biblioteca_id = Auth::user()->biblioteca_id;
@@ -273,7 +291,8 @@ class RecursoController extends Controller
                         'thumb' => 'file|max:46000|mimes:jpeg,bmp,png,gif,jpg',
                     ]);
                     Storage::disk('local')->delete($recurso->thumb);
-                    $thumb = Storage::disk('local')->put($request->file);
+                    $storagePath = Storage::putFile("public",$request->file('thumb'));
+                    $thumb= basename($storagePath);
                     $recurso->thumb = $thumb;
                 }
 
@@ -327,7 +346,7 @@ class RecursoController extends Controller
             $resclass->recurso_id=$recurso->id;
             $resclass->save();
             }else if($rselect=='digital'){
-                self::validatePrincipal($request, $pr);
+               self::validatePrincipal($request, $pr);
             }
         }
         else{
@@ -379,19 +398,22 @@ class RecursoController extends Controller
             if(empty($request->session()->get('digital'))){
                 $digital = new Digital();
                 $digital->formato=$request->file('file')->extension();
-                $path = Storage::disk('local')->put($request->file);
+                $storagePath = Storage::putFile("public",$request->file('file'));
+                $path= basename($storagePath);
                 $peso = Storage::size($storagePath)/1000000;
                 $digital->path = $path;
-                $digital->peso  = $size;
+                $digital->peso  = $peso;
+                self::fillDigitalRes($resclass,$pr,$digital);
                 $request->session()->put('digital', $digital);
             }else{
                 $digital = $request->session()->get('digital');
                 Storage::disk('local')->delete($digital->path);
                 $digital->formato=$request->file('file')->extension();
-                $path = Storage::disk('local')->put($request->file);
+                $storagePath = Storage::putFile("public",$request->file('file'));
+                $path= basename($storagePath);
                 $peso = Storage::size($storagePath)/1000000;
                 $digital->path = $path;
-                $digital->peso  = $size;
+                $digital->peso  = $peso;
                 $request->session()->put('digital', $digital);
             }
             /*

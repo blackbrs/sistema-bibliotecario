@@ -44,39 +44,39 @@
                                     <div class="form-group">
                                             {!! Form::label('genero', 'Genero') !!}
                                             <select name="genero" id= "genero" class="form-control"required >        
-                                                <option value="" disabled selected>Selecciona una opcion</option>
-                                                <option value="">Narrativo</option>
-                                                <option value="">Didactico</option>
-                                                <option value="">Otro</option>
+                                                <option  disabled selected>Selecciona una opcion</option>
+                                                <option >Narrativo</option>
+                                                <option >Didactico</option>
+                                                <option >Otro</option>
                                             </select>  
 
                                     </div>
                                     <div class="form-group">
                                             {!! Form::label('categoria', 'Categoria') !!}
-                                            <select name="genero" id= "genero" class="form-control"required >        
+                                            <select name="categoria" id= "categoria" class="form-control"required >        
                                                 <option value="" disabled selected>Selecciona una opcion</option>
-                                                <option value="">Literatura</option>
-                                                <option value="">Arte</option>
-                                                <option value="">Arquitectura</option>
-                                                <option value="">Biografia</option>
-                                                <option value="">Negocios</option>
-                                                <option value="">Economia</option>
-                                                <option value="">Matematicas</option>
-                                                <option value="">Ciencias politicas</option>
-                                                <option value="">Fisica</option>
-                                                <option value="">Filosofia</option>
-                                                <option value="">Psicologia</option>
-                                                <option value="">Ciencias sociales</option>
-                                                <option value="">Deportes</option>
-                                                <option value="">Salud</option>
-                                                <option value="">Lengua</option>
-                                                <option value="">Leyes</option>
-                                                <option value="">Medicina</option>
-                                                <option value="">Musica</option>
-                                                <option value="">Tecnologia</option>
-                                                <option value="">Ingenieria</option>
-                                                <option value="">Otro</option>
-                                                <option value="">Entretenimiento</option>
+                                                <option >Literatura</option>
+                                                <option >Arte</option>
+                                                <option >Arquitectura</option>
+                                                <option >Biografia</option>
+                                                <option >Negocios</option>
+                                                <option >Economia</option>
+                                                <option >Matematicas</option>
+                                                <option >Ciencias politicas</option>
+                                                <option >Fisica</option>
+                                                <option >Filosofia</option>
+                                                <option >Psicologia</option>
+                                                <option >Ciencias sociales</option>
+                                                <option >Deportes</option>
+                                                <option >Salud</option>
+                                                <option >Lengua</option>
+                                                <option >Leyes</option>
+                                                <option >Medicina</option>
+                                                <option >Musica</option>
+                                                <option >Tecnologia</option>
+                                                <option >Ingenieria</option>
+                                                <option >Otro</option>
+                                                <option >Entretenimiento</option>
                                             </select>  
                                              
                                     </div>
@@ -111,7 +111,7 @@
                                     <div class="form-group">
                                     <label for="thumb">Miniatura:</label>
                                     {{ csrf_field() }}
-                                    <input type="file" class="form-control-file" name="thumb" id="RC_thumb" aria-describedby="fileHelp" disabled>
+                                    <input type="file" class="form-control-file" name="thumb" id="RC_thumb" aria-describedby="fileHelp">
                                     <small id="fileHelp" class="form-text text-muted">El archivo debe ser menor de 2MB</small>
                                 </div>
                                     </div>

@@ -56,7 +56,7 @@
                               <div class="col-sm">
                                   <div class="row">
                                       <div class="col-sm">
-                                          <img src="/img/nothumb.gif" class="img-fluid" alt="">
+                                          <img src="{{asset("storage/$recurso->thumb")}}" class="img" alt="/storage/no-disponible.jpg"width="500" height="600">
                                       </div>
                                     </div>
                               </div>
