@@ -227,9 +227,13 @@ class RecursoController extends Controller
                 break;
         }
     }
-    public function fillDigitalRes($resclass,$pr,$digital){
+    public function fillDigitalRes($resclass,$pr,$digital,Request $request){
         switch ($pr) {
             case 'Video':
+            $getID3 = new \getID3;
+            $file=$request->file('file');
+            $fileInfo = $getID3->analyze($file);
+            dd($fileInfo);
                 break;
             case 'Audio':
                 # code...
@@ -403,7 +407,7 @@ class RecursoController extends Controller
                 $peso = Storage::size($storagePath)/1000000;
                 $digital->path = $path;
                 $digital->peso  = $peso;
-                self::fillDigitalRes($resclass,$pr,$digital);
+                self::fillDigitalRes($resclass,$pr,$digital,$request);
                 $request->session()->put('digital', $digital);
             }else{
                 $digital = $request->session()->get('digital');
@@ -414,6 +418,7 @@ class RecursoController extends Controller
                 $peso = Storage::size($storagePath)/1000000;
                 $digital->path = $path;
                 $digital->peso  = $peso;
+                self::fillDigitalRes($resclass,$pr,$digital,$request);
                 $request->session()->put('digital', $digital);
             }
             /*
