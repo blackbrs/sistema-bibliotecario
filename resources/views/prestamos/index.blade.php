@@ -25,8 +25,6 @@
                                   <th>year</th>
                                   <th>Biblioteca</th>
                                   <th>Usuario</th>
-                                  <th>Dias prestado</th>
-                                  <th>Devolver antes de</th>
                                   <th>Estado Prestamo</th>
                                   <th colspan="6">&nbsp;</th>
                               </tr>
