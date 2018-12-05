@@ -13,7 +13,7 @@ class BusquedaController extends Controller
      */
     public function singleSearch(Request $request)
     {
-        if($request->get('query')=='SpaceX'){return redirect('https://youtu.be/wbSwFU6tY1c?t=1309');}
+        if($request->get('query')=='FalconHeavy'){return redirect('https://youtu.be/wbSwFU6tY1c?t=1309');}
         return view('recursos.resultados');
     }
 
