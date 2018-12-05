@@ -18,7 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 Route::post('getmunicipio/fetch', 'DepartamentoController@getMunicipios');
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('singleSearch', 'BusquedaController@singleSearch')->name('buscar.recurso');
+Route::get('advSearch', 'BusquedaController@advSearch')->name('buscar.recursos');
 // RUTAS que tendran como requisitos almenos estar loggeados
 Route::middleware(['auth'])->group(function () {
     //roles

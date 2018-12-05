@@ -1,24 +1,24 @@
-
-label{
+.search-container{}
+.search-container label{
     font-weight: 600;
 }
-.custom-control{
+.search-container .custom-control{
     font-weight: normal;
 }
-.dropdown-toggle{
+.search-container .dropdown-toggle{
     padding-left: 10px;
     border-radius: 0px !important;
 }
-.dropdown.dropdown-lg .dropdown-menu {
+.search-container .dropdown.dropdown-lg .dropdown-menu {
     padding: 15px;
 }
-.input-group .form-control{
+.search-container .input-group .form-control{
     width: 100%;
     border-radius: 0.25rem !important;
 }
-.dropdown.dropdown-lg .dropdown-menu{
+.search-container .dropdown.dropdown-lg .dropdown-menu{
     min-width: 320px;
 }
-.dropdown-menu{
+.search-container .dropdown-menu{
     box-shadow: 1px 4px 8px -1px #c1c1c1;
 }
