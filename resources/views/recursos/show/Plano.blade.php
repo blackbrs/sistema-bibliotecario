@@ -1,4 +1,4 @@
 <tr>
-        <th scope="row">Editorial:</th>
-        <td>{{$principal->editorial->nombre}}</td>
+        <th scope="row">Dimension:</th>
+        <td>{{$principal->dimension}}</td>
     </tr>

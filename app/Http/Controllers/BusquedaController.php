@@ -13,7 +13,9 @@ class BusquedaController extends Controller
      */
     public function singleSearch(Request $request)
     {
+       // if(empty($request->get('query')){}
         if($request->get('query')=='FalconHeavy'){return redirect('https://youtu.be/wbSwFU6tY1c?t=1309');}
+        
         return view('recursos.resultados');
     }
 

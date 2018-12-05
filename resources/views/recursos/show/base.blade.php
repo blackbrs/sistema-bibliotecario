@@ -84,12 +84,14 @@
                                                   </audio>
                                               </figure>
                                               @else
+                                              @if($recurso->versionAlt==0)
                                               @if(in_array($recurso->principal,$formatoFis))
                                               <div>
                                                 <a class="btn btn-info" data-fancybox href="{{asset("storage/$Res->path")}}">
                                                   Ver recurso
                                                   </a>
                                                 </div>
+                                                @endif
                                                 @endif
                                               @endif
                                               @endif
