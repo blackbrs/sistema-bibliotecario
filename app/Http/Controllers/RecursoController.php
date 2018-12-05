@@ -10,6 +10,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use DateTime;
 use DB;
 class RecursoController extends Controller
 {
@@ -20,8 +21,9 @@ class RecursoController extends Controller
      */
     public function index()
     {
-        $bib= Auth::user()->biblioteca;
-        return view('recursos.index',compact('bib'));
+        $bib= Auth::user()->biblioteca->nombreBiblioteca;
+        $res = Recurso::where('biblioteca_id',Auth::user()->biblioteca->id)->paginate(10);
+        return view('recursos.index',compact('bib','res'));
     }
 
     /**
@@ -45,9 +47,8 @@ class RecursoController extends Controller
     {
         $cuenta = DB::table('prestamos')->where('user_id',$user->id)->where('prestamoActivo',TRUE)->count();
         $f=$recurso->getRes($recurso->principal)->id;
-        $cuenta2 = DB::table('fisicos')->where('linkable_id',$f)->first();
        // dd($cuenta2);
-        if($cuenta2->unidadesDisponibles <= 0){
+        if($recurso->getRes($recurso->principal)->fisico->unidadesDisponibles <= 0){
             return redirect()->route('recursos.index')->with('fail','NO HAY COPIAS DISPONIBLES.');
         }
         if($cuenta < 3){
@@ -56,10 +57,11 @@ class RecursoController extends Controller
             $pres->biblioteca_id = $recurso->biblioteca_id;
             $pres->recurso_id = $recurso->id;
             $pres->prestamoActivo = TRUE;
+            $pres->diasPrestado=1;
             $f=$recurso->getRes($recurso->principal)->id;
             $pres->save();
             DB::table('fisicos')->where('linkable_id',$f)->decrement('unidadesDisponibles', 1 );
-            return redirect()->route('recursos.index')->with('info','Prestamo realizado con exito');
+            return back()->with('info','Prestamo realizado con exito');
 
         }
         return redirect()->route('recursos.index')->with('fail','USTED NO PUEDE REALIZAR EL PRESTAMO YA POSEE TRES SIN ENTREGAR REGISTRADOS EN EL SISTEMA.');
@@ -70,7 +72,12 @@ class RecursoController extends Controller
         $prestamo->prestamoActivo = FALSE;
         DB::table('fisicos')->where('linkable_id',$recurso)->increment('unidadesDisponibles', 1 );
 
-
+        $dia_prestamo = new DateTime($prestamo->created_at);
+        $hoy = new DateTime();
+        $interval = $hoy->diff($dia_prestamo);
+        $dias = $interval->format('%a');
+        if($dias==0){$dias=1;}
+        $prestamo->diasPrestado = $dias;
         $prestamo->save();
         return redirect()->back()->with('info','Gracias por devolver el recurso.');
     }
@@ -84,7 +91,12 @@ class RecursoController extends Controller
     public function show(Recurso $recurso)
     {
         $principal=$recurso->getRes($recurso->principal);
-        return view('recursos.show.base', compact('recurso','principal'));
+        $formatoFis = array('Libro','Tesis','Plano','Mapa');
+        if($recurso->versionAlt){
+            $formatoAudioAlt=array("mp3","wav","ogg","wma","mpga");
+            return view('recursos.show.base', compact('recurso','principal','formatoAudioAlt','formatoFis'));
+        }
+        return view('recursos.show.base', compact('recurso','principal','formatoFis'));
     }
 
     /**
@@ -138,35 +150,55 @@ class RecursoController extends Controller
                 'prestamosRealizados' => 'required|numeric',
             ]);
     }
-    private function validateDigitalAlt(Request $request, String $pr){
+    private function validateAlternativaDigital($resclass, $pr, Request $request, Digital $alt){
         switch ($pr) {
             case 'Libro':
-            return $request->validate([
-                
+             $request->validate([
+                'file' => 'required|file|mimes:pdf,mp4,avi,mov,wmv,webm,mp3,wav,ogg,wma,mpga',
             ]);
+            break;
             case 'Tesis':
-            return $request->validate([
-                
-                ]);  
-            case 'CD':
-            return $request->validate([
-                
-                ]);  
-            case 'DVD':
-            return $request->validate([
-                
-                ]);  
-            case 'Mapa':
-            return $request->validate([
-                
-                ]); 
+            $request->validate([
+                'file' => 'required|file|mimes:pdf,',
+            ]);
+            break;
+            case 'Plano':
+            $request->validate([
+                'file' => 'required|file|mimes:pdf,',
+            ]);
+            break;
             case 'Hemeroteca':
-            return $request->validate([
-                
-                ]); 
+             $request->validate([
+                'file' => 'required|file|mimes:pdf,',
+            ]);
+            break;
+            case 'CD':
+             $request->validate([
+                'file' => 'required|file|mimes:mp3,wav,ogg,wma,mpga',
+            ]);
+            break;
+            case 'DVD':
+             $request->validate([
+                'file' => 'required|file|mimes:mp4,avi,mov,wmv,webm',
+            ]);
+            break;
+            case 'Mapa':
+            $request->validate([
+               'file' => 'required|file|mimes:pdf',
+           ]);
             default:
                 break;
         }
+        $formato = $extension = $request->file('file')->extension();
+        $storagePath = Storage::putFile("public",$request->file('file'));
+        $path = basename($storagePath);
+        $peso = Storage::size($storagePath)/1049000;
+        $alt->formato = $formato;
+        $alt->path = $path;
+        $alt->peso = $peso;
+        $resclass->save();
+        $resclass->digital()->save($alt);
+        return $alt;
     }
     public function validatePrincipal(Request $request, String $pr){
         switch ($pr) {
@@ -181,7 +213,7 @@ class RecursoController extends Controller
             return $request->validate([
                 'carrera' => 'required',
                 'paginas' => 'required|numeric'
-                ]);  
+                ]);
             case 'CD':
             return $request->validate([
                 'duracion' => 'required|numeric',
@@ -190,59 +222,76 @@ class RecursoController extends Controller
             case 'DVD':
             return $request->validate([
                 'duracion' => 'required|numeric'
+                ]);
+            case 'Plano':
+            return $request->validate([
+                'dimension' => 'required',
+                'fechaCreacion' => 'required'
                 ]);  
             case 'Mapa':
             return $request->validate([
                 'region' => 'required',
+                'fechaCreacion' => 'required'
                 ]); 
             case 'Hemeroteca':
             return $request->validate([
-                '' => '',
-                '' => '',
-                '' => ''
+                'fechaCreacion' => 'required',
+                'nombreColeccion' => 'required',
             ]);
             case 'Video':
             return $request->validate([
                 'file' => 'required|file|mimes:mp4,avi,mov,wmv,webm',
             ]);
-            case 'Tesis':
-                return $request->validate([
-                'file' => 'required|file|mimes:pdf',
-            ]);
             case 'Audio':
                 return $request->validate([
                 'file' => 'required|file|mimes:mp3,wav,ogg,wma,mpga',
             ]);
-            case 'Planos':
-                 return $request->validate([
-                'file' => 'required|file|mimes:pdf',
-                'dimension'=> 'required'
-             ]);
-             case 'Hemeroteca':
-                return $request->validate([
-                'file' => 'required|file|mimes:pdf',
-                'fecha'=>'requied',
-            ]); 
             default:
                 break;
         }
     }
-    public function fillDigitalRes($resclass,$pr,$digital,Request $request){
+    public function fillDigitalRes($resclass,$pr,Digital $digital,Request $request){
         switch ($pr) {
             case 'Video':
             $getID3 = new \getID3;
             $file=$request->file('file');
             $fileInfo = $getID3->analyze($file);
-            dd($fileInfo);
+            $resclass->duracion=$fileInfo["playtime_string"];
+            $resclass->bitrate= strval(round($fileInfo["bitrate"]/1000));
+            $resclass->resolucion = strval($fileInfo["video"]["resolution_x"])."x".strval($fileInfo["video"]["resolution_y"]);
+            $resclass->frames = $fileInfo["video"]["frame_rate"];
+            $storagePath = Storage::putFile("public",$file);
+            $path= basename($storagePath);
+            $digital->formato = $fileInfo["fileformat"];
+            $digital->peso = round($fileInfo["filesize"]/1049000);
+            $digital->path = $path;
+            $resclass->save();
+            $resclass->digital()->save($digital);
                 break;
             case 'Audio':
-                # code...
-                break;
-            case 'Plano':
-                # code...
+            $getID3 = new \getID3;
+            $file=$request->file('file');
+            $fileInfo = $getID3->analyze($file);
+            $resclass->duracion=$fileInfo["playtime_string"];
+            $resclass->bitrate= strval(round($fileInfo["bitrate"]/1000));
+            $storagePath = Storage::putFile("public",$file);
+            $path= basename($storagePath);
+            $digital->formato = $fileInfo["fileformat"];
+            $digital->peso = round($fileInfo["filesize"]/1049000);
+            $digital->path = $path;
+            $resclass->save();
+            $resclass->digital()->save($digital);
                 break;
             default:
-                # code...
+            $formato = $extension = $request->file('file')->extension();
+            $storagePath = Storage::putFile("public",$request->file('file'));
+            $path = basename($storagePath);
+            $peso = Storage::size($storagePath)/1049000;
+            $digital->formato = $formato;
+            $digital->path = $path;
+            $digital->peso = $peso;
+            $resclass->save();
+            $resclass->digital()->save($digital);
                 break;
         }
     }
@@ -264,6 +313,7 @@ class RecursoController extends Controller
             'descripcion' => 'required|string|max:255',
             "principal" => 'required',
         ]);
+
         if(empty($request->session()->get('recurso'))){
             $recurso = new Recurso();
             $rselect = $request->get('recursoRB');
@@ -281,14 +331,15 @@ class RecursoController extends Controller
 
             if($request->get('versionAlt')){$recurso->versionAlt = true;}
             else{$recurso->versionAlt = false;}
-
-            $recurso->save();
             $request->session()->put('recurso', $recurso);
             $request->session()->put('rselect', $rselect);
-        }else{
+        }
+        
+        
+        else{
             $recurso = $request->session()->get('recurso');
             $recurso->fill($validatedData);
-
+            $recurso->save();
             if(empty($request->file('thumb'))){}
                 else{
                     $validateThumb = $request->validate([
@@ -303,7 +354,6 @@ class RecursoController extends Controller
             $recurso->biblioteca_id = Auth::user()->biblioteca_id;
 
             if($request->get('versionAlt')){$recurso->versionAlt = true;}else{$recurso->versionAlt = false;}
-            $recurso->save();
             $rselect = $request->get('recursoRB');
             $request->session()->put('recurso', $recurso);
             $request->session()->put('rselect', $rselect);
@@ -311,12 +361,16 @@ class RecursoController extends Controller
         }
         return redirect('/recurso/create/p2');
     }
+
+
+
     public function createP2(Request $request)
     {
         $recurso = $request->session()->get('recurso');
         $pr = $recurso->principal;
         $resclass = $request->session()->get('resclass');
         $rselect = $request->session()->get('rselect');
+
        if($rselect == "fisico"){
            $fisico = $request->session()->get('fisico');
            if($recurso->versionAlt){
@@ -333,9 +387,12 @@ class RecursoController extends Controller
         }
         
     }
+
+
     public function postCreateP2(Request $request)
     {
         $recurso = $request->session()->get('recurso');
+        $recurso->save();
         $pr = $recurso->principal;
         $resclass = $request->session()->get('resclass');
         $rselect = $request->session()->get('rselect');
@@ -347,18 +404,26 @@ class RecursoController extends Controller
 
             if($rselect=='fisico'){
             $resclass->fill(self::validatePrincipal($request, $pr));
+            $recurso->save();
             $resclass->recurso_id=$recurso->id;
             $resclass->save();
             }else if($rselect=='digital'){
+                $recurso->save();
+                if($pr=="Tesis" || $pr=='Libro'|| $pr=='Plano'|| $pr=='Mapa'){$resclass->fill(self::validatePrincipal($request, $pr));}
+                $resclass->recurso_id=$recurso->id;
                self::validatePrincipal($request, $pr);
             }
         }
         else{
             if($rselect=='fisico'){
             $resclass->fill(self::validatePrincipal($request, $pr));
+            $recurso->save();
             $resclass->recurso_id=$recurso->id;
             $resclass->save();
             }else if($rselect=='digital'){
+                $recurso->save();
+                if($pr=="Tesis" || $pr=='Libro'|| $pr=='Plano'|| $pr=='Mapa'){$resclass->fill(self::validatePrincipal($request, $pr));}
+                $resclass->recurso_id=$recurso->id;
                 self::validatePrincipal($request, $pr);
             }
         }
@@ -381,43 +446,26 @@ class RecursoController extends Controller
             }
 
             if($recurso->versionAlt){
-                $validateAltD = $request->validate([
-                    'file' => 'required|file|max:46000',
-                ]);
             if(empty($alt)){
                 $alt = new Digital();
-               // $alt->fill($validateAltD);
+                $alt= self::validateAlternativaDigital($resclass, $pr, $request, $alt);
                 $request->session()->put('alt', $alt);
             }
             else{
-                //$alt->fill($validateAltD);
+                $alt = self::validateAlternativaDigital($resclass, $pr, $request, $alt);
                 $request->session()->put('alt', $alt);
             }
         }
          
-        
-
 
         }else if($rselect == 'digital'){
             if(empty($request->session()->get('digital'))){
                 $digital = new Digital();
-                $digital->formato=$request->file('file')->extension();
-                $storagePath = Storage::putFile("public",$request->file('file'));
-                $path= basename($storagePath);
-                $peso = Storage::size($storagePath)/1000000;
-                $digital->path = $path;
-                $digital->peso  = $peso;
                 self::fillDigitalRes($resclass,$pr,$digital,$request);
                 $request->session()->put('digital', $digital);
             }else{
                 $digital = $request->session()->get('digital');
                 Storage::disk('local')->delete($digital->path);
-                $digital->formato=$request->file('file')->extension();
-                $storagePath = Storage::putFile("public",$request->file('file'));
-                $path= basename($storagePath);
-                $peso = Storage::size($storagePath)/1000000;
-                $digital->path = $path;
-                $digital->peso  = $peso;
                 self::fillDigitalRes($resclass,$pr,$digital,$request);
                 $request->session()->put('digital', $digital);
             }
@@ -452,18 +500,18 @@ class RecursoController extends Controller
     public function cancelarP1(Request $request){
         $recurso = $request->session()->forget('recurso');
         $rselect = $request->session()->forget('rselect');
-
         return redirect()->route('recursos.index');
     }
     public function cancelarP2(Request $request){
         $recurso = $request->session()->forget('recurso');
+        $request->session()->forget('recurso');
         $rselect = $request->session()->forget('rselect');
         $request->session()->forget('alt');
         $request->session()->forget('pr');
         $request->session()->forget('fisico');
         $request->session()->forget('digital');
         $request->session()->forget('resclass');
-
+        if($recurso){$recurso->delete();}
         return redirect()->route('recursos.index');
     }
 }

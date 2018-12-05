@@ -27,7 +27,7 @@ class CreateRecursosTable extends Migration
             $table->string('thumb')->nullable();
             $table->integer('autor_id');
             $table->integer('biblioteca_id');
-            $table->foreign('autor_id')->references('id')->on('autors');
+            $table->foreign('autor_id')->references('id')->on('autors')->onDelete('cascade');
             $table->string('genero');
             $table->foreign('biblioteca_id')->references('id')->on('bibliotecas');
             $table->boolean('versionAlt');

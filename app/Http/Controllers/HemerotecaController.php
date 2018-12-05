@@ -2,28 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\prestamo;
-use App\User;
+use App\Hemeroteca;
 use Illuminate\Http\Request;
 
-
-class PrestamoController extends Controller
+class HemerotecaController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($numero)
+    public function index()
     {
-         $prest = prestamo::where('biblioteca_id', $numero)->paginate(10);
-         return view('prestamos.index', compact('prest'));
-    }
-
-    public function indexPersonal($numero)
-    {
-        $prest = prestamo::where('user_id', $numero)->paginate(10);
-        return view('prestamos.index', compact('prest'));
+        //
     }
 
     /**
@@ -50,10 +41,10 @@ class PrestamoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\prestamo  $prestamo
+     * @param  \App\Hemeroteca  $hemeroteca
      * @return \Illuminate\Http\Response
      */
-    public function show(prestamo $prestamo)
+    public function show(Hemeroteca $hemeroteca)
     {
         //
     }
@@ -61,10 +52,10 @@ class PrestamoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\prestamo  $prestamo
+     * @param  \App\Hemeroteca  $hemeroteca
      * @return \Illuminate\Http\Response
      */
-    public function edit(prestamo $prestamo)
+    public function edit(Hemeroteca $hemeroteca)
     {
         //
     }
@@ -73,10 +64,10 @@ class PrestamoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\prestamo  $prestamo
+     * @param  \App\Hemeroteca  $hemeroteca
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, prestamo $prestamo)
+    public function update(Request $request, Hemeroteca $hemeroteca)
     {
         //
     }
@@ -84,14 +75,11 @@ class PrestamoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\prestamo  $prestamo
+     * @param  \App\Hemeroteca  $hemeroteca
      * @return \Illuminate\Http\Response
      */
-    public function destroy(prestamo $prestamo)
+    public function destroy(Hemeroteca $hemeroteca)
     {
         //
-    }
-    private function checkTime(){
-        
     }
 }

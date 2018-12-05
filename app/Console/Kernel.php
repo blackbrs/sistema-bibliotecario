@@ -4,7 +4,8 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-
+use \Illuminate\Support\Facades\DB;
+use DateTime;
 class Kernel extends ConsoleKernel
 {
     /**
@@ -24,8 +25,20 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        
+        $schedule->call(function () {
+           $pres = DB::table('prestamos')->where('prestamoActivo',TRUE)->get();
+           $hoy = new DateTime();
+           foreach($pres as $prestamo){
+
+                $dia_prestamo = new DateTime($prestamo->created_at);
+                $interval = $hoy->diff($dia_prestamo);
+                $dias = $interval->format('%a');
+                if($dias==0){$dias=1;}
+                $prestamo->diasPrestado = $dias;
+                $prestamo->save();
+           }
+        })->daily();
     }
 
     /**

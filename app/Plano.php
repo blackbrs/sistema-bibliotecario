@@ -6,9 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Plano extends Model
 {
-    protected $fillable = ['dimension'];
+    protected $fillable = ['dimension','fechaCreacion'];
     public $timestamps = false;
 
+    public function fisico()
+    {
+        return $this->morphOne(Fisico::class, 'linkable');
+    }
     public function digital()
     {
         return $this->morphOne(Digital::class, 'linkable');

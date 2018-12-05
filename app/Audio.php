@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Audio extends Model
 {
-    protected $fillable = ['duracion'];
+    protected $fillable = ['duracion','bitrate',];
     public $timestamps = false;
 
     public function digital()

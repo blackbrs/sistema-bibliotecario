@@ -11,7 +11,7 @@
                             <table class="table table-striped table-hover">
                                 
                             <div class="panel-heading">
-                                    <th>  Recursos de {{$bib->nombreBiblioteca}}  </th>
+                                    <th>  Recursos de {{$bib}}  </th>
                                 @can('recursobib.create')
                                 <th><a href="{{ route('recursos.create') }}" class="btn btn-sm btn-primary">
                                     Agregar un nuevo recurso 
@@ -35,7 +35,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($bib->recursos as $recurso)
+                            @foreach ($res as $recurso)
                             <tr>
                                 <td>{{ $recurso->id }}</td>
                                 <td>{{ $recurso->titulo }}</td>
@@ -72,10 +72,14 @@
                                  </td> 
 
                                  <td>
-                                     @can('recurso.prestar')
-                                     <a href="{{ route('recurso.prestar',[$recurso->id , Auth::user()->id ]) }}" class="btn btn-sm  btn-warning" role="button">
-                                        Prestar recurso</a>
-                                     @endcan
+                                     @if($recurso->getRes($recurso->principal))
+                                        @if( $recurso->getRes($recurso->principal)->fisico)
+                                        @can('recurso.prestar')
+                                        <a href="{{ route('recurso.prestar',[$recurso->id , Auth::user()->id ]) }}" class="btn btn-sm  btn-warning" role="button">
+                                           Prestar recurso</a>
+                                        @endcan
+                                        @endif
+                                        @endif
                                  </td>
 
                                 

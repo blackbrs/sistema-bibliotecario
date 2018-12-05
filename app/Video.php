@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Video extends Model
 {
-    protected $fillable =['duracion','bitrate','calidad'];
+    protected $fillable =['duracion','bitrate','resolucion','frames'
+];
     public $timestamps = false;
 
     public function digital()

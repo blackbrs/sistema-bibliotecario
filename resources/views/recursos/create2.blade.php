@@ -17,6 +17,10 @@
                                     {{ csrf_field() }}
                                     @if ($rselect == 'fisico')
                                         @include('recursos.partials.fisico')
+                                        @if($recurso->versionAlt)
+                                        <label>Subir recurso digital:</label>
+                                        @include('recursos.partials.alternativaDigital')
+                                        @endif
                                     @elseif ($rselect == 'digital')
                                         @include('recursos.partials.digital')
                                     @else

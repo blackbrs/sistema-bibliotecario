@@ -1,22 +1,42 @@
 @extends('layouts.admin')
 @section('header')
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" defer/>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js" defer></script>
+<script defer type="text/javascript">
+  $(function () {
+      $('#res').fancybox({
+        fitToView	: true,
+		    autoSize	: true,,
+		    type : 'iframe',
+      });
+  });
+</script>
 @endsection
 @section('content')
 <div class="container">
-<div id="accordion">
+<div id="detalle">
         <div class="card">
           <div class="card-header" id="headingOne">
-            <h5 class="mb-0">
-              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <button class="btn btn-lg btn-link navbar-left" aria-expanded="true"">
                 Datos generales
               </button>
-            </h5>
+                @if($principal->fisico)
+                @can('recurso.prestar')
+                <a href="{{ route('recurso.prestar',[$recurso->id , Auth::user()->id ]) }}" style="float: right;" class="btn btn-lg btn-success navbar-right" role="button">
+                   Prestar recurso</a>
+                @endcan
+                @endif
           </div>
       
-          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+          <div aria-labelledby="headingOne" data-parent="#detalle">
             <div class="card-body">
                     <div class="container-fluid">
+                        @if($Video=$principal->digital)
+                        @if($recurso->principal=="Video")
+                      <div class="row">
+                          <video src="{{asset("storage/$Video->path")}}" preload="metadata" controls width="100%" height="100%"></video>
+                      </div>
+                      @endif @endif
                             <div class="row">
                               <div class="col-sm">
                                     <table class="table">
@@ -49,38 +69,71 @@
                                                     <th scope="row">Tipo</th>
                                                     <td>{{ $recurso->principal }}</td>
                                                     </tr>
-                                                    @include('recursos.show.'.$recurso->principal)
+                                                    @include('recursos.show.'.$recurso->principal)   
                                                 </tbody>
-                                            </table>
-                            </div>
-                              <div class="col-sm">
-                                  <div class="row">
-                                      <div class="col-sm">
-                                          <img src="{{asset("storage/$recurso->thumb")}}" class="img" alt="/storage/no-disponible.jpg"width="500" height="600">
-                                      </div>
-                                    </div>
-                              </div>
+                                            </table> 
+                                          @if($Res=$principal->digital)
+                                          @if($recurso->principal=="Audio")
+                                              <figure>
+                                                  <figcaption>Escuchar:</figcaption>
+                                                  <audio
+                                                      controls controlsList="nodownload"
+                                                      src="{{asset("storage/$Res->path")}}">
+                                                          Tu navegador no soporta el
+                                                          elemento de<code>audio</code>.
+                                                  </audio>
+                                              </figure>
+                                              @else
+                                              @if(in_array($recurso->principal,$formatoFis))
+                                              <div>
+                                                <a class="btn btn-info" data-fancybox href="{{asset("storage/$Res->path")}}">
+                                                  Ver recurso
+                                                  </a>
+                                                </div>
+                                                @endif
+                                              @endif
+                                              @endif
+                                               @if($recurso->versionAlt!=0)
+                                               @if(in_array($principal->digital->formato,$formatoAudioAlt)==false)
+                                                  <div>
+                                                  <a class="btn btn-info" data-fancybox href="{{asset("storage/$Res->path")}}">
+                                                    Version digital
+                                                    </a>
+                                                  </div>
+                                               @else
+                                               <div>
+                                               <figure>
+                                                  <figcaption>Preview en digital:</figcaption>
+                                                  <audio
+                                                      controls controlsList="nodownload"
+                                                      src="{{asset("storage/$Res->path")}}">
+                                                          Tu navegador no soporta el
+                                                          elemento de<code>audio</code>.
+                                                  </audio>
+                                              </figure>
+                                            </div>
+                                                @endif
+                                              @endif 
+                                            </div>
+
+                                  
+                                    @if($recurso->principal!="Video")
+                                    <div class="col-sm">
+                                            @if($recurso->thumb)
+                                            <img src="{{asset("storage/$recurso->thumb")}}" class="img" width="500" height="600">
+                                            @else
+                                            <img src="{{asset("storage/nothumb.gif")}}" class="img" width="500" height="600">
+                                            @endif
+                                          </div>
+                                            @endif
+                                  
+                                </div>
+                            
                             </div>
                           </div>
             </div>
           </div>
         </div>
-        @if($recurso->versionAlternativa)
-        <div class="card">
-          <div class="card-header" id="headingTwo">
-            <h5 class="mb-0">
-              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Alternativa digital
-              </button>
-            </h5>
-          </div>
-          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-            <div class="card-body">
-             
-            </div>
-          </div>
-        </div>
-        @endif
       </div>
     </div>
 @endsection

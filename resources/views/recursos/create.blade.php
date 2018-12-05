@@ -94,18 +94,19 @@
                                             </div>
                                                   <select name="principal" id= "principal" class="form-control" placeholder="Seleccionar recurso" required>
                                                         <option value="" disabled selected>Selecciona una opcion</option>
-                                                        <option class="opcFis" {{{ (isset($recurso->principal) && $recurso->principal == 'Libro') ? "selected=\"selected\"" : "" }}}>Libro</option>
+                                                        <option class="opcDual" {{{ (isset($recurso->principal) && $recurso->principal == 'Libro') ? "selected=\"selected\"" : "" }}}>Libro</option>
                                                         <option class="opcFis" {{{ (isset($recurso->principal) && $recurso->principal == 'CD') ? "selected=\"selected\"" : "" }}}>CD</option>
                                                         <option class="opcFis" {{{ (isset($recurso->principal) && $recurso->principal == 'DVD') ? "selected=\"selected\"" : "" }}}>DVD</option>
-                                                        <option class="opcFis" {{{ (isset($recurso->principal) && $recurso->principal == 'Mapa') ? "selected=\"selected\"" : "" }}}>Mapa</option>
+                                                        <option class="opcDual" {{{ (isset($recurso->principal) && $recurso->principal == 'Mapa') ? "selected=\"selected\"" : "" }}}>Mapa</option>
                                                         <option class="opcDig" {{{ (isset($recurso->principal) && $recurso->principal == 'Video') ? "selected=\"selected\"" : "" }}}>Video</option>
                                                         <option class="opcDig" {{{ (isset($recurso->principal) && $recurso->principal == 'Audio') ? "selected=\"selected\"" : "" }}}>Audio</option>
-                                                        <option class="opcDig" {{{ (isset($recurso->principal) && $recurso->principal == 'Plano') ? "selected=\"selected\"" : "" }}}>Plano</option>
-                                                        <option {{{ (isset($recurso->principal) && $recurso->principal == 'Tesis') ? "selected=\"selected\"" : "" }}}>Tesis</option>
+                                                        <option class="opcDual" {{{ (isset($recurso->principal) && $recurso->principal == 'Plano') ? "selected=\"selected\"" : "" }}}>Plano</option>
+                                                        <option class="opcFis" {{{ (isset($recurso->principal) && $recurso->principal == 'Tesis') ? "selected=\"selected\"" : "" }}}>Hemeroteca</option>
+                                                        <option class="opcDual" {{{ (isset($recurso->principal) && $recurso->principal == 'Tesis') ? "selected=\"selected\"" : "" }}}>Tesis</option>
                                                     </select>      
                                     </div>
                                     <div class="form-group">
-                                            <input type="checkbox" id="versionAlt" name="versionAlt" style="display:none" value="1" {{{ (isset($recurso->versionAlt) && $recurso->versionAlt == '1') ? "checked" : "" }}}>
+                                            <input type="checkbox" id="versionAlt" name="versionAlt" style="display:none" value="0" {{{ (isset($recurso->versionAlt) && $recurso->versionAlt == '1') ? "checked" : "" }}}>
                                         <label class="form-check-label" id="lb1" for="versionAlt"> </label>
                                     </div>
                                     <div class="form-group">

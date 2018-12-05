@@ -16,6 +16,7 @@ class CreateMapasTable extends Migration
         Schema::create('mapas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('region');
+            $table->date('fechaCreacion');
             $table->integer('recurso_id');
             $table->foreign('recurso_id')->references('id')->on('recursos')->onDelete('cascade');
         });

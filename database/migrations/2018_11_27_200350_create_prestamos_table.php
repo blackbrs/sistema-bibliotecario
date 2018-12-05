@@ -22,6 +22,7 @@ class CreatePrestamosTable extends Migration
             $table->integer('recurso_id');
             $table->foreign('recurso_id')->references('id')->on('recursos');
             $table->boolean('prestamoActivo');
+            $table->integer('diasPrestado');
 
             $table->timestamps();
         });

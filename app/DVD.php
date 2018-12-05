@@ -14,6 +14,10 @@ class DVD extends Model
     {
         return $this->morphOne(Fisico::class, 'linkable');
     }
+    public function digital()
+    {
+        return $this->morphOne(Digital::class, 'linkable');
+    }
     public function recurso(){
         return $this->belongsTo(Recurso::class);
     }

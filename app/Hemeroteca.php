@@ -4,11 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CD extends Model
+class Hemeroteca extends Model
 {
-    protected $table = 'cds';
-    protected $fillable = ['nPistas','duracion'];
-    public $timestamps = false; 
+    protected $fillable = ['nombreColeccion','fechaCreacion'];
+    public $timestamps = false;
 
     public function fisico()
     {

@@ -1,6 +1,3 @@
-@if($pr=="Tesis" || $pr=='Libro'|| $pr=='Plano'|| $pr=='Mapa')
-@include('recursos.fisico.'.$pr)
-@endif
 @if ($message = Session::get('success'))
 <div class="alert alert-success alert-block">
     <button type="button" class="close" data-dismiss="alert">×</button>
@@ -18,6 +15,6 @@
 </div>
 @endif
     <div class="form-group">
-        <input type="file" class="form-control-file" name="file" id="file" aria-describedby="fileHelp" required>
-        <small id="fileHelp" class="form-text text-muted">El archivo debe ser {{$recurso->principal}} digital</small>
+        <input type="file" class="form-control-file" name="file" id="file" aria-describedby="fileHelp">
+        <small id="fileHelp" class="form-text text-muted">El archivo debe menor a 400MB</small>
     </div>
