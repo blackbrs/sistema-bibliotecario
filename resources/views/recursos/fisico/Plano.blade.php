@@ -1,6 +1,6 @@
 <div class="form-group">
-        {!! Form::label('Region', 'region') !!}
-        <select class="form-control" id="region"  name="region" required>
+        {!! Form::label('Dimension', 'Dimension') !!}
+        <select class="form-control" id="dimension"  name="dimension" required>
               <option >A0</option>
               <option >A1</option>
               <option >A2</option>

@@ -16,7 +16,7 @@ class CreateHemerotecasTable extends Migration
         Schema::create('hemerotecas', function (Blueprint $table) {
             $table->increments('id');
             $table->date('fechaCreacion');
-            $table->integer('nombreColeccion');
+            $table->string('nombreColeccion');
             $table->integer('recurso_id');
             $table->foreign('recurso_id')->references('id')->on('recursos')->onDelete('cascade');
 
