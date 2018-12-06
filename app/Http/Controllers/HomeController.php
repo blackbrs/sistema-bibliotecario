@@ -26,7 +26,7 @@ class HomeController extends Controller
         if($request->user()->isRole('admin')){
             return view('stats.users');
         }
-        else return view('home');
+        else return redirect('/recursos');
     }
     public function upload(){
         return view('upload');
