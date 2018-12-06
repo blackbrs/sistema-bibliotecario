@@ -43,7 +43,7 @@
                                   @if ( $pre->prestamoActivo  ==TRUE)
                                   <td><p style="color:red;"> SIN DEVOLVER</p></td>
                                   <td>
-                                        @can('users.edit')
+                                        @can('recurso.devolver')
                                         <a href="{{ route('recurso.devolver',[$pre->recurso->getRes($pre->recurso->principal)->id,$pre->id,$pre->user->id]) }}"
                                             class="btn btn-sm btn-info" role="button">
                                         Devolver Recurso</a>
