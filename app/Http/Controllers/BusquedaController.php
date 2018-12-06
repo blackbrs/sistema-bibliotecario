@@ -23,7 +23,7 @@ class BusquedaController extends Controller
             ->orWhere('categoria', 'LIKE', '%'.$spx.'%')
             ->orWhere('genero', 'LIKE', '%'.$spx.'%')
             ->get();
-            if(empty($recursos)){return back()->with('fail','No se encontraron recursos acordes a su busqueda');}
+            if(!($recursos->count())){return back()->with('fail','No se encontraron recursos acordes a su busqueda');}
         }
         return view('recursos.resultados', compact('recursos'));
     }
