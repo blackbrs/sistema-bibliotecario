@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('header')
-@include('recursos.partials.script2')  
+@include('recursos.partials.script2')
 @endsection
 @section('content')
 <div class="container">

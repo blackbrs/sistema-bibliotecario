@@ -513,9 +513,9 @@ class RecursoController extends Controller
         return redirect()->route('recursos.index');
     }
     public function cancelarP2(Request $request){
-        $recurso = $request->session()->forget('recurso');
+        $recurso = $request->session()->get('recurso');
         $request->session()->forget('recurso');
-        $rselect = $request->session()->forget('rselect');
+        $request->session()->forget('rselect');
         $request->session()->forget('alt');
         $request->session()->forget('pr');
         $request->session()->forget('fisico');
