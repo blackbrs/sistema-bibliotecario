@@ -13,9 +13,18 @@ class BusquedaController extends Controller
      */
     public function singleSearch(Request $request)
     {
-       // if(empty($request->get('query')){}
-        if($request->get('query')=='FalconHeavy'){return redirect('https://youtu.be/wbSwFU6tY1c?t=1309');}
-        
+       if(empty($request->get('query'))){
+           return back()->with('msg','No ha introducido nada en el cuadro de busqueda');
+       }
+       // if($request->get('query')=='FalconHeavy'){return redirect('https://youtu.be/wbSwFU6tY1c?t=1309');}
+        else{
+            $spx=$request->get('query');
+            $recursos = \App\Recurso::where('titulo', 'LIKE', '%'.$spx.'%')->orWhere('principal', 'LIKE', '%'.$spx.'%')
+            ->orWhere('categoria', 'LIKE', '%'.$spx.'%')
+            ->orWhere('genero', 'LIKE', '%'.$spx.'%')
+            ->get();
+            dd($recursos);
+        }
         return view('recursos.resultados');
     }
 
