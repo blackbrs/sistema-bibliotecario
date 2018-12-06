@@ -107,7 +107,16 @@ class RecursoController extends Controller
      */
     public function edit(Recurso $recurso)
     {
-        //
+        $rselect='';
+        $array_fis = array('DVD','CD','Libro','Tesis','Plano','Mapa');
+        if($recurso->principal){
+            if(in_array($recurso->principal,$array_fis)){
+                $rselect='Fisico';
+            }else{
+                $rselect='Digital';
+            }
+        }
+        return redirect('/recurso/create/p1')->with(compact($recurso,'recurso'));
     }
 
     /**
@@ -118,8 +127,7 @@ class RecursoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Recurso $recurso)
-    {
-        //
+    { 
     }
 
     /**
@@ -295,6 +303,8 @@ class RecursoController extends Controller
                 break;
         }
     }
+
+
     public function createP1(Request $request)
     {
         $recurso = $request->session()->get('recurso');

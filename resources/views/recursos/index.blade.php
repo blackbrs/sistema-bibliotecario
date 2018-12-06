@@ -55,7 +55,7 @@
 
                                 <td>
                                         @can('recursobib.edit')
-                                        <a disabled href="{{ route('recurso.edit', $recurso->id) }}"
+                                        <a disabled href="{{ route('recursos.create', $recurso) }}"
                                            style='pointer-events: none;' class="btn btn-sm btn-outline-info" role="button">
                                         Editar</a>
                                         @endcan
