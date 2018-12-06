@@ -36,7 +36,6 @@
                                                         <th>telefono</th>
                                                         <th>e-mail</th>
                                                         <th>municipio</th>
-                                                        <th>municipio</th> 
                                                     </tr>
                                                 </thead>
                                             </table>

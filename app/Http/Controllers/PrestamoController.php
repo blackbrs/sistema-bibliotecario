@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\prestamo;
 use App\User;
 use Illuminate\Http\Request;
+use DateTime;
 
 
 class PrestamoController extends Controller
@@ -16,12 +17,34 @@ class PrestamoController extends Controller
      */
     public function index($numero)
     {
+        $p = prestamo::where('biblioteca_id', $numero)->where('prestamoActivo',TRUE)->get();
+           $hoy = new DateTime();
+           foreach($p as $prestamo){
+
+                $dia_prestamo = new DateTime($prestamo->created_at);
+                $interval = $hoy->diff($dia_prestamo);
+                $dias = $interval->format('%a');
+                if($dias==0){$dias=1;}
+                $prestamo->diasPrestado = $dias;
+                $prestamo->save();
+           }
          $prest = prestamo::where('biblioteca_id', $numero)->paginate(10);
          return view('prestamos.index', compact('prest'));
     }
 
     public function indexPersonal($numero)
     {
+        $p = prestamo::where('user_id', $numero)->where('prestamoActivo',TRUE)->get();
+        $hoy = new DateTime();
+        foreach($p as $prestamo){
+
+             $dia_prestamo = new DateTime($prestamo->created_at);
+             $interval = $hoy->diff($dia_prestamo);
+             $dias = $interval->format('%a');
+             if($dias==0){$dias=1;}
+             $prestamo->diasPrestado = $dias;
+             $prestamo->save();
+        }
         $prest = prestamo::where('user_id', $numero)->paginate(10);
         return view('prestamos.index', compact('prest'));
     }

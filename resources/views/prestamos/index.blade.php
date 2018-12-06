@@ -25,6 +25,7 @@
                                   <th>year</th>
                                   <th>Biblioteca</th>
                                   <th>Usuario</th>
+                                  <th>Dias prestado</th>
                                   <th>Estado Prestamo</th>
                                   <th colspan="6">&nbsp;</th>
                               </tr>
@@ -38,6 +39,7 @@
                                   <td>{{ $pre->recurso->año }}</td>
                                   <td>{{ $pre->biblioteca->nombreBiblioteca }}</td> 
                                   <td>{{ $pre->user->nombres}}</td>
+                                  <td>{{ $pre->diasPrestado}}</td>
                                   @if ( $pre->prestamoActivo  ==TRUE)
                                   <td><p style="color:red;"> SIN DEVOLVER</p></td>
                                   <td>

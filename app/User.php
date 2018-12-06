@@ -34,5 +34,7 @@ class User extends Authenticatable
     public function municipio(){
         return $this->belongsTo(Municipio::class);
     }
-    
+    public function recursos(){
+        return $this->hasMany(prestamo::class);
+    }
 }

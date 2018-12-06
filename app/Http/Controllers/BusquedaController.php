@@ -14,7 +14,7 @@ class BusquedaController extends Controller
     public function singleSearch(Request $request)
     {
        if(empty($request->get('query'))){
-           return back()->with('msg','No ha introducido nada en el cuadro de busqueda');
+           return back()->with('fail','No ha introducido ningun termino en el cuadro de busqueda');
        }
        // if($request->get('query')=='FalconHeavy'){return redirect('https://youtu.be/wbSwFU6tY1c?t=1309');}
         else{
@@ -23,9 +23,9 @@ class BusquedaController extends Controller
             ->orWhere('categoria', 'LIKE', '%'.$spx.'%')
             ->orWhere('genero', 'LIKE', '%'.$spx.'%')
             ->get();
-            dd($recursos);
+            if(empty($recursos)){return back()->with('fail','No se encontraron recursos acordes a su busqueda');}
         }
-        return view('recursos.resultados');
+        return view('recursos.resultados', compact('recursos'));
     }
 
     /**
@@ -35,7 +35,7 @@ class BusquedaController extends Controller
      */
     public function advSearch()
     {
-        //
+        return back()->with('info','La buqueda avanzada aun no ha sido implementada :(');
     }
 
     /**
