@@ -16,10 +16,11 @@ class BusquedaController extends Controller
        if(empty($request->get('query'))){
            return back()->with('fail','No ha introducido ningun termino en el cuadro de busqueda');
        }
-        if($request->get('query')=='FalconHeavy'){return redirect('https://youtu.be/wbSwFU6tY1c?t=1309')->with('info','Easter Egg :D');}
+        if($request->get('query')=='FalconHeavy'){return redirect('https://youtu.be/wbSwFU6tY1c?t=1309'); }//Easter Egg :D
         else{
             $spx=$request->get('query');
-            $recursos = \App\Recurso::where('titulo', 'LIKE', '%'.$spx.'%')->orWhere('principal', 'LIKE', '%'.$spx.'%')
+            $recursos = \App\Recurso::where('titulo', 'LIKE', '%'.$spx.'%')
+            ->orWhere('principal', 'LIKE', '%'.$spx.'%')
             ->orWhere('categoria', 'LIKE', '%'.$spx.'%')
             ->orWhere('genero', 'LIKE', '%'.$spx.'%')
             ->get();
