@@ -96,7 +96,7 @@
                                               @endif
                                               @endif
                                                @if($recurso->versionAlt!=0)
-                                               @if(12in_array($principal->digital->formato,$formatoAudioAlt)==false)
+                                               @if(in_array($principal->digital->formato,$formatoAudioAlt)==false)
                                                   <div>
                                                   <a class="btn btn-info" data-fancybox href="{{asset("storage/$Res->path")}}">
                                                     Version digital
