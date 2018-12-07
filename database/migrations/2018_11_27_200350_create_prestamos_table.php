@@ -18,9 +18,9 @@ class CreatePrestamosTable extends Migration
             $table->integer('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('biblioteca_id');
-            $table->foreign('biblioteca_id')->references('id')->on('bibliotecas');
+            $table->foreign('biblioteca_id')->references('id')->on('bibliotecas')->onDelete('cascade');
             $table->integer('recurso_id');
-            $table->foreign('recurso_id')->references('id')->on('recursos');
+            $table->foreign('recurso_id')->references('id')->on('recursos')->onDelete('cascade');
             $table->boolean('prestamoActivo');
             $table->integer('diasPrestado');
 

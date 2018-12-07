@@ -35,6 +35,7 @@
                         </thead>
                         <tbody>
                             @foreach ($res as $recurso)
+                            @if($recurso->getRes($recurso->principal))
                             <tr>
                                 <td>{{ $recurso->id }}</td>
                                 <td>{{ $recurso->titulo }}</td>
@@ -83,7 +84,7 @@
 
                                 
                             </tr>
-                                
+                             @endif   
                             @endforeach
                         </tbody>
                     </table>
